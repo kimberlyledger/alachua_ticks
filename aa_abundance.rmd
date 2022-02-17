@@ -5,6 +5,8 @@ date: "2/17/2022"
 output: html_document
 ---
 
+# Part 1: Visualize Amblyomma americanum data 
+
 Load libraries 
 ```{r}
 library(tidyverse)
@@ -29,5 +31,159 @@ table1 <- ticks %>%
 
 head(table1)
 ```
+
+Let's start by just looking at Amblyomma americanum 
+
+```{r}
+aa <- table1 %>%
+  filter(Species == "AA")
+head(aa)
+```
+
+Now let's plot the counts of nymphs and adults by visit and site 
+
+```{r}
+ggplot(data = aa, aes(x=Visit, y=total, col = Site_ID)) + 
+  theme_classic() + 
+  geom_point(aes(shape = Lifestage)) + 
+  labs(title = "A.americanum", x = "Visit", y = "# of ticks")
+```
+
+Let's take a closer look at the seasonality of A.americanum by combining counts from all sites and keeping visits seperate 
+
+```{r}
+aa_allsites <- aa %>%
+  group_by(Lifestage, Visit) %>%
+  summarise(total = sum (total))
+
+ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_point(aes(color = Lifestage)) + 
+  labs(title = "A.americanum", x = "Visit", y = "# of ticks")
+
+ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_smooth(aes(color = Lifestage)) + 
+  labs(title = "A.americanum", x = "Visit", y = "# of ticks")
+```
+
+both adults and nymphs have very similar timing of peak abundance in Alachua Co. 
+
+Now let's combine counts across all visits and keep the sites seperate 
+
+```{r}
+aa_allvisits <- aa %>%
+  group_by(Site_ID, Lifestage) %>%
+  summarize(total = sum(total),
+            density = (total/12000) * 100)
+
+## add in rows for the sites and life stages with no observations
+aa_allvisits[31,] <- list("29RD", "A", 0 , 0)
+aa_allvisits[32,] <- list("HW", "A", 0 , 0)
+aa_allvisits[33,] <- list("UG", "A", 0, 0)
+aa_allvisits[34,] <- list("UG", "N", 0, 0)
+aa_allvisits[35,] <- list("GA", "A", 0, 0)
+aa_allvisits[36,] <- list("GA", "N", 0, 0)
+
+ggplot(data = aa_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "A.americanum", x = "Site", y = "# of ticks")
+
+```
+
+Read in the covariate data for all 18 sites 
+This site contains information on if the environment type was manicured or natural, the proportion of forest landcover at 500m, 1km, and 2km buffers, and the PC1 and PC2 land use metrics at 1km buffers
+
+```{r}
+covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
+head(covar)
+```
+
+join the covariate data to the A.americanum data 
+
+```{r}
+aa_var <- aa_allvisits %>%
+  left_join(covar)
+str(aa_var)
+
+### change to factors 
+aa_var$Forested_Manicured <- as.factor(aa_var$Forested_Manicured)
+aa_var$Lifestage <- as.factor(aa_var$Lifestage)
+
+
+### make some visuals 
+ggplot(aa_var, aes(x= PC1, y = log1p(total), col = Forested_Manicured)) + 
+  geom_point(aes(shape = Lifestage))
+ggplot(aa_var, aes(x= PC1, y = density, col = Forested_Manicured)) + 
+  geom_point(aes(shape = Lifestage))
+ggplot(aa_var, aes(x= Forest1km, y = log1p(total), col = Forested_Manicured)) + 
+  geom_point(aes(shape = Lifestage))
+ggplot(aa_var, aes(x= Forest1km, y = density, col = Forested_Manicured)) + 
+  geom_point(aes(shape = Lifestage))
+```
+
+# Part 2: Test for spatial "scale of effect" and spatial autocorrelation 
+
+Here I will work with combined adult and nymph dataset, as well as adults and nymphys on their own 
+
+```{r}
+aa_adults <- aa_var %>%
+  filter(Lifestage == "A")
+
+aa_nymphs <- aa_var %>%
+  filter(Lifestage == "N")
+```
+
+## test for "scale of effect for combined, adults, and nymphs using a buffer based approach 
+for the final go i should probably derive more scales but for now i will work with what there is 
+
+```{r}
+n.pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_nymphs)
+n.pres.1km<-glm(total ~ Forest1km, family = "poisson", data = aa_nymphs)
+n.pres.2km<-glm(total ~ Forest2km, family = "poisson", data = aa_nymphs)
+
+a.pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_adults)
+a.pres.1km<-glm(total ~ Forest1km, family = "poisson", data = aa_adults)
+a.pres.2km<-glm(total ~ Forest2km, family = "poisson", data = aa_adults)
+
+pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_var)
+pres.1km<-glm(total ~ Forest1km, family = "poisson", data = aa_var)
+pres.2km<-glm(total ~ Forest2km, family = "poisson", data = aa_var)
+
+library(MuMIn)  #for model selection
+
+comb.mod<-model.sel(pres.500m, pres.1km, pres.2km)
+comb.mod
+
+nymph.mod<-model.sel(n.pres.500m, n.pres.1km, n.pres.2km)
+nymph.mod
+
+adult.mod<-model.sel(a.pres.500m, a.pres.1km, a.pres.2km)
+adult.mod
+
+scales<-c(500,1000,2000)
+
+ll<-c(logLik(pres.500m),logLik(pres.1km),logLik(pres.2km))
+plot(scales,ll, ylab="Log-likelihood", main = "combined")
+lines(scales,ll)
+
+n.ll<-c(logLik(n.pres.500m),logLik(n.pres.1km),logLik(n.pres.2km))
+plot(scales,n.ll, ylab="Log-likelihood", main = "nymph")
+lines(scales,n.ll)
+
+a.ll<-c(logLik(a.pres.500m),logLik(a.pres.1km),logLik(a.pres.2km))
+plot(scales,a.ll, ylab="Log-likelihood", main = "adult")
+lines(scales,a.ll)
+```
+these results indicate that 1km is the best scale for both nymphs and adults 
+
+
+## test for spatial autocorrelation 
+
+
+
+
+
 
 

@@ -1,0 +1,1827 @@
+﻿Sample_Code,Collection_Sample,Collection_Box,gDNA_Sample,gDNA_Box,Field_Type,Site ,Site_ID,Visit,Date,Tick_No_Tube,Species,Lifestage,Sex,Collection_Method
+HW_3May21_AA_A,AA1007,AAB13,NymAA103,NymAADNAB1Nat,Natural,Harmonic Woods,HW,9,5/3/21,1,AA,N,NA,Flagging
+HW_13Apr21_IS,IS83,IXB2,IS83,ISgDNAB1,Natural,Harmonic Woods,HW,7,4/13/21,1,IS,A,M,Dragging
+29RD_12Mar21_AA_A,AA144,AAB2,NymAA104,NymAADNAB1Nat,Natural,29th Rd,29RD,5,3/12/21,1,AA,N,NA,Dragging
+29RD_12Mar21_AA_B,AA145,AAB2,NymAA105,NymAADNAB1Nat,Natural,29th Rd,29RD,5,3/12/21,1,AA,N,NA,Dragging
+29RD_20Apr21_AA,AA639,AAB8,NymAA106,NymAADNAB1Nat,Natural,29th Rd,29RD,7,4/20/21,1,AA,N,NA,Dragging
+29RD_17May21_AA_A,AA1238,AAB16,NymAA107,NymAADNAB1Nat,Natural,29th Rd,29RD,9,5/17/21,1,AA,N,NA,Dragging
+29RD_17May21_AA_B,AA1239,AAB16,NymAA108,NymAADNAB1Nat,Natural,29th Rd,29RD,9,5/17/21,1,AA,N,NA,Dragging
+29RD_28Jun21_AA,AA1663,AAB21,NymAA109,NymAADNAB1Nat,Natural,29th Rd,29RD,12,6/28/21,1,AA,N,NA,Dragging
+29RD_17May21_HAE,HAE01,IXB2,,,Natural,29th Rd,29RD,9,5/17/21,1,HAE,N,NA,Dragging
+JM_20May21_AA,AA1261,AAB16,AduAA45,AduAADNAB1Nat,Natural,John Mahon,JM,10,5/20/21,1,AA,A,F,Dragging
+JM_26Jun21_AA,AA1645,AAB21,AduAA46,AduAADNAB1Nat,Natural,John Mahon,JM,12,6/26/21,1,AA,A,F,Dragging
+JM_22Apr21_AA,AA640,AAB8,NymAA110,NymAADNAB1Nat,Natural,John Mahon,JM,7,4/22/21,1,AA,N,NA,Flagging
+JM_04Feb21_IS,IS32,IXB1,IS32,ISgDNAB1,Natural,John Mahon,JM,3,2/4/21,1,IS,A,F,Dragging
+SW_15Mar21_AA_A,AA155,AAB2,AduAA47,AduAADNAB1Nat,Natural,Sweetwater,SW,5,3/15/21,1,AA,A,F,Dragging
+SW_15Mar21_AA_C,AA157,AAB2,AduAA48,AduAADNAB1Nat,Natural,Sweetwater,SW,5,3/15/21,1,AA,A,F,Flagging
+SW_22Mar21_AA_A,AA230,AAB3,AduAA49,AduAADNAB1Nat,Natural,Sweetwater,SW,6,3/22/21,1,AA,A,M,Flagging
+SW_15Apr21_AA_A,AA556,AAB7,AduAA50,AduAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,A,M,Dragging
+SW_15Apr21_AA_B,AA557,AAB7,AduAA51,AduAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,A,M,Dragging
+SW_19Apr21_AA_A,AA631,AAB8,AduAA52,AduAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,A,M,Dragging
+SW_19Apr21_AA_B,AA632,AAB8,AduAA53,AduAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,A,M,Dragging
+SW_19Apr21_AA_C,AA633,AAB8,AduAA54,AduAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,A,M,Dragging
+SW_19Apr21_AA_D,AA634,AAB8,AduAA55,AduAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,A,F,Dragging
+SW_19Apr21_AA_E,AA635,AAB8,AduAA56,AduAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,A,F,Dragging
+SW_3May21_AA_A,AA990,AAB13,AduAA57,AduAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,A,M,Dragging
+SW_3May21_AA_B,AA991,AAB13,AduAA58,AduAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,A,F,Dragging
+SW_20May21_AA_A,AA1262,AAB16,AduAA59,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,F,Dragging
+SW_20May21_AA_B,AA1263,AAB16,AduAA60,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,F,Dragging
+SW_20May21_AA_C,AA1264,AAB16,AduAA61,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,F,Dragging
+SW_20May21_AA_D,AA1265,AAB16,AduAA62,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,F,Flagging
+SW_20May21_AA_E,AA1266,AAB16,AduAA63,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,M,Dragging
+SW_20May21_AA_F,AA1267,AAB16,AduAA64,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,M,Dragging
+SW_20May21_AA_G,AA1268,AAB16,AduAA65,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,M,Dragging
+SW_20May21_AA_H,AA1269,AAB16,AduAA66,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,M,Dragging
+SW_20May21_AA_I,AA1270,AAB16,AduAA67,AduAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,A,M,Dragging
+SW_6Jun21_AA_A,AA1502,AAB19,AduAA68,AduAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,A,F,Dragging
+SW_6Jun21_AA_B,AA1503,AAB19,AduAA69,AduAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,A,F,Dragging
+SW_6Jun21_AA_C,AA1504,AAB19,AduAA70,AduAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,A,M,Dragging
+SW_6Jun21_AA_D,AA1505,AAB19,AduAA71,AduAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,A,M,Dragging
+SW_6Jun21_AA_E,AA1506,AAB19,AduAA72,AduAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,A,M,Dragging
+SW_6Jun21_AA_F,AA1507,AAB19,AduAA73,AduAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,A,M,Dragging
+SW_27Jun21_AA_A,AA1661,AAB21,AduAA74,AduAADNAB1Nat,Natural,Sweetwater,SW,12,6/27/21,1,AA,A,F,On_Person
+SW_27Jun21_AA_B,AA1662,AAB21,AduAA75,AduAADNAB1Nat,Natural,Sweetwater,SW,12,6/27/21,1,AA,A,M,On_Person
+SW_15Mar21_AA_B,AA156,AAB2,NymAA111,NymAADNAB1Nat,Natural,Sweetwater,SW,5,3/15/21,1,AA,N,NA,Dragging
+SW_22Mar21_AA_B,AA231,AAB3,NymAA112,NymAADNAB1Nat,Natural,Sweetwater,SW,6,3/22/21,1,AA,N,NA,Dragging
+SW_22Mar21_AA_C,AA232,AAB3,NymAA113,NymAADNAB1Nat,Natural,Sweetwater,SW,6,3/22/21,1,AA,N,NA,Dragging
+SW_22Mar21_AA_D,AA233,AAB3,NymAA114,NymAADNAB1Nat,Natural,Sweetwater,SW,6,3/22/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_C,AA558,AAB7,NymAA115,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_D,AA559,AAB7,NymAA116,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_E,AA560,AAB7,NymAA117,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_F,AA561,AAB7,NymAA118,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_G,AA562,AAB7,NymAA119,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_H,AA563,AAB7,NymAA120,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_I,AA564,AAB7,NymAA121,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_J,AA565,AAB7,NymAA122,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_K,AA566,AAB7,NymAA123,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_L,AA567,AAB8,NymAA124,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_M,AA568,AAB8,NymAA125,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_N,AA569,AAB8,NymAA126,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_O,AA570,AAB8,NymAA127,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_15Apr21_AA_P,AA571,AAB8,NymAA128,NymAADNAB1Nat,Natural,Sweetwater,SW,7,4/15/21,1,AA,N,NA,Dragging
+SW_19Apr21_AA_F,AA636,AAB8,NymAA129,NymAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,N,NA,Dragging
+SW_19Apr21_AA_G,AA637,AAB8,NymAA130,NymAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,N,NA,Dragging
+SW_19Apr21_AA_H,AA638,AAB8,NymAA131,NymAADNAB1Nat,Natural,Sweetwater,SW,8,4/19/21,1,AA,N,NA,Dragging
+SW_3May21_AA_C,AA992,AAB13,NymAA132,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_D,AA993,AAB13,NymAA133,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_E,AA994,AAB13,NymAA134,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_F,AA995,AAB13,NymAA135,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_G,AA996,AAB13,NymAA136,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_H,AA997,AAB13,NymAA137,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_I,AA998,AAB13,NymAA138,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_J,AA999,AAB13,NymAA139,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_K,AA1000,AAB13,NymAA140,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_L,AA1001,AAB13,NymAA141,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_M,AA1002,AAB13,NymAA142,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_N,AA1003,AAB13,NymAA143,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_O,AA1004,AAB13,NymAA144,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_P,AA1005,AAB13,NymAA145,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_3May21_AA_Q,AA1006,AAB13,NymAA146,NymAADNAB1Nat,Natural,Sweetwater,SW,9,5/3/21,1,AA,N,NA,Dragging
+SW_20May21_AA_J,AA1271,AAB16,NymAA147,NymAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,N,NA,Dragging
+SW_20May21_AA_K,AA1272,AAB16,NymAA148,NymAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,N,NA,Dragging
+SW_20May21_AA_L,AA1273,AAB16,NymAA149,NymAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,N,NA,Dragging
+SW_20May21_AA_M,AA1274,AAB16,NymAA150,NymAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,N,NA,Dragging
+SW_20May21_AA_N,AA1275,AAB16,NymAA151,NymAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,N,NA,Dragging
+SW_20May21_AA_O,AA1276,AAB16,NymAA152,NymAADNAB1Nat,Natural,Sweetwater,SW,10,5/20/21,1,AA,N,NA,Dragging
+SW_6Jun21_AA_G,AA1508,AAB19,NymAA153,NymAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,N,NA,Dragging
+SW_6Jun21_AA_H,AA1509,AAB19,NymAA154,NymAADNAB1Nat,Natural,Sweetwater,SW,11,6/6/21,1,AA,N,NA,Dragging
+SW_03Feb21_IS_A,IS30,IXB1,IS30,ISgDNAB1,Natural,Sweetwater,SW,3,2/3/21,1,IS,A,F,Flagging
+SW_03Feb21_IS_B,IS31,IXB1,IS31,ISgDNAB1,Natural,Sweetwater,SW,3,2/3/21,1,IS,A,M,On_Person
+SR_26Feb21_AA_A,AA46,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,A,M,Dragging
+SR_26Feb21_AA_B,AA47,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_A,AA164,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,F,Flagging
+SR_16Mar21_AA_B,AA165,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Flagging
+SR_16Mar21_AA_C,AA166,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Flagging
+SR_16Mar21_AA_D,AA167,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Flagging
+SR_16Mar21_AA_E,AA168,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Flagging
+SR_16Mar21_AA_P,AA179,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,F,Dragging
+SR_16Mar21_AA_Q,AA180,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,F,Dragging
+SR_16Mar21_AA_R,AA181,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,F,Dragging
+SR_16Mar21_AA_S,AA182,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,F,Dragging
+SR_16Mar21_AA_T,AA183,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_U,AA184,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_V,AA185,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_W,AA186,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_X,AA187,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_Y,AA188,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_Z,AA189,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_A1,AA190,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_B1,AA191,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_C1,AA192,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_16Mar21_AA_D1,AA193,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,A,M,Dragging
+SR_2Apr21_AA_A,AA339,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,A,F,Flagging
+SR_2Apr21_AA_B,AA340,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,A,M,Flagging
+SR_2Apr21_AA_C,AA341,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,A,M,Dragging
+SR_2Apr21_AA_D,AA342,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_A,AA572,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Dragging
+SR_19Apr21_AA_B,AA573,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Dragging
+SR_19Apr21_AA_C,AA574,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Dragging
+SR_19Apr21_AA_D,AA575,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Dragging
+SR_19Apr21_AA_E,AA576,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Dragging
+SR_19Apr21_AA_F,AA577,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Dragging
+SR_19Apr21_AA_G,AA578,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Dragging
+SR_19Apr21_AA_H,AA579,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_I,AA580,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_J,AA581,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_K,AA582,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_L,AA583,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_M,AA584,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_N,AA585,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Dragging
+SR_19Apr21_AA_H1,AA605,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,NA,On_Person
+SR_19Apr21_AA_I1,AA606,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_J1,AA607,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_K1,AA608,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_L1,AA609,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_M1,AA610,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_N1,AA611,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_O1,AA612,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_P1,AA613,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_Q1,AA614,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,M,Flagging
+SR_19Apr21_AA_R1,AA615,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Flagging
+SR_19Apr21_AA_S1,AA616,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Flagging
+SR_19Apr21_AA_T1,AA617,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,A,F,Flagging
+SR_30Apr21_AA_A,AA918,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Flagging
+SR_30Apr21_AA_B,AA919,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Flagging
+SR_30Apr21_AA_H,AA925,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_I,AA926,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_J,AA927,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_K,AA928,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_L,AA929,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_M,AA930,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_N,AA931,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_O,AA932,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_P,AA933,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_Q,AA934,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_R,AA935,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_S,AA936,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_T,AA937,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,M,Dragging
+SR_30Apr21_AA_U,AA938,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_V,AA939,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_W,AA940,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_X,AA941,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_Y,AA942,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_Z,AA943,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_A1,AA944,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_B1,AA945,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_C1,AA946,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_D1,AA947,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_E1,AA948,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_F1,AA949,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_G1,AA950,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_H1,AA951,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_I1,AA952,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_J1,AA953,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,F,Dragging
+SR_30Apr21_AA_K1,AA954,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,A,NA,Dragging
+SR_12May21_AA_A,AA1155,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Flagging
+SR_12May21_AA_B,AA1156,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Flagging
+SR_12May21_AA_C,AA1157,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_D,AA1158,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_E,AA1159,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_F,AA1160,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_G,AA1161,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_H,AA1162,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_I,AA1163,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_J,AA1164,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_K,AA1165,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_L,AA1166,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,F,Dragging
+SR_12May21_AA_M,AA1167,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Flagging
+SR_12May21_AA_N,AA1168,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Flagging
+SR_12May21_AA_O,AA1169,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_P,AA1170,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_Q,AA1171,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_R,AA1172,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_S,AA1173,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_T,AA1174,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_U,AA1175,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_V,AA1176,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_W,AA1177,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_X,AA1178,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_Y,AA1179,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_Z,AA1180,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_A1,AA1181,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_B1,AA1182,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_C1,AA1183,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_D1,AA1184,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_12May21_AA_E1,AA1185,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,A,M,Dragging
+SR_25May21_AA_A,AA1289,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,On_Person
+SR_25May21_AA_D,AA1292,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,M,Flagging
+SR_25May21_AA_E,AA1293,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Flagging
+SR_25May21_AA_F,AA1294,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,M,Flagging
+SR_25May21_AA_G,AA1295,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,M,Flagging
+SR_25May21_AA_H,AA1296,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Flagging
+SR_25May21_AA_I,AA1297,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Flagging
+SR_25May21_AA_J,AA1298,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,M,Flagging
+SR_25May21_AA_K,AA1299,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_25May21_AA_L,AA1300,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_25May21_AA_M,AA1301,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_25May21_AA_N,AA1302,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,M,Dragging
+SR_25May21_AA_O,AA1303,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,M,Dragging
+SR_25May21_AA_P,AA1304,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,M,Dragging
+SR_25May21_AA_Q,AA1305,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_25May21_AA_R,AA1306,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_25May21_AA_S,AA1307,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_25May21_AA_T,AA1308,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_25May21_AA_U,AA1309,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_A,AA1455,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Flagging
+SR_1Jun21_AA_B,AA1456,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Flagging
+SR_1Jun21_AA_C,AA1457,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Flagging
+SR_1Jun21_AA_D,AA1458,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Flagging
+SR_1Jun21_AA_E,AA1459,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,Flagging
+SR_1Jun21_AA_F,AA1460,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,Flagging
+SR_1Jun21_AA_G,AA1461,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,Flagging
+SR_1Jun21_AA_H,AA1462,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,Flagging
+SR_1Jun21_AA_I,AA1463,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,On_Person
+SR_1Jun21_AA_M,AA1467,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_N,AA1468,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_O,AA1469,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_P,AA1470,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_Q,AA1471,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_R,AA1472,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_S,AA1473,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_T,AA1474,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_U,AA1475,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_V,AA1476,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_W,AA1477,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_X,AA1478,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_Y,AA1479,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_Z,AA1480,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,Dragging
+SR_1Jun21_AA_A1,AA1481,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,F,On_Person
+SR_1Jun21_AA_B1,AA1482,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,Dragging
+SR_1Jun21_AA_C1,AA1483,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,Dragging
+SR_1Jun21_AA_D1,AA1484,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_A,AA1601,AAB20,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Flagging
+SR_17Jun21_AA_B,AA1602,AAB20,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Flagging
+SR_17Jun21_AA_C,AA1603,AAB20,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Flagging
+SR_17Jun21_AA_D,AA1604,AAB20,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Flagging
+SR_17Jun21_AA_E,AA1605,AAB20,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_F,AA1606,AAB20,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_G,AA1607,AAB20,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_H,AA1608,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_I,AA1609,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_J,AA1610,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_K,AA1611,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_L,AA1612,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,F,Dragging
+SR_17Jun21_AA_M,AA1613,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,On_Person
+SR_17Jun21_AA_N,AA1614,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Flagging
+SR_17Jun21_AA_O,AA1615,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_P,AA1616,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_Q,AA1617,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_R,AA1618,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_S,AA1619,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_T,AA1620,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_U,AA1621,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_V,AA1622,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_17Jun21_AA_W,AA1623,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,A,M,Dragging
+SR_11Feb21_AA_A,AA8,AAB1,NA,NA,Natural,Split Rock,SR,3,2/11/21,1,AA,N,NA,Dragging
+SR_11Feb21_AA_B,AA9,AAB1,NA,NA,Natural,Split Rock,SR,3,2/11/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_C,AA48,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,On_Person
+SR_26Feb21_AA_D,AA49,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_E,AA50,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_F,AA51,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_G,AA52,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_H,AA53,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_I,AA54,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_J,AA55,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_K,AA56,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_L,AA57,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_M,AA58,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_N,AA59,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_O,AA60,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_P,AA61,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_Q,AA62,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_R,AA63,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_S,AA64,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_T,AA65,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_U,AA66,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_V,AA67,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_W,AA68,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_26Feb21_AA_X,AA69,AAB1,NA,NA,Natural,Split Rock,SR,4,2/26/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_F,AA169,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_G,AA170,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_H,AA171,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_I,AA172,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_J,AA173,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_K,AA174,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_L,AA175,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_M,AA176,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_N,AA177,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_O,AA178,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Flagging
+SR_16Mar21_AA_E1,AA194,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_F1,AA195,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_G1,AA196,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_H1,AA197,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_I1,AA198,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_J1,AA199,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_K1,AA200,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_L1,AA201,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_M1,AA202,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_N1,AA203,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_O1,AA204,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_P1,AA205,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_Q1,AA206,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_R1,AA207,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_S1,AA208,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_T1,AA209,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_U1,AA210,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_V1,AA211,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_W1,AA212,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_X1,AA213,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_Y1,AA214,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_Z1,AA215,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_A2,AA216,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_B2,AA217,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_C2,AA218,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_D2,AA219,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_E2,AA220,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_F2,AA221,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_G2,AA222,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_H2,AA223,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_I2,AA224,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_J2,AA225,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_K2,AA226,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_L2,AA227,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_M2,AA228,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_16Mar21_AA_N2,AA229,AAB3,NA,NA,Natural,Split Rock,SR,5,3/16/21,1,AA,N,NA,Dragging
+SR_2Apr21_AA_E,AA343,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Flagging
+SR_2Apr21_AA_F,AA344,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Flagging
+SR_2Apr21_AA_G,AA345,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Flagging
+SR_2Apr21_AA_H,AA346,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Flagging
+SR_2Apr21_AA_I,AA347,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Dragging
+SR_2Apr21_AA_J,AA348,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Dragging
+SR_2Apr21_AA_K,AA349,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Dragging
+SR_2Apr21_AA_L,AA350,AAB5,NA,NA,Natural,Split Rock,SR,6,4/2/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_O,AA586,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_P,AA587,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_Q,AA588,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_R,AA589,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_S,AA590,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_T,AA591,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_U,AA592,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_V,AA593,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_W,AA594,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_X,AA595,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_Y,AA596,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_Z,AA597,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_A1,AA598,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_B1,AA599,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_C1,AA600,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_D1,AA601,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_E1,AA602,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_F1,AA603,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_G1,AA604,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Dragging
+SR_19Apr21_AA_U1,AA618,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_V1,AA619,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_W1,AA620,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_X1,AA621,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_Y1,AA622,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_Z1,AA623,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_A2,AA624,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_B2,AA625,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_C2,AA626,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_D2,AA627,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_E2,AA628,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_F2,AA629,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_19Apr21_AA_G2,AA630,AAB8,NA,NA,Natural,Split Rock,SR,7,4/19/21,1,AA,N,NA,Flagging
+SR_30Apr21_AA_C,AA920,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Flagging
+SR_30Apr21_AA_D,AA921,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Flagging
+SR_30Apr21_AA_E,AA922,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Flagging
+SR_30Apr21_AA_F,AA923,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Flagging
+SR_30Apr21_AA_G,AA924,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Flagging
+SR_30Apr21_AA_L1,AA955,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_M1,AA956,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_N1,AA957,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_O1,AA958,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_P1,AA959,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_Q1,AA960,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_R1,AA961,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_S1,AA962,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_T1,AA963,AAB12,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_U1,AA964,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_V1,AA965,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_W1,AA966,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_X1,AA967,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_Y1,AA968,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_Z1,AA969,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_A2,AA970,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_B2,AA971,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_C2,AA972,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_D2,AA973,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_E2,AA974,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_F2,AA975,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_G2,AA976,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_H2,AA977,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_I2,AA978,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_J2,AA979,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_K2,AA980,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_L2,AA981,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_M2,AA982,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_N2,AA983,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_O2,AA984,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_P2,AA985,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_Q2,AA986,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_R2,AA987,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_S2,AA988,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,Dragging
+SR_30Apr21_AA_T2,AA989,AAB13,NA,NA,Natural,Split Rock,SR,8,4/30/21,1,AA,N,NA,On_Person
+SR_12May21_AA_F1,AA1186,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_G1,AA1187,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_H1,AA1188,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_I1,AA1189,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_J1,AA1190,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_K1,AA1191,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_L1,AA1192,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_M1,AA1193,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_N1,AA1194,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_O1,AA1195,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_P1,AA1196,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_Q1,AA1197,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_R1,AA1198,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_S1,AA1199,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_T1,AA1200,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_U1,AA1201,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_V1,AA1202,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_W1,AA1203,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_X1,AA1204,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_Y1,AA1205,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_Z1,AA1206,AAB15,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_A2,AA1207,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_B2,AA1208,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_C2,AA1209,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_D2,AA1210,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_E2,AA1211,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_F2,AA1212,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_G2,AA1213,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_H2,AA1214,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_I2,AA1215,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_J2,AA1216,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_K2,AA1217,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_L2,AA1218,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_M2,AA1219,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_N2,AA1220,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_O2,AA1221,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_P2,AA1222,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_Q2,AA1223,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_R2,AA1224,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_S2,AA1225,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_12May21_AA_T2,AA1226,AAB16,NA,NA,Natural,Split Rock,SR,9,5/12/21,1,AA,N,NA,Dragging
+SR_25May21_AA_B,AA1290,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,On_Person
+SR_25May21_AA_C,AA1291,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,On_Person
+SR_25May21_AA_V,AA1310,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_W,AA1311,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_X,AA1312,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_Y,AA1313,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_Z,AA1314,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_A1,AA1315,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_B1,AA1316,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_C1,AA1317,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_D1,AA1318,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_E1,AA1319,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_F1,AA1320,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_G1,AA1321,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_H1,AA1322,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_I1,AA1323,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_J1,AA1324,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,Dragging
+SR_25May21_AA_K1,AA1325,AAB17,NA,NA,Natural,Split Rock,SR,10,5/25/21,1,AA,N,NA,On_Person
+SR_1Jun21_AA_J,AA1464,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Flagging
+SR_1Jun21_AA_K,AA1465,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Flagging
+SR_1Jun21_AA_L,AA1466,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Flagging
+SR_1Jun21_AA_E1,AA1485,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_F1,AA1486,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_G1,AA1487,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_H1,AA1488,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_I1,AA1489,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_J1,AA1490,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_K1,AA1491,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_L1,AA1492,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_M1,AA1493,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_1Jun21_AA_N1,AA1494,AAB19,NA,NA,Natural,Split Rock,SR,11,6/1/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_X,AA1624,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,On_Person
+SR_17Jun21_AA_Y,AA1625,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,On_Person
+SR_17Jun21_AA_Z,AA1626,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Flagging
+SR_17Jun21_AA_A1,AA1627,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Flagging
+SR_17Jun21_AA_B1,AA1628,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Flagging
+SR_17Jun21_AA_C1,AA1629,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_D1,AA1630,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_E1,AA1631,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_F1,AA1632,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_G1,AA1633,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_H1,AA1634,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_I1,AA1635,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_J1,AA1636,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_K1,AA1637,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_L1,AA1638,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_M1,AA1639,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_N1,AA1640,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_O1,AA1641,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_P1,AA1642,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_17Jun21_AA_Q1,AA1643,AAB21,NA,NA,Natural,Split Rock,SR,12,6/17/21,1,AA,N,NA,Dragging
+SR_12May21_DV,DV10,IXB2,DV10,DVgDNAB1,Natural,Split Rock,SR,9,5/13/21,1,DV,A,M,Flagging
+SR_21Dec20_IS,IS01,IXB1,IS01,ISgDNAB1,Natural,Split Rock,SR,1,12/21/20,1,IS,A,F,Flagging
+SR_18Jan21_IS,IS04,IXB1,IS04,ISgDNAB1,Natural,Split Rock,SR,1,1/18/21,1,IS,A,F,Flagging
+SR_29Jan21_IS,IS15,IXB1,IS15,ISgDNAB1,Natural,Split Rock,SR,2,1/29/21,1,IS,A,M,Flagging
+SR_11Feb21_IS_A,IS35,IXB1,IS35,ISgDNAB1,Natural,Split Rock,SR,3,2/11/21,1,IS,A,M,Flagging
+SR_11Feb21_IS_B,IS36,IXB1,IS36,ISgDNAB1,Natural,Split Rock,SR,3,2/11/21,1,IS,A,M,Dragging
+SR_11Feb21_IS_C,IS37,IXB1,IS37,ISgDNAB1,Natural,Split Rock,SR,3,2/11/21,1,IS,A,M,Dragging
+SR_11Feb21_IS_D,IS38,IXB1,IS38,ISgDNAB1,Natural,Split Rock,SR,3,2/11/21,1,IS,A,M,Dragging
+SR_26Feb21_IS_A,IS60,IXB1,IS60,ISgDNAB1,Natural,Split Rock,SR,4,2/26/21,1,IS,A,F,Dragging
+SR_26Feb21_IS_B,IS61,IXB1,IS61,ISgDNAB1,Natural,Split Rock,SR,4,2/26/21,1,IS,A,M,Dragging
+SR_16Mar21_IS,IS79,IXB1,IS79,ISgDNAB1,Natural,Split Rock,SR,5,3/16/21,1,IS,A,M,Flagging
+SR_19Apr21_IS_A,IS86,IXB2,IS86,ISgDNAB1,Natural,Split Rock,SR,7,4/19/21,1,IS,A,M,Flagging
+SR_19Apr21_IS_B,IS87,IXB2,IS87,ISgDNAB1,Natural,Split Rock,SR,7,4/19/21,1,IS,A,F,Dragging
+MSN_13Apr21_DV,DV01,IXB2,DV01,DVgDNAB1,Natural,Morningside-Natural,MSN,7,4/13/21,1,DV,A,M,Flagging
+MSN_27Apr21_DV_A,DV04,IXB2,DV04,DVgDNAB1,Natural,Morningside-Natural,MSN,8,4/27/21,1,DV,A,F,Dragging
+MSN_27Apr21_DV_B,DV05,IXB2,DV05,DVgDNAB1,Natural,Morningside-Natural,MSN,8,4/27/21,1,DV,A,M,Dragging
+MSN_27Apr21_DV_C,DV06,IXB2,DV06,DVgDNAB1,Natural,Morningside-Natural,MSN,8,4/27/21,1,DV,A,F,Flagging
+MSN_12May21_DV_A,DV08,IXB2,DV08,DVgDNAB1,Natural,Morningside-Natural,MSN,9,5/12/21,1,DV,A,F,Dragging
+MSN_12May21_DV_B,DV09,IXB2,DV09,DVgDNAB1,Natural,Morningside-Natural,MSN,9,5/12/21,1,DV,A,M,Dragging
+MSN_26May21_DV_A,DV13,IXB2,DV13,DVgDNAB1,Natural,Morningside-Natural,MSN,10,5/26/21,1,DV,A,M,Dragging
+MSN_26May21_DV_B,DV14,IXB2,DV14,DVgDNAB1,Natural,Morningside-Natural,MSN,10,5/26/21,1,DV,A,M,Dragging
+MSN_26May21_DV_C,DV15,IXB2,DV15,DVgDNAB1,Natural,Morningside-Natural,MSN,10,5/26/21,1,DV,A,F,Dragging
+MSN_26May21_DV_D,DV16,IXB2,DV16,DVgDNAB1,Natural,Morningside-Natural,MSN,10,5/26/21,1,DV,A,M,Dragging
+MSN_11Jun21_DV_A,DV17,IXB1,DV17,DVgDNAB1,Natural,Morningside-Natural,MSN,11,6/11/21,1,DV,A,M,Dragging
+MSN_11Jun21_DV_B,DV18,IXB1,DV18,DVgDNAB1,Natural,Morningside-Natural,MSN,11,6/11/21,1,DV,A,M,Dragging
+MSN_02Feb21_IS_A,IS16,IXB1,IS16,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,M,Dragging
+MSN_02Feb21_IS_B,IS17,IXB1,IS17,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,M,Dragging
+MSN_02Feb21_IS_C,IS18,IXB1,IS18,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,M,Dragging
+MSN_02Feb21_IS_D,IS19,IXB1,IS19,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_E,IS20,IXB1,IS20,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_F,IS21,IXB1,IS21,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_G,IS22,IXB1,IS22,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_H,IS23,IXB1,IS23,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_I,IS24,IXB1,IS24,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_J,IS25,IXB1,IS25,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_K,IS26,IXB1,IS26,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,F,Dragging
+MSN_02Feb21_IS_L,IS27,IXB1,IS27,ISgDNAB1,Natural,Morningside-Natural,MSN,3,2/2/21,1,IS,A,M,Flagging
+MSN_25Feb21_IS_A,IS54,IXB1,IS54,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,M,Flagging
+MSN_25Feb21_IS_B,IS55,IXB1,IS55,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,M,Flagging
+MSN_25Feb21_IS_C,IS56,IXB1,IS56,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,M,Dragging
+MSN_25Feb21_IS_D,IS57,IXB1,IS57,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,M,Dragging
+MSN_25Feb21_IS_E,IS58,IXB1,IS58,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,F,Dragging
+MSN_25Feb21_IS_F,IS59,IXB1,IS59,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,F,Dragging
+MSN_26Mar21_IS_A,IS80,IXB1,IS80,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS,A,F,Dragging
+MSN_26Mar21_IS_B,IS81,IXB2,IS81,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS ,A,F,Dragging
+MSN_26Mar21_IS_C,IS82,IXB2,IS82,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS ,A,M,Dragging
+MSN_13Apr21_IS,IS85,IXB2,IS85,ISgDNAB1,Natural,Morningside-Natural,MSN,7,4/13/21,1,IS ,A,F,Dragging
+MSN _12May21_IS,IS88,IXB2,IS88,ISgDNAB1,Natural,Morningside-Natural,MSN,9,5/12/21,1,IS ,A,F,Dragging
+MSN_26May21_IS,IS89,IXB2,IS89,ISgDNAB1,Natural,Morningside-Natural,MSN,10,5/26/21,1,IS ,A,F,Dragging
+MSN_25Feb21_AA_A,AA24,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,A,F,Dragging
+MSN_25Feb21_AA_B,AA25,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,A,M,Dragging
+MSN_25Feb21_AA_C,AA26,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,A,M,Dragging
+MSN_25Feb21_AA_D,AA27,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,A,M,Dragging
+MSN_9Mar21_A,AA105,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,A,F,Dragging
+MSN_9Mar21_B,AA106,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,A,M,Dragging
+MSN_9Mar21_C,AA107,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,A,M,Dragging
+MSN_9Mar21_D,AA109,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,A,M,On_Person
+MSN_9Mar21_E,AA110,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,A,M,Flagging
+MSN_9Mar21_F,AA111,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,A,F,Flagging
+MSN_26Mar21_AA_A,AA258,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,A,F,Dragging
+MSN_26Mar21_AA_B,AA259,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,A,F,Dragging
+MSN_26Mar21_AA_C,AA260,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,A,M,Dragging
+MSN_26Mar21_AA_D,AA261,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,A,M,Dragging
+MSN_26Mar21_AA_E,AA262,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_A,AA393,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Flagging
+MSN_13Apr21_AA_B,AA394,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Flagging
+MSN_13Apr21_AA_C,AA395,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Flagging
+MSN_13Apr21_AA_D,AA396,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Flagging
+MSN_13Apr21_AA_E,AA397,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Dragging
+MSN_13Apr21_AA_F,AA398,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Dragging
+MSN_13Apr21_AA_G,AA399,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Dragging
+MSN_13Apr21_AA_H,AA400,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Dragging
+MSN_13Apr21_AA_I,AA401,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Dragging
+MSN_13Apr21_AA_J,AA402,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,F,Dragging
+MSN_13Apr21_AA_K,AA403,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Flagging
+MSN_13Apr21_AA_L,AA404,AAB5,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Flagging
+MSN_13Apr21_AA_M,AA405,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,On_Person
+MSN_13Apr21_AA_N,AA406,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_O,AA407,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_P,AA408,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_Q,AA409,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_R,AA410,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_S,AA411,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_T,AA412,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_U,AA413,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_V,AA414,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_W,AA415,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_X,AA416,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_Y,AA417,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_Z,AA418,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_A1,AA419,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_B1,AA420,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_C1,AA421,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_D1,AA422,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_13Apr21_AA_E1,AA423,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_A,AA809,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_B,AA810,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_C,AA811,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_D,AA812,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_E,AA813,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_F,AA814,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_G,AA815,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_H,AA816,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_I,AA817,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_J,AA818,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_K,AA819,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Flagging
+MSN_27Apr21_AA_L,AA820,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Flagging
+MSN_27Apr21_AA_M,AA821,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Flagging
+MSN_27Apr21_AA_N,AA822,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Flagging
+MSN_27Apr21_AA_O,AA823,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Flagging
+MSN_27Apr21_AA_F1,AA840,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,On_Person
+MSN_27Apr21_AA_G1,AA841,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_H1,AA842,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_I1,AA843,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_J1,AA844,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_K1,AA845,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_L1,AA846,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_M1,AA847,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_N1,AA848,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_O1,AA849,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_P1,AA850,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_Q1,AA851,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_R1,AA852,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_S1,AA853,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_T1,AA854,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_U1,AA855,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_V1,AA856,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,F,Dragging
+MSN_27Apr21_AA_W1,AA857,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_X1,AA858,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_Y1,AA859,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_Z1,AA860,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_A2,AA861,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_B2,AA862,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_C2,AA863,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_D2,AA864,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_E2,AA865,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_F2,AA866,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_G2,AA867,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_H2,AA868,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_I2,AA869,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_J2,AA870,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_27Apr21_AA_K2,AA871,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,A,M,Dragging
+MSN_12May21_AA_A,AA1099,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Flagging
+MSN_12May21_AA_B,AA1100,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Flagging
+MSN_12May21_AA_C,AA1101,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_D,AA1102,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_E,AA1103,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_F,AA1104,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_G,AA1105,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_H,AA1106,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_I,AA1107,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_J,AA1108,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_K,AA1109,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_L,AA1110,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_M,AA1111,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_N,AA1112,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,F,Dragging
+MSN_12May21_AA_O,AA1113,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_P,AA1114,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_Q,AA1115,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_R,AA1116,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_S,AA1117,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_T,AA1118,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_U,AA1119,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_V,AA1120,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_W,AA1121,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Dragging
+MSN_12May21_AA_Z1,AA1150,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Flagging
+MSN_12May21_AA_A2,AA1151,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Flagging
+MSN_12May21_AA_B2,AA1152,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Flagging
+MSN_12May21_AA_C2,AA1153,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Flagging
+MSN_12May21_AA_D2,AA1154,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,A,M,Flagging
+MSN_26May21_AA_A,AA1326,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Flagging
+MSN_26May21_AA_B,AA1327,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Flagging
+MSN_26May21_AA_C,AA1328,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Flagging
+MSN_26May21_AA_D,AA1329,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Flagging
+MSN_26May21_AA_E,AA1330,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,On_Person
+MSN_26May21_AA_F,AA1331,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,On_Person
+MSN_26May21_AA_G,AA1332,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_H,AA1333,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_I,AA1334,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_J,AA1335,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_K,AA1336,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_L,AA1337,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_M,AA1338,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_N,AA1339,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_O,AA1340,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_P,AA1341,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_Q,AA1342,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_R,AA1343,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_S,AA1344,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_T,AA1345,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_U,AA1346,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_V,AA1347,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_W,AA1348,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_X,AA1349,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_Y,AA1350,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_Z,AA1351,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_A1,AA1352,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_B1,AA1353,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_C1,AA1354,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_D1,AA1355,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_E1,AA1356,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_F1,AA1357,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_G1,AA1358,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_H1,AA1359,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_I1,AA1360,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_J1,AA1361,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_K1,AA1362,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_L1,AA1363,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_M1,AA1364,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_N1,AA1365,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_O1,AA1366,AAB17,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_P1,AA1367,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_Q1,AA1368,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_R1,AA1369,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_S1,AA1370,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_T1,AA1371,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_U1,AA1372,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_V1,AA1373,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_W1,AA1374,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_X1,AA1375,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_Y1,AA1376,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_Z1,AA1377,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_A2,AA1378,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_B2,AA1379,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,M,Dragging
+MSN_26May21_AA_C2,AA1380,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_26May21_AA_D2,AA1381,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_A,AA1519,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Flagging
+MSN_11Jun21_AA_B,AA1520,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_C,AA1521,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_D,AA1522,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_E,AA1523,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_F,AA1524,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_G,AA1525,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_H,AA1526,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_I,AA1527,AAB19,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_J,AA1528,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_K,AA1529,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_L,AA1530,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_M,AA1531,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,M,Dragging
+MSN_11Jun21_AA_O,AA1532,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_P,AA1533,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_Q,AA1534,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_R,AA1535,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_S,AA1536,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_T,AA1537,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_V,AA1538,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_W,AA1539,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_X,AA1540,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_X,AA1541,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_Y,AA1542,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_Z,AA1543,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_A1,AA1544,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_B1,AA1545,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_C1,AA1546,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_D1,AA1547,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_E1,AA1548,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_F1,AA1549,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_11Jun21_AA_G1,AA1550,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,A,F,Dragging
+MSN_01Jul21_AA_A,AA1714,AAB22,NA,NA,Natural,Morningside-Natural,MSN,12,7/1/21,1,AA,A,M,Flagging
+MSN_01Jul21_AA_B,AA1715,AAB22,NA,NA,Natural,Morningside-Natural,MSN,12,7/1/21,1,AA,A,F,Flagging
+MSN_25Feb21_AA_E,AA28,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_F,AA29,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_G,AA30,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_H,AA31,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_I,AA32,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_J,AA33,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_K,AA34,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_L,AA35,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_M,AA36,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_N,AA37,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_O,AA38,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_P,AA39,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_Q,AA40,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_R,AA41,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_S,AA42,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_T,AA43,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_U,AA44,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_25Feb21_AA_V,AA45,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,N,NA,Dragging
+MSN_9Mar21_G,AA112,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_H,AA113,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_I,AA114,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_J,AA115,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_K,AA116,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_L,AA117,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_M,AA118,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_N,AA119,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_O,AA120,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_P,AA121,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_Q,AA122,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_R,AA123,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_S,AA124,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_T,AA125,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_U,AA126,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_V,AA127,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_W,AA128,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_X,AA129,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_Y,AA130,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_Z,AA131,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_A1,AA132,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_B1,AA133,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_C1,AA134,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_D1,AA135,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_E1,AA136,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_F1,AA137,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Dragging
+MSN_9Mar21_G1,AA138,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Flagging
+MSN_9Mar21_H1,AA139,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Flagging
+MSN_9Mar21_I1,AA140,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,Flagging
+MSN_9Mar21_J1,AA141,AAB2,NA,NA,Natural,Morningside-Natural,MSN,5,3/9/21,1,AA,N,NA,On_Person
+MSN_26Mar21_AA_F,AA263,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_G,AA264,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_H,AA265,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_I,AA266,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_J,AA267,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_K,AA268,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_L,AA269,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_M,AA270,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_N,AA271,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_O,AA272,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_P,AA273,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_Q,AA274,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_R,AA275,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_S,AA276,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_T,AA277,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_U,AA278,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_V,AA279,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_W,AA280,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_X,AA281,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_Y,AA282,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_Z,AA283,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_A1,AA284,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_B1,AA285,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_C1,AA286,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_D1,AA287,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_E1,AA288,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_F1,AA289,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_G1,AA290,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_H1,AA291,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_I1,AA292,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_J1,AA293,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_K1,AA294,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_L1,AA295,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_M1,AA296,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_N1,AA297,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_O1,AA298,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_P1,AA299,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_Q1,AA300,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_R1,AA301,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_S1,AA302,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_T1,AA303,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_U1,AA304,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_26Mar21_AA_V1,AA305,AAB4,NA,NA,Natural,Morningside-Natural,MSN,6,3/26/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_F1,AA424,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_G1,AA425,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_H1,AA426,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_I1,AA427,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_J1,AA428,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_K1,AA429,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_L1,AA430,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_M1,AA431,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_N1,AA432,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_O1,AA433,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_P1,AA434,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_Q1,AA435,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_R1,AA436,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_S1,AA437,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_T1,AA438,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_U1,AA439,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_V1,AA440,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_W1,AA441,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_X1,AA442,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_Y1,AA443,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,On_Person
+MSN_13Apr21_AA_Z1,AA444,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_A2,AA445,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_B2,AA446,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_C2,AA447,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_D2,AA448,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_E2,AA449,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_F2,AA450,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_G2,AA451,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Flagging
+MSN_13Apr21_AA_H2,AA452,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_I2,AA453,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_J2,AA454,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_K2,AA455,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_L2,AA456,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_M2,AA457,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_N2,AA458,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_O2,AA459,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_P2,AA460,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_Q2,AA461,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_R2,AA462,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_S2,AA463,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_T2,AA464,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_U2,AA465,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_V2,AA466,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_W2,AA467,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_X2,AA468,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_Y2,AA469,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_Z2,AA470,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_A3,AA471,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_B3,AA472,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_C3,AA473,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_D3,AA474,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_E3,AA475,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_F3,AA476,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_G3,AA477,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_H3,AA478,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_I3,AA479,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_J3,AA480,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_K3,AA481,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_L3,AA482,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_M3,AA483,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_N3,AA484,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_O3,AA485,AAB6,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_P3,AA486,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_Q3,AA487,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_R3,AA488,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_S3,AA489,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_T3,AA490,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_U3,AA491,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_V3,AA492,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_W3,AA493,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_X3,AA494,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_Y3,AA495,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_Z3,AA496,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_A4,AA497,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_B4,AA498,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_C4,AA499,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_D4,AA500,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_E4,AA501,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_F4,AA502,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_G4,AA503,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_H4,AA504,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_I4,AA505,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_J4,AA506,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_K4,AA507,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_13Apr21_AA_L4,AA508,AAB7,NA,NA,Natural,Morningside-Natural,MSN,7,4/13/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_P,AA824,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_Q,AA825,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_R,AA826,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_S,AA827,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_T,AA828,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_U,AA829,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_V,AA830,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_W,AA831,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_X,AA832,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_Y,AA833,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_Z,AA834,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_A1,AA835,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_B1,AA836,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_C1,AA837,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_D1,AA838,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_E1,AA839,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Flagging
+MSN_27Apr21_AA_L2,AA872,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_M2,AA873,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_N2,AA874,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_O2,AA875,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_P2,AA876,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_Q2,AA877,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_R2,AA878,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_S2,AA879,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_T2,AA880,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_U2,AA881,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_V2,AA882,AAB11,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_W2,AA883,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_X2,AA884,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_Y2,AA885,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_Z2,AA886,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_A3,AA887,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_B3,AA888,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_C3,AA889,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_D3,AA890,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_E3,AA891,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_F3,AA892,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_G3,AA893,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_H3,AA894,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_I3,AA895,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_J3,AA896,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_K3,AA897,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_L3,AA898,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_27Apr21_AA_M3,AA899,AAB12,NA,NA,Natural,Morningside-Natural,MSN,8,4/27/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_X,AA1122,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_Y,AA1123,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_Z,AA1124,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_A1,AA1125,AAB14,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_B1,AA1126,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_C1,AA1127,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_D1,AA1128,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_E1,AA1129,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_F1,AA1130,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_G1,AA1131,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_H1,AA1132,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_I1,AA1133,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_J1,AA1134,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_K1,AA1135,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_L1,AA1136,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_M1,AA1137,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_N1,AA1138,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_O1,AA1139,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_P1,AA1140,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_Q1,AA1141,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_R1,AA1142,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_S1,AA1143,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_T1,AA1144,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_U1,AA1145,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_V1,AA1146,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_W1,AA1147,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_X1,AA1148,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_12May21_AA_Y1,AA1149,AAB15,NA,NA,Natural,Morningside-Natural,MSN,9,5/12/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_G2,AA1384,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Flagging
+MSN_26May21_AA_H2,AA1385,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,On_Person
+MSN_26May21_AA_I2,AA1386,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,On_Person
+MSN_26May21_AA_J2,AA1387,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,On_Person
+MSN_26May21_AA_K2,AA1388,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,On_Person
+MSN_26May21_AA_L2,AA1389,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_M2,AA1390,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_N2,AA1391,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_O2,AA1392,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_P2,AA1393,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Q2,AA1394,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_R2,AA1395,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_S2,AA1396,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_T2,AA1397,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_V2,AA1398,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_W2,AA1399,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_X2,AA1400,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Y2,AA1401,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Z2,AA1402,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_A3,AA1403,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_B3,AA1404,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_C3,AA1405,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_D3,AA1406,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_E3,AA1407,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_F3,AA1408,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_G3,AA1409,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_H3,AA1410,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_I3,AA1411,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_J3,AA1412,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_K3,AA1413,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_L3,AA1414,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_M3,AA1415,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_N3,AA1416,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_O3,AA1417,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_P3,AA1418,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Q3,AA1419,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_R3,AA1420,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_S3,AA1421,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_T3,AA1422,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_U3,AA1423,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_V3,AA1424,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_W3,AA1425,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_X3,AA1426,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Y3,AA1427,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Z3,AA1428,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_A4,AA1429,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_B4,AA1430,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_C4,AA1431,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_D4,AA1432,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_E4,AA1433,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_F4,AA1434,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_G4,AA1435,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_H4,AA1436,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_I4,AA1437,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_J4,AA1438,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_K4,AA1439,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_L4,AA1440,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_M4,AA1441,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_N4,AA1442,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_O4,AA1443,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_P4,AA1444,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Q4,AA1445,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_R4,AA1446,AAB18,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_S4,AA1447,AAB19,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_T4,AA1448,AAB19,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_U4,AA1449,AAB19,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_V4,AA1450,AAB19,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_W4,AA1451,AAB19,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_X4,AA1452,AAB19,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_26May21_AA_Y4,AA1453,AAB19,NA,NA,Natural,Morningside-Natural,MSN,10,5/26/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_H1,AA1551,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_I1,AA1552,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_J1,AA1553,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_K1,AA1554,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_L1,AA1555,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_M1,AA1556,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_N1,AA1557,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_O1,AA1558,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_P1,AA1559,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_Q1,AA1560,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_R1,AA1561,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_S1,AA1562,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_T1,AA1563,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_U1,AA1564,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_V1,AA1565,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_W1,AA1566,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_X1,AA1567,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_Y1,AA1568,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_Z1,AA1569,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_A2,AA1570,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_B2,AA1571,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_C2,AA1572,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_D2,AA1573,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+MSN_11Jun21_AA_E2,AA1576,AAB20,NA,NA,Natural,Morningside-Natural,MSN,11,6/11/21,1,AA,N,NA,Dragging
+SF_16Feb21_AA,AA10,AAB1,AduAA417,AduAADNAB5Nat,Natural,San Felasco,SF,4,2/16/21,1,AA,A,M,Dragging
+SF_29Mar21_AA_A,AA323,AAB4,AduAA418,AduAADNAB5Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,A,F,Flagging
+SF_29Mar21_AA_C,AA325,AAB5,AduAA419,AduAADNAB5Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,A,F,Dragging
+SF_29Mar21_AA_D,AA326,AAB5,AduAA420,AduAADNAB5Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,A,M,Dragging
+SF_29Mar21_AA_E,AA327,AAB5,AduAA421,AduAADNAB5Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,A,F,Dragging
+SF_29Mar21_AA_F,AA328,AAB5,AduAA422,AduAADNAB5Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_A,AA509,AAB7,AduAA423,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Dragging
+SF_15Apr21_AA_B,AA510,AAB7,AduAA424,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Dragging
+SF_15Apr21_AA_C,AA511,AAB7,AduAA425,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Dragging
+SF_15Apr21_AA_D,AA512,AAB7,AduAA426,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Dragging
+SF_15Apr21_AA_E,AA513,AAB7,AduAA427,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_F,AA514,AAB7,AduAA428,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_G,AA515,AAB7,AduAA429,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_H,AA516,AAB7,AduAA430,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_I,AA517,AAB7,AduAA431,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_J,AA518,AAB7,AduAA432,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_K,AA519,AAB7,AduAA433,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_L,AA520,AAB7,AduAA434,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_M,AA521,AAB7,AduAA435,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Dragging
+SF_15Apr21_AA_V,AA530,AAB7,AduAA436,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Flagging
+SF_15Apr21_AA_W,AA531,AAB7,AduAA437,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_X,AA532,AAB7,AduAA438,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_Y,AA533,AAB7,AduAA439,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_Z,AA534,AAB7,AduAA440,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_A1,AA535,AAB7,AduAA441,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Flagging
+SF_15Apr21_AA_B1,AA536,AAB7,AduAA442,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Flagging
+SF_15Apr21_AA_C1,AA537,AAB7,AduAA443,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_D1,AA538,AAB7,AduAA444,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Flagging
+SF_15Apr21_AA_E1,AA539,AAB7,AduAA445,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_F1,AA540,AAB7,AduAA446,AduAADNAB5Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Flagging
+SF_15Apr21_AA_G1,AA541,AAB7,AduAA447,AduAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_H1,AA542,AAB7,AduAA448,AduAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Flagging
+SF_15Apr21_AA_I1,AA543,AAB7,AduAA449,AduAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_15Apr21_AA_J1,AA544,AAB7,AduAA450,AduAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,M,Flagging
+SF_15Apr21_AA_K1,AA545,AAB7,AduAA451,AduAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,A,F,Flagging
+SF_28Apr21_AA_A,AA902,AAB12,AduAA452,AduAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,A,F,Flagging
+SF_28Apr21_AA_B,AA903,AAB12,AduAA453,AduAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,A,F,Flagging
+SF_28Apr21_AA_C,AA904,AAB12,AduAA454,AduAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,A,F,Dragging
+SF_28Apr21_AA_D,AA905,AAB12,AduAA455,AduAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,A,F,Dragging
+SF_28Apr21_AA_E,AA906,AAB12,AduAA456,AduAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,A,F,Dragging
+SF_5May21_AA_A,AA1022,AAB13,AduAA457,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,M,Flagging
+SF_5May21_AA_B,AA1023,AAB13,AduAA458,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,M,Flagging
+SF_5May21_AA_C,AA1024,AAB13,AduAA459,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,M,Flagging
+SF_5May21_AA_D,AA1025,AAB13,AduAA460,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,M,Dragging
+SF_5May21_AA_E,AA1026,AAB13,AduAA461,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,M,Dragging
+SF_5May21_AA_F,AA1027,AAB13,AduAA462,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,M,Dragging
+SF_5May21_AA_G,AA1028,AAB13,AduAA463,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,F,Flagging
+SF_5May21_AA_H,AA1029,AAB13,AduAA464,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,F,Flagging
+SF_5May21_AA_I,AA1030,AAB13,AduAA465,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,F,Flagging
+SF_5May21_AA_J,AA1031,AAB13,AduAA466,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,F,Flagging
+SF_5May21_AA_K,AA1032,AAB13,AduAA467,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,F,Flagging
+SF_5May21_AA_L,AA1033,AAB13,AduAA468,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,F,Dragging
+SF_5May21_AA_Y,AA1046,AAB14,AduAA498,AduAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,A,NA,Dragging
+SF_17May21_AA_A,AA1227,AAB16,AduAA469,AduAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,A,F,Flagging
+SF_17May21_AA_B,AA1228,AAB16,AduAA470,AduAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,A,F,Dragging
+SF_17May21_AA_C,AA1229,AAB16,AduAA471,AduAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,A,M,Dragging
+SF_17May21_AA_D,AA1230,AAB16,AduAA472,AduAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,A,F,Dragging
+SF_3Jun21_AA_A,AA1495,AAB19,AduAA473,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/3/21,1,AA,A,M,Flagging
+SF_3Jun21_AA_B,AA1496,AAB19,AduAA474,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/3/21,1,AA,A,M,Flagging
+SF_3Jun21_AA_C,AA1497,AAB19,AduAA475,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/3/21,1,AA,A,M,Flagging
+SF_3Jun21_AA_D,AA1498,AAB19,AduAA476,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/3/21,1,AA,A,M,Flagging
+SF_3Jun21_AA_E,AA1499,AAB19,AduAA477,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/3/21,1,AA,A,F,Flagging
+SF_8Jun21_AA_A,AA1510,AAB19,AduAA478,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,A,F,Flagging
+SF_8Jun21_AA_B,AA1511,AAB19,AduAA479,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,A,F,Dragging
+SF_8Jun21_AA_C,AA1512,AAB19,AduAA480,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,A,F,Dragging
+SF_8Jun21_AA_D,AA1513,AAB19,AduAA481,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,A,M,Dragging
+SF_8Jun21_AA_E,AA1514,AAB19,AduAA482,AduAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,A,M,Dragging
+SF_26Jun21_AA_A,AA1646,AAB21,AduAA483,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_B,AA1647,AAB21,AduAA484,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_C,AA1648,AAB21,AduAA485,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_D,AA1649,AAB21,AduAA486,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_E,AA1650,AAB21,AduAA487,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_F,AA1651,AAB21,AduAA488,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_G,AA1652,AAB21,AduAA489,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_H,AA1653,AAB21,AduAA490,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,F,Dragging
+SF_26Jun21_AA_I,AA1654,AAB21,AduAA491,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,M,Dragging
+SF_26Jun21_AA_J,AA1655,AAB21,AduAA492,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,M,Dragging
+SF_26Jun21_AA_K,AA1656,AAB21,AduAA493,AduAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,A,M,Dragging
+SF_16Mar21_AA_A,AA158,AAB2,NymAA513,NymAADNAB6Nat,Natural,San Felasco,SF,5,3/16/21,1,AA,N,NA,Dragging
+SF_16Mar21_AA_B,AA159,AAB2,NymAA514,NymAADNAB6Nat,Natural,San Felasco,SF,5,3/16/21,1,AA,N,NA,Dragging
+SF_16Mar21_AA_C,AA160,AAB2,NymAA515,NymAADNAB6Nat,Natural,San Felasco,SF,5,3/16/21,1,AA,N,NA,Dragging
+SF_16Mar21_AA_D,AA161,AAB2,NymAA516,NymAADNAB6Nat,Natural,San Felasco,SF,5,3/16/21,1,AA,N,NA,Dragging
+SF_16Mar21_AA_E,AA162,AAB3,NymAA517,NymAADNAB6Nat,Natural,San Felasco,SF,5,3/16/21,1,AA,N,NA,Dragging
+SF_16Mar21_AA_F,AA163,AAB3,NymAA518,NymAADNAB6Nat,Natural,San Felasco,SF,5,3/16/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_B,AA324,AAB5,NymAA519,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Flagging
+SF_29Mar21_AA_G,AA329,AAB5,NymAA520,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_H,AA330,AAB5,NymAA521,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_I,AA331,AAB5,NymAA522,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_J,AA332,AAB5,NymAA523,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_K,AA333,AAB5,NymAA524,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_L,AA334,AAB5,NymAA525,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_M,AA335,AAB5,NymAA526,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_N,AA336,AAB5,NymAA527,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_O,AA337,AAB5,NymAA528,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_29Mar21_AA_P,AA338,AAB5,NymAA529,NymAADNAB6Nat,Natural,San Felasco,SF,6,3/29/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_N,AA522,AAB7,NymAA530,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_O,AA523,AAB7,NymAA531,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_P,AA524,AAB7,NymAA532,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_Q,AA525,AAB7,NymAA533,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_R,AA526,AAB7,NymAA534,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_S,AA527,AAB7,NymAA535,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_T,AA528,AAB7,NymAA536,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_U,AA529,AAB7,NymAA537,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Dragging
+SF_15Apr21_AA_L1,AA546,AAB7,NymAA538,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Flagging
+SF_15Apr21_AA_M1,AA547,AAB7,NymAA539,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Flagging
+SF_15Apr21_AA_N1,AA548,AAB7,NymAA540,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Flagging
+SF_15Apr21_AA_O1,AA549,AAB7,NymAA541,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Flagging
+SF_15Apr21_AA_P1,AA550,AAB7,NymAA542,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Flagging
+SF_15Apr21_AA_Q1,AA551,AAB7,NymAA543,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Flagging
+SF_15Apr21_AA_R1,AA552,AAB7,NymAA544,NymAADNAB6Nat,Natural,San Felasco,SF,7,4/15/21,1,AA,N,NA,Flagging
+SF_28Apr21_AA_F,AA907,AAB12,NymAA545,NymAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,N,NA,Flagging
+SF_28Apr21_AA_G,AA908,AAB12,NymAA546,NymAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,N,NA,Flagging
+SF_28Apr21_AA_H,AA909,AAB12,NymAA547,NymAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,N,NA,Dragging
+SF_28Apr21_AA_I,AA910,AAB12,NymAA548,NymAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,N,NA,Dragging
+SF_28Apr21_AA_J,AA911,AAB12,NymAA549,NymAADNAB6Nat,Natural,San Felasco,SF,8,4/28/21,1,AA,N,NA,Dragging
+SF_5May21_AA_M,AA1034,AAB13,NymAA550,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Flagging
+SF_5May21_AA_N,AA1035,AAB13,NymAA551,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Flagging
+SF_5May21_AA_O,AA1036,AAB13,NymAA552,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_P,AA1037,AAB13,NymAA553,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_Q,AA1038,AAB13,NymAA554,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_R,AA1039,AAB13,NymAA555,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_S,AA1040,AAB13,NymAA556,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_T,AA1041,AAB13,NymAA557,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_U,AA1042,AAB13,NymAA558,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_V,AA1043,AAB13,NymAA559,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_W,AA1044,AAB13,NymAA560,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_X,AA1045,AAB14,NymAA561,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_5May21_AA_Z,AA1047,AAB14,NymAA562,NymAADNAB6Nat,Natural,San Felasco,SF,9,5/5/21,1,AA,N,NA,Dragging
+SF_17May21_AA_E,AA1231,AAB16,NymAA563,NymAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,N,NA,Flagging
+SF_17May21_AA_F,AA1232,AAB16,NymAA564,NymAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,N,NA,Dragging
+SF_17May21_AA_G,AA1233,AAB16,NymAA565,NymAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,N,NA,Dragging
+SF_17May21_AA_H,AA1234,AAB16,NymAA566,NymAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,N,NA,Dragging
+SF_17May21_AA_I,AA1235,AAB16,NymAA567,NymAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,N,NA,Dragging
+SF_17May21_AA_J,AA1236,AAB16,NymAA568,NymAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,N,NA,Dragging
+SF_17May21_AA_K,AA1237,AAB16,NymAA569,NymAADNAB6Nat,Natural,San Felasco,SF,10,5/17/21,1,AA,N,NA,Dragging
+SF_3Jun21_AA_F,AA1500,AAB19,NymAA570,NymAADNAB6Nat,Natural,San Felasco,SF,11,6/3/21,1,AA,N,NA,Flagging
+SF_3Jun21_AA_G,AA1501,AAB19,NymAA571,NymAADNAB6Nat,Natural,San Felasco,SF,11,6/3/21,1,AA,N,NA,Flagging
+SF_8Jun21_AA_F,AA1515,AAB19,NymAA572,NymAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,N,NA,Dragging
+SF_8Jun21_AA_G,AA1516,AAB19,NymAA573,NymAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,N,NA,Dragging
+SF_8Jun21_AA_H,AA1517,AAB19,NymAA574,NymAADNAB6Nat,Natural,San Felasco,SF,11,6/8/21,1,AA,N,NA,Dragging
+SF_26Jun21_AA_L,AA1657,AAB21,NymAA575,NymAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,N,NA,Dragging
+SF_26Jun21_AA_M,AA1658,AAB21,NymAA576,NymAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,N,NA,Dragging
+SF_26Jun21_AA_N,AA1659,AAB21,NymAA577,NymAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,N,NA,Dragging
+SF_26Jun21_AA_O,AA1660,AAB21,NymAA578,NymAADNAB6Nat,Natural,San Felasco,SF,12,6/26/21,1,AA,N,NA,Dragging
+SF_17May21_DV_A,DV11,IXB2,DV11,DVgDNAB1,Natural,San Felasco,SF,10,5/17/21,1,DV,A,F,Flagging
+SF_17May21_DV_B,DV12,IXB2,DV12,DVgDNAB1,Natural,San Felasco,SF,10,5/17/21,1,DV,A,F,Flagging
+SF_11Feb21_IS,IS34,IXB1,IS34,ISgDNAB1,Natural,San Felasco,SF,3,2/11/21,1,IS,A,F,Dragging
+PP_22Apr21_DV,DV03,IXB2,DV03,DVgDNAB1,Natural,Paynes Prairie,PP,8,4/22/21,1,DV,A,M,On_Person
+PP_14Jan21_IS_A,IS02,IXB1,IS02,ISgDNAB1,Natural,Paynes Prairie,PP,1,1/14/21,1,IS,A,F,Flagging
+PP_14Jan21_IS_B,IS03,IXB1,IS03,ISgDNAB1,Natural,Paynes Prairie,PP,1,1/14/21,1,IS,A,M,Dragging
+PP_04Feb21_IS,IS33,IXB1,IS33,ISgDNAB1,Natural,Paynes Prairie,PP,3,2/4/21,1,IS,A,M,Dragging
+PP_14Jan21_AA,AA1,AAB1,NA,NA,Natural,Paynes Prairie,PP,1,1/14/21,1,AA,A,M,On_Person
+PP_04Feb21_AA_A,AA6,AAB1,NA,NA,Natural,Paynes Prairie,PP,3,2/4/21,1,AA,A,M,Dragging
+PP_04Feb21_AA_B,AA7,AAB1,NA,NA,Natural,Paynes Prairie,PP,3,2/4/21,1,AA,A,M,Dragging
+PP_24Feb21_AA_G,AA17,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,A,F,On_Person
+PP_1Mar21_AA_A,AA70,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,A,M,Flagging
+PP_1Mar21_AA_B,AA71,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,A,F,Dragging
+PP_1Mar21_AA_C,AA72,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,A,F,Dragging
+PP_1Mar21_AA_D,AA73,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,A,M,Dragging
+PP_1Mar21_AA_E,AA74,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,A,F,Dragging
+PP_1Mar21_AA_F,AA75,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,A,M,Dragging
+PP_23Mar21_AA_A,AA236,AAB3,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,A,F,Dragging
+PP_6Apr21_AA_L,AA384,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,A,M,On_Person
+PP_22Apr21_AA_A,AA641,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_B,AA642,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_C,AA643,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_D,AA644,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_E,AA645,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_F,AA646,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_G,AA647,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_H,AA648,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_I,AA649,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_J,AA650,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_K,AA651,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_L,AA652,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_M,AA653,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_N,AA654,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_O,AA655,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_P,AA656,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Dragging
+PP_22Apr21_AA_Q,AA657,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_R,AA658,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_S,AA659,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_T,AA660,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_U,AA661,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_V,AA662,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_W,AA663,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_X,AA664,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_Y,AA665,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_Z,AA666,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_A1,AA667,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_B1,AA668,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_C1,AA669,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_D1,AA670,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_E1,AA671,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_F1,AA672,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_G1,AA673,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_H1,AA674,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_I1,AA675,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Dragging
+PP_22Apr21_AA_L2,AA704,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Flagging
+PP_22Apr21_AA_M2,AA705,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Flagging
+PP_22Apr21_AA_N2,AA706,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Flagging
+PP_22Apr21_AA_O2,AA707,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Flagging
+PP_22Apr21_AA_P2,AA708,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Flagging
+PP_22Apr21_AA_Q2,AA709,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,M,Flagging
+PP_22Apr21_AA_R2,AA710,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Flagging
+PP_22Apr21_AA_S2,AA711,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Flagging
+PP_22Apr21_AA_T2,AA712,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Flagging
+PP_22Apr21_AA_U2,AA713,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,F,Flagging
+PP_22Apr21_AA_L3,AA730,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,NA,On_Person
+PP_22Apr21_AA_M3,AA731,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,NA,On_Person
+PP_22Apr21_AA_N3,AA732,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,NA,On_Person
+PP_22Apr21_AA_O3,AA733,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,A,NA,On_Person
+PP_10May21_AA_A,AA1050,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,A,M,Flagging
+PP_24May21_AA_A,AA1277,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,A,F,Flagging
+PP_24May21_AA_B,AA1278,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,A,M,Flagging
+PP_24May21_AA_C,AA1279,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,A,NA,Flagging
+PP_24May21_AA_F,AA1282,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,A,M,Dragging
+PP_16Jun21_AA_A,AA1581,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,A,F,Dragging
+PP_16Jun21_AA_B,AA1582,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,A,F,Dragging
+PP_16Jun21_AA_C,AA1583,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_A,AA1670,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_B,AA1671,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_C,AA1672,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_D,AA1673,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_E,AA1674,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_F,AA1675,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_G,AA1676,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_H,AA1677,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_I,AA1678,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_J,AA1679,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_K,AA1680,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_L,AA1681,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_M,AA1682,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_N,AA1683,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_O,AA1684,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_P,AA1685,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,F,Dragging
+PP_29Jun21_AA_Q,AA1686,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_R,AA1687,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_S,AA1688,AAB21,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_T,AA1689,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_U,AA1690,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_V,AA1691,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_W,AA1692,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_X,AA1693,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_Y,AA1694,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_Z,AA1695,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_A1,AA1696,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_B1,AA1697,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_C1,AA1698,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jun21_AA_D1,AA1699,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,A,M,Dragging
+PP_29Jan21_AA_A,AA4,AAB1,NA,NA,Natural,Paynes Prairie,PP,2,1/29/21,1,AA,N,NA,Dragging
+PP_29Jan21_AA_B,AA5,AAB1,NA,NA,Natural,Paynes Prairie,PP,2,1/29/21,1,AA,N,NA,Dragging
+PP_24Feb21_AA_A,AA11,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Dragging
+PP_24Feb21_AA_B,AA12,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Dragging
+PP_24Feb21_AA_C,AA13,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Dragging
+PP_24Feb21_AA_D,AA14,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Dragging
+PP_24Feb21_AA_E,AA15,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Dragging
+PP_24Feb21_AA_F,AA16,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Dragging
+PP_24Feb21_AA_H,AA18,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Flagging
+PP_24Feb21_AA_I,AA19,AAB1,NA,NA,Natural,Paynes Prairie,PP,4,2/24/21,1,AA,N,NA,Flagging
+PP_1Mar21_AA_G,AA76,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_H,AA77,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_I,AA78,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_J,AA79,AAB1,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_K,AA80,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_L,AA81,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_M,AA82,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_N,AA83,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_O,AA84,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_P,AA85,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_Q,AA86,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_R,AA87,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_S,AA88,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_T,AA89,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_U,AA90,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_V,AA91,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_W,AA92,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_X,AA93,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_Y,AA94,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_Z,AA95,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_A1,AA96,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_B1,AA97,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_C1,AA98,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_D1,AA99,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_E1,AA100,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_F1,AA101,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,Dragging
+PP_1Mar21_AA_G1,AA102,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,On_Person
+PP_1Mar21_AA_H1,AA103,AAB2,NA,NA,Natural,Paynes Prairie,PP,5,3/1/21,1,AA,N,NA,On_Person
+PP_23Mar21_AA_B,AA237,AAB3,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_C,AA238,AAB3,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_D,AA239,AAB3,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_E,AA240,AAB3,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_F,AA241,AAB3,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_G,AA242,AAB3,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_H,AA243,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_I,AA244,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_J,AA245,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_K,AA246,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_L,AA247,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_M,AA248,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_N,AA249,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_O,AA250,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_P,AA251,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_Q,AA252,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_R,AA253,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_S,AA254,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Dragging
+PP_23Mar21_AA_T,AA255,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Flagging
+PP_23Mar21_AA_U,AA256,AAB4,NA,NA,Natural,Paynes Prairie,PP,6,3/23/21,1,AA,N,NA,Flagging
+PP_6Apr21_AA_A,AA373,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_B,AA374,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_C,AA375,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_D,AA376,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_E,AA377,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_F,AA378,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_G,AA379,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_H,AA380,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Dragging
+PP_6Apr21_AA_I,AA381,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Flagging
+PP_6Apr21_AA_J,AA382,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Flagging
+PP_6Apr21_AA_K,AA383,AAB5,NA,NA,Natural,Paynes Prairie,PP,7,4/6/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_J1,AA676,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_K1,AA677,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_L1,AA678,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_M1,AA679,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_N1,AA680,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_O1,AA681,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_P1,AA682,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_Q1,AA683,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_R1,AA684,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_S1,AA685,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_T1,AA686,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_U1,AA687,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_V1,AA688,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_W1,AA689,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_X1,AA690,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_Y1,AA691,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_Z1,AA692,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_A2,AA693,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_B2,AA694,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_C2,AA695,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_D2,AA696,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_E2,AA697,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_F2,AA698,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_G2,AA699,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_H2,AA700,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_I2,AA701,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_J2,AA702,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_K2,AA703,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Dragging
+PP_22Apr21_AA_V2,AA714,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_W2,AA715,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_X2,AA716,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_Y2,AA717,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_Z2,AA718,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_A3,AA719,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_B3,AA720,AAB9,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_C3,AA721,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_D3,AA722,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_E3,AA723,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_F3,AA724,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_G3,AA725,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_H3,AA726,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_I3,AA727,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_J3,AA728,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_K3,AA729,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,Flagging
+PP_22Apr21_AA_P3,AA734,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_Q3,AA735,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_R3,AA736,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_S3,AA737,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_T3,AA738,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_U3,AA739,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_V3,AA740,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_W3,AA741,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_X3,AA742,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_Y3,AA743,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_Z3,AA744,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_A4,AA745,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_B4,AA746,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_C4,AA747,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_22Apr21_AA_D4,AA748,AAB10,NA,NA,Natural,Paynes Prairie,PP,8,4/22/21,1,AA,N,NA,On_Person
+PP_10May21_AA_B,AA1051,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Flagging
+PP_10May21_AA_C,AA1052,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Flagging
+PP_10May21_AA_D,AA1053,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Flagging
+PP_10May21_AA_E,AA1054,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Flagging
+PP_10May21_AA_F,AA1055,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Flagging
+PP_10May21_AA_G,AA1056,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_H,AA1057,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_I,AA1058,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_J,AA1059,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_K,AA1060,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_L,AA1061,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_M,AA1062,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_N,AA1063,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_O,AA1064,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_P,AA1065,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_Q,AA1066,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_R,AA1067,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_S,AA1068,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_T,AA1069,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_U,AA1070,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_V,AA1071,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_W,AA1072,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_X,AA1073,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_Y,AA1074,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_Z,AA1075,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_A1,AA1076,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_B1,AA1077,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_C1,AA1078,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_D1,AA1079,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_E1,AA1080,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_F1,AA1081,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_G1,AA1082,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_H1,AA1083,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_I1,AA1084,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_J1,AA1085,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_10May21_AA_K1,AA1086,AAB14,NA,NA,Natural,Paynes Prairie,PP,9,5/10/21,1,AA,N,NA,Dragging
+PP_24May21_AA_D,AA1280,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Flagging
+PP_24May21_AA_E,AA1281,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Flagging
+PP_24May21_AA_G,AA1283,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Dragging
+PP_24May21_AA_H,AA1284,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Dragging
+PP_24May21_AA_I,AA1285,AAB16,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Dragging
+PP_24May21_AA_J,AA1286,AAB17,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Dragging
+PP_24May21_AA_K,AA1287,AAB17,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Dragging
+PP_24May21_AA_L,AA1288,AAB17,NA,NA,Natural,Paynes Prairie,PP,10,5/24/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_D,AA1584,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_E,AA1585,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_F,AA1586,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_G,AA1587,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_H,AA1588,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_I,AA1589,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_J,AA1590,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_K,AA1591,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_L,AA1592,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_M,AA1593,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_N,AA1594,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Dragging
+PP_16Jun21_AA_O,AA1595,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Flagging
+PP_16Jun21_AA_P,AA1596,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Flagging
+PP_16Jun21_AA_Q,AA1597,AAB20,NA,NA,Natural,Paynes Prairie,PP,11,6/16/21,1,AA,N,NA,Flagging
+PP_29Jun21_AA_E1,AA1700,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_F1,AA1701,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_G1,AA1702,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_H1,AA1703,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_I1,AA1704,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_J1,AA1705,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_K1,AA1706,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_L1,AA1707,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_N1,AA1708,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_O1,AA1709,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_P1,AA1710,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_Q1,AA1711,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+PP_29Jun21_AA_R1,AA1712,AAB22,NA,NA,Natural,Paynes Prairie,PP,12,6/29/21,1,AA,N,NA,Dragging
+HC_25Jan21_AA_A,AA2,AAB1,AduAA76,AduAADNAB1Nat,Natural,Hatchet Creek,HC,2,1/25/21,1,AA,A,M,Dragging
+HC_28Mar21_AA_A,AA306,AAB4,AduAA77,AduAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,A,M,Dragging
+HC_28Mar21_AA_B,AA307,AAB4,AduAA78,AduAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,A,M,Dragging
+HC_28Mar21_AA_C,AA308,AAB4,AduAA79,AduAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,A,F,Dragging
+HC_28Mar21_AA_D,AA309,AAB4,AduAA80,AduAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,A,F,Dragging
+HC_5Apr21_AA_A,AA351,AAB5,AduAA81,AduAADNAB1Nat,Natural,Hatchet Creek,HC,7,4/5/21,1,AA,A,F,Dragging
+HC_5Apr21_AA_B,AA352,AAB5,AduAA82,AduAADNAB1Nat,Natural,Hatchet Creek,HC,7,4/5/21,1,AA,A,M,Dragging
+HC_26Apr21_AA_A,AA749,AAB10,AduAA83,AduAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,A,M,Dragging
+HC_26Apr21_AA_B,AA750,AAB10,AduAA84,AduAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,A,M,Dragging
+HC_26Apr21_AA_C,AA751,AAB10,AduAA85,AduAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,A,M,Dragging
+HC_26Apr21_AA_D,AA752,AAB10,AduAA86,AduAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,A,M,On_Person
+HC_26Apr21_AA_E,AA753,AAB10,AduAA87,AduAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,A,M,Flagging
+HC_26Apr21_AA_F,AA754,AAB10,AduAA88,AduAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,A,M,On_Person
+HC_26Apr21_AA_G,AA755,AAB10,AduAA89,AduAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,A,F,Flagging
+HC_5May21_AA_A,AA1015,AAB13,AduAA90,AduAADNAB1Nat,Natural,Hatchet Creek,HC,9,5/5/21,1,AA,A,M,Dragging
+HC_5May21_AA_B,AA1016,AAB13,AduAA91,AduAADNAB1Nat,Natural,Hatchet Creek,HC,9,5/5/21,1,AA,A,F,Flagging
+HC_5May21_AA_C,AA1017,AAB13,AduAA92,AduAADNAB1Nat,Natural,Hatchet Creek,HC,9,5/5/21,1,AA,A,F,Dragging
+HC_5May21_AA_D,AA1018,AAB13,AduAA93,AduAADNAB1Nat,Natural,Hatchet Creek,HC,9,5/5/21,1,AA,A,F,Dragging
+HC_18May21_AA_A,AA1250,AAB16,AduAA94,AduAADNAB1Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,A,F,Flagging
+HC_18May21_AA_B,AA1251,AAB16,AduAA95,AduAADNAB1Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,A,F,Dragging
+HC_18May21_AA_C,AA1252,AAB16,AduAA96,AduAADNAB1Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,A,F,Dragging
+HC_18May21_AA_D,AA1253,AAB16,AduAA97,AduAADNAB1Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,A,M,Dragging
+HC_18May21_AA_E,AA1254,AAB16,AduAA98,AduAADNAB1Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,A,M,Dragging
+HC_18May21_AA_F,AA1255,AAB16,AduAA99,AduAADNAB1Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,A,M,Dragging
+HC_18May21_AA_G,AA1256,AAB16,AduAA100,AduAADNAB1Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,A,M,Flagging
+HC_25Jan21_AA_B,AA3,AAB1,NymAA155,NymAADNAB1Nat,Natural,Hatchet Creek,HC,2,1/25/21,1,AA,N,NA,Dragging
+HC_25Feb21_AA_A,AA20,AAB1,NymAA156,NymAADNAB1Nat,Natural,Hatchet Creek,HC,4,2/25/21,1,AA,N,NA,Dragging
+HC_25Feb21_AA_B,AA21,AAB1,NymAA157,NymAADNAB1Nat,Natural,Hatchet Creek,HC,4,2/25/21,1,AA,N,NA,Dragging
+HC_25Feb21_AA_C,AA22,AAB1,NymAA158,NymAADNAB1Nat,Natural,Hatchet Creek,HC,4,2/25/21,1,AA,N,NA,Dragging
+HC_12Mar21_AA,AA149,AAB2,NymAA159,NymAADNAB1Nat,Natural,Hatchet Creek,HC,5,3/12/21,1,AA,N,NA,Dragging
+HC_28Mar21_AA_E,AA310,AAB4,NymAA160,NymAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,N,NA,Dragging
+HC_28Mar21_AA_F,AA311,AAB4,NymAA161,NymAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,N,NA,Dragging
+HC_28Mar21_AA_G,AA312,AAB4,NymAA162,NymAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,N,NA,Dragging
+HC_28Mar21_AA_H,AA313,AAB4,NymAA163,NymAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,N,NA,Dragging
+HC_28Mar21_AA_I,AA314,AAB4,NymAA164,NymAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,N,NA,Dragging
+HC_28Mar21_AA_J,AA315,AAB4,NymAA165,NymAADNAB1Nat,Natural,Hatchet Creek,HC,6,3/28/21,1,AA,N,NA,Dragging
+HC_5Apr21_AA_C,AA353,AAB5,NymAA166,NymAADNAB1Nat,Natural,Hatchet Creek,HC,7,4/5/21,1,AA,N,NA,Dragging
+HC_5Apr21_AA_D,AA354,AAB5,NymAA167,NymAADNAB1Nat,Natural,Hatchet Creek,HC,7,4/5/21,1,AA,N,NA,Dragging
+HC_5Apr21_AA_E,AA355,AAB5,NymAA168,NymAADNAB1Nat,Natural,Hatchet Creek,HC,7,4/5/21,1,AA,N,NA,Dragging
+HC_5Apr21_AA_F,AA356,AAB5,NymAA169,NymAADNAB1Nat,Natural,Hatchet Creek,HC,7,4/5/21,1,AA,N,NA,Dragging
+HC_26Apr21_AA_H,AA756,AAB10,NymAA170,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Flagging
+HC_26Apr21_AA_I,AA757,AAB10,NymAA171,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Flagging
+HC_26Apr21_AA_J,AA758,AAB10,NymAA172,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Flagging
+HC_26Apr21_AA_K,AA759,AAB10,NymAA173,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Flagging
+HC_26Apr21_AA_L,AA760,AAB10,NymAA174,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Flagging
+HC_26Apr21_AA_M,AA761,AAB10,NymAA175,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Flagging
+HC_26Apr21_AA_N,AA762,AAB10,NymAA176,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Dragging
+HC_26Apr21_AA_O,AA763,AAB10,NymAA177,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Dragging
+HC_26Apr21_AA_P,AA764,AAB10,NymAA178,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Dragging
+HC_26Apr21_AA_Q,AA765,AAB10,NymAA179,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Dragging
+HC_26Apr21_AA_R,AA766,AAB10,NymAA180,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Dragging
+HC_26Apr21_AA_S,AA767,AAB10,NymAA181,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Dragging
+HC_26Apr21_AA_T,AA768,AAB10,NymAA182,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Flagging
+HC_26Apr21_AA_U,AA769,AAB10,NymAA183,NymAADNAB1Nat,Natural,Hatchet Creek,HC,8,4/26/21,1,AA,N,NA,Dragging
+HC_5May21_AA_E,AA1019,AAB13,NymAA184,NymAADNAB2Nat,Natural,Hatchet Creek,HC,9,5/5/21,1,AA,N,NA,Dragging
+HC_5May21_AA_F,AA1020,AAB13,NymAA185,NymAADNAB2Nat,Natural,Hatchet Creek,HC,9,5/5/21,1,AA,N,NA,Dragging
+HC_5May21_AA_G,AA1021,AAB13,NymAA186,NymAADNAB2Nat,Natural,Hatchet Creek,HC,9,5/5/21,1,AA,N,NA,Dragging
+HC_18May21_AA_H,AA1257,AAB16,NymAA187,NymAADNAB2Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,N,NA,Dragging
+HC_18May21_AA_I,AA1258,AAB16,NymAA188,NymAADNAB2Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,N,NA,Dragging
+HC_18May21_AA_J,AA1259,AAB16,NymAA189,NymAADNAB2Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,N,NA,Dragging
+HC_18May21_AA_K,AA1260,AAB16,NymAA190,NymAADNAB2Nat,Natural,Hatchet Creek,HC,10,5/18/21,1,AA,N,NA,Flagging
+HC_29Jun21_AA_A,AA1667,AAB21,NymAA191,NymAADNAB2Nat,Natural,Hatchet Creek,HC,12,6/29/21,1,AA,N,NA,Dragging
+HC_29Jun21_AA_B,AA1668,AAB21,NymAA192,NymAADNAB2Nat,Natural,Hatchet Creek,HC,12,6/29/21,1,AA,N,NA,Dragging
+HC_29Jun21_AA_C,AA1669,AAB21,NymAA193,NymAADNAB2Nat,Natural,Hatchet Creek,HC,12,6/29/21,1,AA,N,NA,Dragging
+HC_25Jan21_AM,AM01,AAB1,AM01,DVgDNAB1,Natural ,Hatchet Creek,HC,2,1/25/21,1,AM,N,NA,Dragging
+HC_28Mar21_IA,IA01,IXB2,IA01,DVDNAB1,Natural,Hatchet Creek,HC,6,3/28/21,1,IA,A,M,Dragging
+HC_20Jan21_IS_A,IS06,IXB1,IS06,ISgDNAB1,Natural,Hatchet Creek,HC,1,1/20/21,1,IS,A,F,Dragging
+HC_20Jan21_IS_B,IS07,IXB1,IS07,ISgDNAB1,Natural,Hatchet Creek,HC,1,1/20/21,1,IS,A,F,Dragging
+HC_25Jan21_IS_A,IS10,IXB1,IS10,ISgDNAB1,Natural,Hatchet Creek,HC,2,1/25/21,1,IS,A,M,Dragging
+HC_25Jan21_IS_B,IS11,IXB1,IS11,ISgDNAB1,Natural,Hatchet Creek,HC,2,1/25/21,1,IS,A,M,Dragging
+HC_25Jan21_IS_C,IS12,IXB1,IS12,ISgDNAB1,Natural,Hatchet Creek,HC,2,1/25/21,1,IS,A,M,Dragging
+HC_25Jan21_IS_D,IS13,IXB1,IS13,ISgDNAB1,Natural,Hatchet Creek,HC,2,1/25/21,1,IS,A,F,Dragging
+HC_11Feb21_IS_A,IS39,IXB1,IS39,ISgDNAB1,Natural,Hatchet Creek,HC,3,2/11/21,1,IS,A,F,Dragging
+HC_11Feb21_IS_B,IS40,IXB1,IS40,ISgDNAB1,Natural,Hatchet Creek,HC,3,2/11/21,1,IS,A,M,Dragging
+HC_11Feb21_IS_C,IS41,IXB1,IS41,ISgDNAB1,Natural,Hatchet Creek,HC,3,2/11/21,1,IS,A,M,Dragging
+HC_11Feb21_IS_D,IS42,IXB1,IS42,ISgDNAB1,Natural,Hatchet Creek,HC,3,2/11/21,1,IS,A,M,Dragging
+HC_11Feb21_IS_E,IS43,IXB1,IS43,ISgDNAB1,Natural,Hatchet Creek,HC,3,2/11/21,1,IS,A,M,Dragging
+HC_25Feb21_IS_A,IS44,IXB1,IS44,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,M,On_Person
+HC_25Feb21_IS_B,IS45,IXB1,IS45,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,M,Dragging
+HC_25Feb21_IS_C,IS46,IXB1,IS46,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,M,Dragging
+HC_25Feb21_IS_D,IS47,IXB1,IS47,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,M,Dragging
+HC_25Feb21_IS_E,IS48,IXB1,IS48,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,M,Dragging
+HC_25Feb21_IS_F,IS49,IXB1,IS49,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,F,Dragging
+HC_25Feb21_IS_G,IS50,IXB1,IS50,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,F,Dragging
+HC_25Feb21_IS_H,IS51,IXB1,IS51,ISgDNAB1,Natural,Hatchet Creek,HC,4,2/25/21,1,IS,A,F,Dragging
+HC_12Mar21_IS_A,IS63,IXB1,IS63,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,Flagging
+HC_12Mar21_IS_B,IS64,IXB1,IS64,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Flagging
+HC_12Mar21_IS_C,IS65,IXB1,IS65,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Flagging
+HC_12Mar21_IS_D,IS66,IXB1,IS66,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,Flagging
+HC_12Mar21_IS_E,IS67,IXB1,IS67,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Flagging
+HC_12Mar21_IS_F,IS68,IXB1,IS68,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,Flagging
+HC_12Mar21_IS_G,IS69,IXB1,IS69,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,Flagging
+HC_12Mar21_IS_H,IS70,IXB1,IS70,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,Dragging
+HC_12Mar21_IS_I,IS71,IXB1,IS71,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,Dragging
+HC_12Mar21_IS_J,IS72,IXB1,IS72,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,Dragging
+HC_12Mar21_IS_K,IS73,IXB1,IS73,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Dragging
+HC_12Mar21_IS_L,IS74,IXB1,IS74,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Dragging
+HC_12Mar21_IS_M,IS75,IXB1,IS75,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Dragging
+HC_12Mar21_IS_N,IS76,IXB1,IS76,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Dragging
+HC_12Mar21_IS_O,IS77,IXB1,IS77,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,M,Dragging
+HC_12Mar21_IS_P,IS78,IXB1,IS78,ISgDNAB1,Natural,Hatchet Creek,HC,5,3/12/21,1,IS,A,F,On_Person
+RP_26Apr21_AA_A,AA770,AAB10,AduAA17,AduAADNAB1Mani,Manicured,Reserve Park,RP,8,4/26/21,1,AA,A,M,Flagging
+RP_26Apr21_AA_B,AA771,AAB10,NymAA34,NymAADNAB1Mani,Manicured,Reserve Park,RP,8,4/26/21,1,AA,N,NA,Flagging
+UG_21Jan21_IS_A,IS08,IXB1,IS08,ISgDNAB1,Manicured,University Gardens,UG,2,1/21/21,1,IS,A,M,Dragging
+UG_21Jan21_IS_B,IS09,IXB1,IS09,ISgDNAB1,Manicured,University Gardens,UG,2,1/21/21,1,IS,A,M,Dragging
+HT_5Apr21_AA_A,AA357,AAB5,AduAA11,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,A,M,Flagging
+HT_5Apr21_AA_B,AA358,AAB5,AduAA12,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,A,F,Dragging
+HT_5Apr21_AA_C,AA359,AAB5,AduAA13,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,A,F,On_Person
+HT_26Apr21_AA_A,AA772,AAB10,AduAA18,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,8,4/26/21,1,AA,A,F,Dragging
+HT_26Apr21_AA_ B,AA773,AAB10,AduAA19,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,8,4/26/21,1,AA,A,F,Dragging
+HT_4May21_AA_A,AA1009,AAB13,AduAA28,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,9,5/4/21,1,AA,A,F,Dragging
+HT_4May21_AA_B,AA1010,AAB13,AduAA29,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,9,5/4/21,1,AA,A,M,Dragging
+HT_16Jun21_AA,AA1577,AAB20,AduAA40,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,11,6/16/21,1,AA,A,F,Dragging
+HT_26Jun21_AA ,AA1644,AAB21,AduAA42,AduAADNAB1Mani,Manicured,Hogtowne Creek,HT,12,6/26/21,1,AA,A,F,Dragging
+HT_15Mar21_AA_A,AA150,AAB2,NymAA04,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,5,3/15/21,1,AA,N,NA,Flagging
+HT_15Mar21_AA_B,AA151,AAB2,NymAA05,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,5,3/15/21,1,AA,N,NA,Flagging
+HT_15Mar21_AA_C,AA152,AAB2,NymAA06,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,5,3/15/21,1,AA,N,NA,Dragging
+HT_15Mar21_AA_D,AA153,AAB2,NymAA07,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,5,3/15/21,1,AA,N,NA,Dragging
+HT_15Mar21_AA_E,AA154,AAB2,NymAA08,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,5,3/15/21,1,AA,N,NA,Dragging
+HT_5Apr21_AA_D,AA360,AAB5,NymAA13,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Dragging
+HT_5Apr21_AA_E,AA361,AAB5,NymAA14,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Dragging
+HT_5Apr21_AA_F,AA362,AAB5,NymAA15,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Dragging
+HT_5Apr21_AA_G,AA363,AAB5,NymAA16,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Dragging
+HT_5Apr21_AA_H,AA364,AAB5,NymAA17,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Flagging
+HT_5Apr21_AA_I,AA365,AAB5,NymAA18,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Flagging
+HT_5Apr21_AA_J,AA366,AAB5,NymAA19,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Flagging
+HT_5Apr21_AA_K,AA367,AAB5,NymAA20,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Flagging
+HT_5Apr21_AA_L,AA368,AAB5,NymAA21,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Flagging
+HT_5Apr21_AA_M,AA369,AAB5,NymAA22,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,Flagging
+HT_5Apr21_AA_N,AA370,AAB5,NymAA23,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,7,4/5/21,1,AA,N,NA,On_Person
+HT_26Apr21_AA_C,AA774,AAB10,NymAA35,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,8,4/26/21,1,AA,N,NA,Dragging
+HT_26Apr21_AA_D,AA775,AAB10,NymAA36,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,8,4/26/21,1,AA,N,NA,Flagging
+HT_4May21_AA_C,AA1011,AAB13,NymAA71,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,9,5/4/21,1,AA,N,NA,Dragging
+HT_4May21_AA_D,AA1012,AAB13,NymAA72,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,9,5/4/21,1,AA,N,NA,Dragging
+HT_4May21_AA_E,AA1013,AAB13,NymAA73,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,9,5/4/21,1,AA,N,NA,Dragging
+HT_4May21_AA_F,AA1014,AAB13,NymAA74,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,9,5/4/21,1,AA,N,NA,Dragging
+HT_17May21_AA_A,AA1240,AAB16,NymAA81,NymAADNAB1Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Flagging
+HT_17May21_AA_B,AA1241,AAB16,NymAA82,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_C,AA1242,AAB16,NymAA83,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_D,AA1243,AAB16,NymAA84,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_E,AA1244,AAB16,NymAA85,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_F,AA1245,AAB16,NymAA86,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_G,AA1246,AAB16,NymAA87,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_H,AA1247,AAB16,NymAA88,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_I,AA1248,AAB16,NymAA89,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_17May21_AA_J,AA1249,AAB16,NymAA90,NymAADNAB2Mani,Manicured,Hogtowne Creek,HT,9,5/17/21,1,AA,N,NA,Dragging
+HT_10Feb21_AM,AM02,AAB1,AM02,DVAMBox1,Manicured,Hogtowne Creek,HT,3,2/10/21,1,AM,N,NA,Dragging
+PC_15Apr21_AA,AA555,AAB7,AduAA16,AduAADNAB1Mani,Manicured,Possum Creek,PC,7,4/15/21,1,AA,A,F,Dragging
+PC_28Apr21_AA_A,AA900,AAB12,AduAA24,AduAADNAB1Mani,Manicured,Possum Creek,PC,8,4/28/21,1,AA,A,M,Flagging
+PC_28Apr21_AA_B,AA901,AAB12,AduAA25,AduAADNAB1Mani,Manicured,Possum Creek,PC,8,4/28/21,1,AA,A,F,Dragging
+PC_28Jun21_AA,AA1664,AAB21,AduAA43,AduAADNAB1Mani,Manicured,Possum Creek,PC,12,6/28/21,1,AA,A,F,Dragging
+PC_4May21_AA,AA1008,AAB13,NymAA70,NymAADNAB1Mani,Manicured,Possum Creek,PC,9,5/4/21,1,AA,N,NA,Dragging
+FC_13Apr21_AA_A,AA385,AAB5,AduAA15,AduAADNAB1Mani,Manicured,Fred Cone,FC,7,4/13/21,1,AA,A,F,Dragging
+FC_12May21_AA_A,AA1087,AAB14,AduAA31,AduAADNAB1Mani,Manicured,Fred Cone,FC,9,5/12/21,1,AA,A,M,Dragging
+FC_12May21_AA_B,AA1088,AAB14,AduAA32,AduAADNAB1Mani,Manicured,Fred Cone,FC,9,5/12/21,1,AA,A,M,Dragging
+FC_11Jun21_AA_A,AA1517,AAB19,AduAA39,AduAADNAB1Mani,Manicured,Fred Cone,FC,11,6/11/21,1,AA,A,F,Dragging
+FC_13Apr21_AA_B,AA386,AAB5,NymAA25,NymAADNAB1Mani,Manicured,Fred Cone,FC,7,4/13/21,1,AA,N,NA,Dragging
+FC_13Apr21_AA_C,AA387,AAB5,NymAA26,NymAADNAB1Mani,Manicured,Fred Cone,FC,7,4/13/21,1,AA,N,NA,Dragging
+FC_13Apr21_AA_D,AA388,AAB5,NymAA27,NymAADNAB1Mani,Manicured,Fred Cone,FC,7,4/13/21,1,AA,N,NA,Dragging
+FC_27Apr21_AA_A,AA782,AAB10,NymAA41,NymAADNAB1Mani,Manicured,Fred Cone,FC,8,4/27/21,1,AA,N,NA,Flagging
+FC_27Apr21_AA_B,AA783,AAB10,NymAA42,NymAADNAB1Mani,Manicured,Fred Cone,FC,8,4/27/21,1,AA,N,NA,Dragging
+FC_27Apr21_AA_C,AA784,AAB10,NymAA43,NymAADNAB1Mani,Manicured,Fred Cone,FC,8,4/27/21,1,AA,N,NA,Dragging
+FC_27Apr21_AA_D,AA785,AAB10,NymAA44,NymAADNAB1Mani,Manicured,Fred Cone,FC,8,4/27/21,1,AA,N,NA,Dragging
+FC_11Jun21_AA_B,AA1576,AAB20,NymAA94,NymAADNAB2Mani,Manicured,Fred Cone,FC,11,6/11/21,1,AA,N,NA,Flagging
+FC_29Jun21_AA_A,AA1665,AAB21,NymAA101,NymAADNAB2Mani,Manicured,Fred Cone,FC,12,6/29/21,1,AA,N,NA,Dragging
+FC_29Jun21_AA_B,AA1666,AAB21,NymAA102,NymAADNAB2Mani,Manicured,Fred Cone,FC,12,6/29/21,1,AA,N,NA,Dragging
+(FC) CP_12May21_DV,DV07,IXB2,DV07,DVgDNAB1,Manicured,Fred Cone,FC,9,5/12/21,1,DV,A,M,Dragging
+MSM_25Feb21_AA,AA23,AAB1,AduAA01,AduAADNAB1Mani,Manicured,Morningside-Mani,MSM,4,2/25/21,1,AA,A,F,On_Person
+MSM_9Mar21_AA_A,AA108,AAB2,AduAA02,AduAADNAB1Mani,Manicured,Morningside-Mani,MSM,5,3/9/21,1,AA,A,M,Dragging
+MSM_27Apr21_AA_A,AA786,AAB10,AduAA22,AduAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,A,M,Flagging
+MSM_27Apr21_AA_W,AA808,AAB11,AduAA23,AduAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,A,F,Dragging
+MSM_12May21_AA_A,AA1094,AAB14,AduAA36,AduAADNAB1Mani,Manicured,Morningside-Mani,MSM,9,5/12/21,1,AA,A,M,Dragging
+MSM_12May21_AA_B,AA1095,AAB14,AduAA37,AduAADNAB1Mani,Manicured,Morningside-Mani,MSM,9,5/12/21,1,AA,A,F,Dragging
+MSM_9Mar21_AA_B,AA142,AAB2,NymAA01,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,5,3/9/21,1,AA,N,NA,Dragging
+MSM_9Mar21_AA_C,AA143,AAB2,NymAA02,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,5,3/9/21,1,AA,N,NA,Dragging
+MSM_26Mar21_AA,AA257,AAB4,NymAA09,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,6,3/26/21,1,AA,N,NA,Flagging
+MSM_13Apr21_AA_A,AA389,AAB5,NymAA28,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,7,4/13/21,1,AA,N,NA,Dragging
+MSM_13Apr21_AA_B,AA390,AAB5,NymAA29,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,7,4/13/21,1,AA,N,NA,Dragging
+MSM_13Apr21_AA_C,AA391,AAB5,NymAA30,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,7,4/13/21,1,AA,N,NA,Dragging
+MSM_13Apr21_AA_D,AA392,AAB5,NymAA31,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,7,4/13/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_B,AA787,AAB10,NymAA45,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Flagging
+MSM_27Apr21_AA_C,AA788,AAB10,NymAA46,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Flagging
+MSM_27Apr21_AA_D,AA789,AAB10,NymAA47,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_E,AA790,AAB10,NymAA48,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_F,AA791,AAB10,NymAA49,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_G,AA792,AAB10,NymAA50,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_H,AA793,AAB10,NymAA51,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_I,AA794,AAB10,NymAA52,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_J,AA795,AAB10,NymAA53,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_K,AA796,AAB10,NymAA54,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_L,AA797,AAB10,NymAA55,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_M,AA798,AAB10,NymAA56,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_N,AA799,AAB10,NymAA57,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_O,AA800,AAB10,NymAA58,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_P,AA801,AAB10,NymAA59,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_Q,AA802,AAB11,NymAA60,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_R,AA803,AAB11,NymAA61,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_S,AA804,AAB11,NymAA62,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_T,AA805,AAB11,NymAA63,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_U,AA806,AAB11,NymAA64,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_27Apr21_AA_V,AA807,AAB11,NymAA65,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,8,4/27/21,1,AA,N,NA,Dragging
+MSM_12May21_AA_C,AA1096,AAB14,NymAA78,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,9,5/12/21,1,AA,N,NA,Dragging
+MSM_12May21_AA_D,AA1097,AAB14,NymAA79,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,9,5/12/21,1,AA,N,NA,Dragging
+MSM_12May21_AA_E,AA1098,AAB14,NymAA80,NymAADNAB1Mani,Manicured,Morningside-Mani,MSM,9,5/12/21,1,AA,N,NA,Dragging
+MSM_26May21_AA_A,AA1382,AAB18,NymAA91,NymAADNAB2Mani,Manicured,Morningside-Mani,MSM,10,5/26/21,1,AA,N,NA,Dragging
+MSM_26May21_AA_B,AA1383,AAB18,NymAA92,NymAADNAB2Mani,Manicured,Morningside-Mani,MSM,10,5/26/21,1,AA,N,NA,Dragging
+MSM_11Jun21_AA,AA1575,AAB20,NymAA93,NymAADNAB2Mani,Manicured,Morningside-Mani,MSM,11,6/11/21,1,AA,N,NA,Flagging
+MSM_02Feb21_IS_A,IS28,IXB1,IS28,ISgDNAB1,Manicured,Morningside-Mani,MSM,3,2/2/21,1,IS,A,M,Flagging
+MSM_02Feb21_IS_B,IS29,IXB1,IS29,ISgDNAB1,Manicured,Morningside-Mani,MSM,3,2/2/21,1,IS,A,F,Flagging
+MSM_25Feb21_IS_A,IS52,IXB1,IS52,ISgDNAB1,Manicured,Morningside-Mani,MSM,4,2/25/21,1,IS,A,F,Dragging
+MSM_25Feb21_IS_B,IS53,IXB1,IS53,ISgDNAB1,Manicured,Morningside-Mani,MSM,4,2/25/21,1,IS,A,M,Dragging
+MSM_13Apr21_IS,IS84,IXB2,IS84,ISgDNAB1,Manicured,Morningside-Mani,MSM,7,4/13/21,1,IS ,A,M,Flagging
+DF_12Mar21_AA_B,AA147,AAB2,AduAA03,AduAADNAB1Mani,Manicured,Dudley Farm,DF,5,3/12/21,1,AA,A,M,Dragging
+DF_12Mar21_AA_C,AA148,AAB2,AduAA04,AduAADNAB1Mani,Manicured,Dudley Farm,DF,5,3/12/21,1,AA,A,M,Dragging
+DF_29Mar21_AA_A,AA316,AAB4,AduAA07,AduAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,A,F,Dragging
+DF_29Mar21_AA_B,AA317,AAB4,AduAA08,AduAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,A,M,Dragging
+DF_29Mar21_AA_C,AA318,AAB4,AduAA09,AduAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,A,F,Dragging
+DF_29Mar21_AA_G,AA322,AAB4,AduAA10,AduAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,A,F,On_Person
+DF_30Apr21_AA_A,AA912,AAB12,AduAA26,AduAADNAB1Mani,Manicured,Dudley Farm,DF,8,4/30/21,1,AA,A,M,Dragging
+DF_30Apr21_AA_B,AA913,AAB12,AduAA27,AduAADNAB1Mani,Manicured,Dudley Farm,DF,8,4/30/21,1,AA,A,F,Dragging
+DF_12May21_AA_A,AA1089,AAB14,AduAA33,AduAADNAB1Mani,Manicured,Dudley Farm,DF,9,5/12/21,1,AA,A,F,Dragging
+DF_12May21_AA_B,AA1090,AAB14,AduAA34,AduAADNAB1Mani,Manicured,Dudley Farm,DF,9,5/12/21,1,AA,A,F,Dragging
+DF_12May21_AA_C,AA1091,AAB14,AduAA35,AduAADNAB1Mani,Manicured,Dudley Farm,DF,9,5/12/21,1,AA,A,M,Dragging
+DF_1Jun21_AA,AA1453,AAB19,AduAA38,AduAADNAB1Mani,Manicured,Dudley Farm,DF,11,6/1/21,1,AA,A,M,Dragging
+DF_17Jun21_AA_A,AA1598,AAB20,AduAA41,AduAADNAB1Mani,Manicured,Dudley Farm,DF,12,6/17/21,1,AA,A,M,Dragging
+DF_12Mar21_AA_A,AA146,AAB2,NymAA03,NymAADNAB1Mani,Manicured,Dudley Farm,DF,5,3/12/21,1,AA,N,NA,Dragging
+DF_29Mar21_AA_D,AA319,AAB4,NymAA10,NymAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,N,NA,Dragging
+DF_29Mar21_AA_E,AA320,AAB4,NymAA11,NymAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,N,NA,Dragging
+DF_29Mar21_AA_F,AA321,AAB4,NymAA12,NymAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,N,NA,Flagging
+DF_15Apr21_AA_A,AA553,AAB7,NymAA32,NymAADNAB1Mani,Manicured,Dudley Farm,DF,7,4/15/21,1,AA,N,NA,Dragging
+DF_15Apr21_AA_B,AA554,AAB7,NymAA33,NymAADNAB1Mani,Manicured,Dudley Farm,DF,7,4/15/21,1,AA,N,NA,Flagging
+DF_30Apr21_AA_C,AA914,AAB12,NymAA66,NymAADNAB1Mani,Manicured,Dudley Farm,DF,8,4/30/21,1,AA,N,NA,Dragging
+DF_30Apr21_AA_D,AA915,AAB12,NymAA67,NymAADNAB1Mani,Manicured,Dudley Farm,DF,8,4/30/21,1,AA,N,NA,Dragging
+DF_30Apr21_AA_E,AA916,AAB12,NymAA68,NymAADNAB1Mani,Manicured,Dudley Farm,DF,8,4/30/21,1,AA,N,NA,Dragging
+DF_30Apr21_AA_F,AA917,AAB12,NymAA69,NymAADNAB1Mani,Manicured,Dudley Farm,DF,8,4/30/21,1,AA,N,NA,Dragging
+DF_12May21_AA_D,AA1092,AAB14,NymAA76,NymAADNAB1Mani,Manicured,Dudley Farm,DF,9,5/12/21,1,AA,N,NA,Dragging
+DF_12May21_AA_E,AA1093,AAB14,NymAA77,NymAADNAB1Mani,Manicured,Dudley Farm,DF,9,5/12/21,1,AA,N,NA,Dragging
+DF_17Jun21_AA_B,AA1600,AAB20,NymAA98,NymAADNAB2Mani,Manicured,Dudley Farm,DF,12,6/17/21,1,AA,N,NA,Dragging
+DF_17Jun21_AA_C,AA1601,AAB20,NymAA99,NymAADNAB2Mani,Manicured,Dudley Farm,DF,12,6/17/21,1,AA,N,NA,Dragging
+DF_19Jan21_IS,IS05,IXB1,IS05,ISgDNAB1,Manicured,Dudley Farm,DF,1,1/19/21,1,IS,A,F,Dragging
+DF_28Jan21_IS,IS14,IXB1,IS14,ISgDNAB1,Manicured,Dudley Farm,DF,2,1/28/21,1,IS,A,M,Dragging
+DF_12Mar21_IS,IS62,IXB1,IS62,ISgDNAB1,Manicured,Dudley Farm,DF,5,3/12/21,1,IS,A,M,Dragging
+DF_15Apr21_DV,DV02,IXB2,DVgDNAB1,DV02,Manicured,Dudley Farm,DF,7,4/15/21,1,DV,A,F,Dragging
+LL_23Mar21_AA_A,AA234,AAB3,AduAA05,AduAADNAB1Mani,Manicured,Longleaf,LL,6,3/23/21,1,AA,A,F,Dragging
+LL_23Mar21_AA_B,AA235,AAB3,AduAA06,AduAADNAB1Mani,Manicured,Longleaf,LL,6,3/23/21,1,AA,A,F,Dragging
+LL_6Apr21_AA_A,AA371,AAB5,AduAA14,AduAADNAB1Mani,Manicured,Longleaf,LL,7,4/6/21,1,AA,A,M,Dragging
+LL_27Apr21_AA_A,AA776,AAB10,AduAA20,AduAADNAB1Mani,Manicured,Longleaf,LL,8,4/27/21,1,AA,A,M,Dragging
+LL_27Apr21_AA_B,AA777,AAB10,AduAA21,AduAADNAB1Mani,Manicured,Longleaf,LL,8,4/27/21,1,AA,A,M,Dragging
+LL_10May21_AA_A,AA1048,AAB14,AduAA30,AduAADNAB1Mani,Manicured,Longleaf,LL,9,5/10/21,1,AA,A,F,Flagging
+LL_01Jul21_AA,AA1713,AAB22,AduAA44,AduAADNAB1Mani,Manicured,Longleaf,LL,12,7/1/21,1,AA,A,M,On_Person
+LL_6Apr21_AA_B,AA372,AAB5,NymAA24,NymAADNAB1Mani,Manicured,Longleaf,LL,7,4/6/21,1,AA,N,NA,Dragging
+LL_27Apr21_AA_C,AA778,AAB10,NymAA37,NymAADNAB1Mani,Manicured,Longleaf,LL,8,4/27/21,1,AA,N,NA,Dragging
+LL_27Apr21_AA_D,AA779,AAB10,NymAA38,NymAADNAB1Mani,Manicured,Longleaf,LL,8,4/27/21,1,AA,N,NA,Dragging
+LL_27Apr21_AA_E,AA780,AAB10,NymAA39,NymAADNAB1Mani,Manicured,Longleaf,LL,8,4/27/21,1,AA,N,NA,Dragging
+LL_27Apr21_AA_F,AA781,AAB10,NymAA40,NymAADNAB1Mani,Manicured,Longleaf,LL,8,4/27/21,1,AA,N,NA,Flagging
+LL_10May21_AA_B,AA1049,AAB14,NymAA75,NymAADNAB1Mani,Manicured,Longleaf,LL,9,5/10/21,1,AA,N,NA,Dragging
+LL_16Jun21_AA_A,AA1579,AAB20,NymAA95,NymAADNAB2Mani,Manicured,Longleaf,LL,11,6/16/21,1,AA,N,NA,Dragging
+LL_16Jun21_AA_B,AA1580,AAB20,NymAA96,NymAADNAB2Mani,Manicured,Longleaf,LL,11,6/16/21,1,AA,N,NA,Flagging
+LL_16Jun21_AA_C,AA1581,AAB20,NymAA97,NymAADNAB2Mani,Manicured,Longleaf,LL,11,6/16/21,1,AA,N,NA,Dragging
+LL_5Mar21_AA,AA104,AAB2,NymAA100,NymAADNAB2Mani,Manicured,Longleaf,LL,5,3/5/21,1,AA,N,NA,Dragging

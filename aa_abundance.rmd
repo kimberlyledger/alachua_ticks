@@ -5,9 +5,9 @@ date: "2/17/2022"
 output: html_document
 ---
 
-# Part 1: Visualize Amblyomma americanum data 
+# Part 1: Explore tick abundance data 
 
-Load libraries 
+load libraries 
 ```{r}
 library(tidyverse)
 library(car)
@@ -17,44 +17,114 @@ library(effects)
 library(ggplot2)
 ```
 
-Read in raw Alachua County Tick Data 
+read in raw Alachua County tick data 
 ```{r}
 ticks <- read.csv("AlachuaTicksAllSites.csv")
 str(ticks)
 ```
 
-Summarize the number of ticks collected by site, species, lifestage, and visit
+how many individuals of each species and life stage were collected? 
 ```{r}
-table1 <- ticks %>%
-  group_by(Site_ID, Species, Lifestage, Visit) %>%
+ticks %>%
+  group_by(Species, Lifestage) %>%
   summarise(total = n())
-
-head(table1)
+```
+how many individuals of each species were collected in natural vs manicured sites? 
+```{r}
+ticks %>%
+  group_by(Species, Field_Type) %>%
+  summarise(total = n())
 ```
 
-Let's start by just looking at Amblyomma americanum 
+how many individuals were collected at each visit? first combined, and then by species, and then by life stage of each species 
+```{r}
+visit <- ticks %>%
+  group_by(Visit) %>%
+  summarise(total = n())
+#visit
+
+ggplot(data = visit, aes(x=Visit, y=total)) + 
+  theme_classic() + 
+  geom_point() + 
+  labs(title = "tick abundance - combined", x = "Visit", y = "# of ticks")
+
+visit_species <- ticks %>%
+  group_by(Species, Visit) %>%
+  summarise(total = n())
+#visit_species
+
+ggplot(data = visit_species, aes(x=Visit, y=total, fill = Species)) + 
+  theme_classic() + 
+  geom_point(aes(color = Species)) + 
+  labs(title = "tick abundance - by species", x = "Visit", y = "# of ticks (adults and nymphs)")
+
+visit_species_lifestage <- ticks %>%
+  unite("X", Species, Lifestage) %>%
+  group_by(X, Visit) %>%
+  summarise(total = n())
+#visit_species_lifestage
+
+ggplot(data = visit_species_lifestage, aes(x=Visit, y=total, fill = X)) + 
+  theme_classic() + 
+  geom_point(aes(color = X)) + 
+  labs(title = "tick abundance - by species and life stage", x = "Visit", y = "# of ticks")
+```
+
+how does each site differ in tick abundance? 
+remember: GA had 0 ticks the entire study 
+```{r}
+site1 <- ticks %>%
+  group_by(Site_ID) %>%
+  summarise(total = n())
+site1[18,] <- list("GA", 0)
+
+site <- ticks %>%
+  unite("X", Species, Lifestage) %>%
+  group_by(X, Site_ID, Field_Type) %>%
+  summarise(total = n())
+site[52,] <- list("AA_A","GA","Manicured",0)
+
+site$Site_ID <- factor(site$Site_ID, levels = c("GA","HW","RP","UG","JM","PC","29RD","FC","LL","DF","HT","MSM","SW","HC","SF","PP","SR","MSN"
+))
+
+ggplot(data = site, aes(x=Site_ID, y=total, fill =X)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "X", x = "Site", y = "# of ticks")
+
+ggplot(data = site, aes(x=Site_ID, y=log1p(total), fill =X)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "X", x = "Site", y = "log(# of ticks)")
+```
+
+## Part 2: Visualize Amblyomma americanum data 
+
+Let's work some more with just the Amblyomma americanum 
 
 ```{r}
-aa <- table1 %>%
+aa <- ticks %>%
   filter(Species == "AA")
 head(aa)
 ```
 
-Now let's plot the counts of nymphs and adults by visit and site 
-
+Now let's plot the count of A.americanum (nymphs and adults combined) by visit and site 
 ```{r}
-ggplot(data = aa, aes(x=Visit, y=total, col = Site_ID)) + 
+aa_visit <- aa %>%
+  group_by(Site_ID, Visit) %>%
+  summarise(total = n())
+
+ggplot(data = aa_visit, aes(x=Visit, y=total, col = Site_ID)) + 
   theme_classic() + 
-  geom_point(aes(shape = Lifestage)) + 
+  geom_point() + 
   labs(title = "A.americanum", x = "Visit", y = "# of ticks")
 ```
 
-Let's take a closer look at the seasonality of A.americanum by combining counts from all sites and keeping visits seperate 
-
+Let's take a closer look at the seasonality of A.americanum by combining counts from all sites and keeping visits separate 
 ```{r}
 aa_allsites <- aa %>%
   group_by(Lifestage, Visit) %>%
-  summarise(total = sum (total))
+  summarise(total = n())
 
 ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
   theme_classic() + 
@@ -66,15 +136,13 @@ ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) +
   geom_smooth(aes(color = Lifestage)) + 
   labs(title = "A.americanum", x = "Visit", y = "# of ticks")
 ```
-
 both adults and nymphs have very similar timing of peak abundance in Alachua Co. 
 
 Now let's combine counts across all visits and keep the sites seperate 
-
 ```{r}
 aa_allvisits <- aa %>%
   group_by(Site_ID, Lifestage) %>%
-  summarize(total = sum(total),
+  summarize(total = n(),
             density = (total/12000) * 100)
 
 ## add in rows for the sites and life stages with no observations
@@ -85,6 +153,9 @@ aa_allvisits[34,] <- list("UG", "N", 0, 0)
 aa_allvisits[35,] <- list("GA", "A", 0, 0)
 aa_allvisits[36,] <- list("GA", "N", 0, 0)
 
+aa_allvisits$Site_ID <- factor(aa_allvisits$Site_ID, levels = c("GA","UG","HW","RP","JM","PC","29RD","FC","LL","DF","MSM","HT","HC","SW","SF","PP","SR","MSN"
+))
+
 ggplot(data = aa_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) + 
   theme_classic() + 
   geom_bar(stat = "identity") + 
@@ -93,15 +164,14 @@ ggplot(data = aa_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) +
 ```
 
 Read in the covariate data for all 18 sites 
-This site contains information on if the environment type was manicured or natural, the proportion of forest landcover at 500m, 1km, and 2km buffers, and the PC1 and PC2 land use metrics at 1km buffers
-
+This file contains information on if the environment type was manicured or natural, the proportion of forest landcover at 500m, 1km, and 2km buffers, and the PC1 and PC2 land use metrics at 1km buffers
 ```{r}
 covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
 head(covar)
 ```
+### THIS IS WHERE I AM PAUSING FOR TODAY - 18 FEB 2022
 
 join the covariate data to the A.americanum data 
-
 ```{r}
 aa_var <- aa_allvisits %>%
   left_join(covar)

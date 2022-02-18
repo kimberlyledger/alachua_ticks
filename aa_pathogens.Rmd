@@ -1,0 +1,136 @@
+---
+title: "aa_pathogens"
+author: "Kimberly Ledger"
+date: "2/17/2022"
+output: html_document
+---
+
+# This code will explore the pathogens in ticks (mostly Amblyomma americanum) in Alachua Co.
+
+Load libraries 
+```{r}
+library(tidyverse)
+library(ggplot2)
+
+#library(car)
+#library(MASS)
+#library(stargazer)
+#library(effects)
+```
+
+
+Read in raw Alachua County Tick Data -  NEED TO UPDATE WITH CORRECTED gDNA_Sample Id's
+```{r}
+ticks <- read.csv("AlachuaTicksAllSites.csv")
+str(ticks)
+```
+
+Read in raw Pathogen Data 
+```{r}
+pathogen <- read.csv("AlCo_Pathogens.csv")
+str(pathogen)
+```
+
+Join pathogen results with the raw tick data by the gDNA_Sample and Collection_Sample identities
+
+```{r}
+#data <- ticks %>%
+#  dplyr::left_join(pathogen, by = c("gDNA_Sample", "Collection_Sample"))
+
+data <- ticks %>%
+  dplyr::left_join(pathogen, by = c("Collection_Sample"))
+
+data
+```
+for now there are NA's in the data for any tick sample that was not processed in the lab
+
+verify the data was joined correctly....
+
+```{r}
+data %>%
+  filter(Babesia_sp == 1)
+
+#data %>%
+#  filter(Borrelia_lonestari == 1)
+```
+
+
+Make a summary table of pathogens detected in each tick species 
+
+```{r}
+data %>%
+  dplyr::select(-c(Visit, Tick_No_Tube)) %>%
+  group_by(Species) %>%
+  summarise(across(where(is.integer), sum, na.rm = TRUE))
+```
+Okay what PATHOGENIC microorganisms do we have with decent enough sample sizes to run some models?
+**for AA**, Babesia sp Coco (8), Borrelia lonestari (14), Ehrlichia chaffeensis (7), Ehrlichia ewingii (10), Ehrlichia sp. PM (9),  Theileria cervi (48)
+**for IS**, Babesia odocoieli (8)
+
+
+Now i want to separate out just the Amblyomma americanum to look at... 
+
+```{r}
+aa <- data %>%
+  filter(Species == "AA")
+head(aa)
+```
+make a table that summarizes AA abundance and pathogen prevalence per site
+```{r}
+aa_path <- aa %>%
+  group_by(Site_ID) %>%
+  summarize(abundance = n(),
+            tested = sum(!is.na(gDNA_Sample.y)),
+            BACO = sum(Babesia_sp_Coco),
+            BACO_prev = BACO/tested,
+            BOLO = sum(Borrelia_lonestari),
+            BOLO_prev = BOLO/tested,
+            EH = sum(Ehrlichia_chaffeensis,Ehrlichia_ewingii,Ehrlichia_sp_PanolaMountain),
+            EH_prev = EH/tested,
+            THCE = sum(Theileria_cervi),
+            THCE_prev = THCE/tested,
+            pos = sum(BACO, BOLO, EH, THCE),
+            pos_prev = pos/tested)
+```
+
+Read in the covariate data for all 18 sites 
+This site contains information on if the environment type was manicured or natural, the proportion of forest landcover at 500m, 1km, and 2km buffers, and the PC1 and PC2 land use metrics at 1km buffers
+
+```{r}
+covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
+head(covar)
+```
+
+Join site covariated to AA pathogen summary 
+
+```{r}
+aa_path_join <- aa_path %>%
+  left_join(covar, by = "Site_ID")
+
+head(aa_path_join)
+```
+let's just use combined athogen prevalence for now 
+
+start by visualising the distribution 
+```{r}
+hist(aa_path_join$pos_prev)
+```
+
+VERY non-normal... try something like a poisson's 
+
+```{r}
+mod1 <- glm(pos_prev ~ Forested_Manicured, data = aa_path_join, family = "poisson")
+summary(mod1)
+
+boxplot(aa_path_join$pos_prev ~ aa_path_join$Forested_Manicured)
+plot(aa_path_join$pos_prev ~ aa_path_join$PC1)
+
+ggplot(data = aa_path_join, aes(x = PC1 , y = pos_prev)) + 
+  geom_point(aes(col = Forested_Manicured))
+```
+
+
+
+
+
+

@@ -558,11 +558,11 @@ MSN_25Feb21_IS_D,IS57,IXB1,IS57,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/
 MSN_25Feb21_IS_E,IS58,IXB1,IS58,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,F,Dragging
 MSN_25Feb21_IS_F,IS59,IXB1,IS59,ISgDNAB1,Natural,Morningside-Natural,MSN,4,2/25/21,1,IS,A,F,Dragging
 MSN_26Mar21_IS_A,IS80,IXB1,IS80,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS,A,F,Dragging
-MSN_26Mar21_IS_B,IS81,IXB2,IS81,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS ,A,F,Dragging
-MSN_26Mar21_IS_C,IS82,IXB2,IS82,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS ,A,M,Dragging
-MSN_13Apr21_IS,IS85,IXB2,IS85,ISgDNAB1,Natural,Morningside-Natural,MSN,7,4/13/21,1,IS ,A,F,Dragging
-MSN _12May21_IS,IS88,IXB2,IS88,ISgDNAB1,Natural,Morningside-Natural,MSN,9,5/12/21,1,IS ,A,F,Dragging
-MSN_26May21_IS,IS89,IXB2,IS89,ISgDNAB1,Natural,Morningside-Natural,MSN,10,5/26/21,1,IS ,A,F,Dragging
+MSN_26Mar21_IS_B,IS81,IXB2,IS81,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS,A,F,Dragging
+MSN_26Mar21_IS_C,IS82,IXB2,IS82,ISgDNAB1,Natural,Morningside-Natural,MSN,6,3/26/21,1,IS,A,M,Dragging
+MSN_13Apr21_IS,IS85,IXB2,IS85,ISgDNAB1,Natural,Morningside-Natural,MSN,7,4/13/21,1,IS,A,F,Dragging
+MSN _12May21_IS,IS88,IXB2,IS88,ISgDNAB1,Natural,Morningside-Natural,MSN,9,5/12/21,1,IS,A,F,Dragging
+MSN_26May21_IS,IS89,IXB2,IS89,ISgDNAB1,Natural,Morningside-Natural,MSN,10,5/26/21,1,IS,A,F,Dragging
 MSN_25Feb21_AA_A,AA24,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,A,F,Dragging
 MSN_25Feb21_AA_B,AA25,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,A,M,Dragging
 MSN_25Feb21_AA_C,AA26,AAB1,NA,NA,Natural,Morningside-Natural,MSN,4,2/25/21,1,AA,A,M,Dragging
@@ -1776,7 +1776,7 @@ MSM_02Feb21_IS_A,IS28,IXB1,IS28,ISgDNAB1,Manicured,Morningside-Mani,MSM,3,2/2/21
 MSM_02Feb21_IS_B,IS29,IXB1,IS29,ISgDNAB1,Manicured,Morningside-Mani,MSM,3,2/2/21,1,IS,A,F,Flagging
 MSM_25Feb21_IS_A,IS52,IXB1,IS52,ISgDNAB1,Manicured,Morningside-Mani,MSM,4,2/25/21,1,IS,A,F,Dragging
 MSM_25Feb21_IS_B,IS53,IXB1,IS53,ISgDNAB1,Manicured,Morningside-Mani,MSM,4,2/25/21,1,IS,A,M,Dragging
-MSM_13Apr21_IS,IS84,IXB2,IS84,ISgDNAB1,Manicured,Morningside-Mani,MSM,7,4/13/21,1,IS ,A,M,Flagging
+MSM_13Apr21_IS,IS84,IXB2,IS84,ISgDNAB1,Manicured,Morningside-Mani,MSM,7,4/13/21,1,IS,A,M,Flagging
 DF_12Mar21_AA_B,AA147,AAB2,AduAA03,AduAADNAB1Mani,Manicured,Dudley Farm,DF,5,3/12/21,1,AA,A,M,Dragging
 DF_12Mar21_AA_C,AA148,AAB2,AduAA04,AduAADNAB1Mani,Manicured,Dudley Farm,DF,5,3/12/21,1,AA,A,M,Dragging
 DF_29Mar21_AA_A,AA316,AAB4,AduAA07,AduAADNAB1Mani,Manicured,Dudley Farm,DF,6,3/29/21,1,AA,A,F,Dragging

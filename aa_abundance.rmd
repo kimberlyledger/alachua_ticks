@@ -15,6 +15,7 @@ library(MASS)
 library(stargazer)
 library(effects)
 library(ggplot2)
+library(MuMIn)  #for model selection
 ```
 
 read in raw Alachua County tick data 
@@ -101,7 +102,6 @@ ggplot(data = site, aes(x=Site_ID, y=log1p(total), fill =X)) +
 ## Part 2: Visualize Amblyomma americanum data 
 
 Let's work some more with just the Amblyomma americanum 
-
 ```{r}
 aa <- ticks %>%
   filter(Species == "AA")
@@ -136,7 +136,7 @@ ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) +
   geom_smooth(aes(color = Lifestage)) + 
   labs(title = "A.americanum", x = "Visit", y = "# of ticks")
 ```
-both adults and nymphs have very similar timing of peak abundance in Alachua Co. 
+both adults and nymphs of Amblyomma americanum have similar seasonality of peak abundance in Alachua Co. 
 
 Now let's combine counts across all visits and keep the sites seperate 
 ```{r}
@@ -163,97 +163,835 @@ ggplot(data = aa_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) +
 
 ```
 
+## Part 3: Visualize Ixodes scapularis data 
+
+let's investigate Ixodes scapularis
+```{r}
+is <- ticks %>%
+  filter(Species == "IS")
+head(is)
+```
+
+now let's plot the count of I.scapularis (rembember there were only adults collected) by visit and site 
+```{r}
+is_visit <- is %>%
+  group_by(Site_ID, Visit) %>%
+  summarise(total = n())
+
+ggplot(data = is_visit, aes(x=Visit, y=total, col = Site_ID)) + 
+  theme_classic() + 
+  geom_point() + 
+  labs(title = "I.scapularis", x = "Visit", y = "# of ticks")
+```
+let's take a closer look at the seasonality of I.scapularis by combining counts from all sites and keeping visits separate 
+```{r}
+is_allsites <- is %>%
+  group_by(Lifestage, Visit) %>%
+  summarise(total = n())
+
+ggplot(data = is_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_point(aes(color = Lifestage)) + 
+  labs(title = "I.scapularis", x = "Visit", y = "# of ticks")
+
+ggplot(data = is_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_smooth(aes(color = Lifestage)) + 
+  labs(title = "I.scapularis", x = "Visit", y = "# of ticks")
+```
+
+now let's combine counts across all visits and keep the sites seperate 
+```{r}
+is_allvisits <- is %>%
+  group_by(Site_ID, Lifestage) %>%
+  summarize(total = n(),
+            density = (total/12000) * 100)
+
+## add in rows for the sites and life stages with no observations
+is_allvisits[12,] <- list("29RD", "A", 0 , 0)
+is_allvisits[13,] <- list("GA", "A", 0, 0)
+is_allvisits[14,] <- list("RP", "A", 0, 0)
+is_allvisits[15,] <- list("PC", "A", 0, 0)
+is_allvisits[16,] <- list("FC", "A", 0, 0)
+is_allvisits[17,] <- list("LL", "A", 0, 0)
+is_allvisits[18,] <- list("HT", "A", 0, 0)
+
+is_allvisits$Site_ID <- factor(is_allvisits$Site_ID, levels = c("GA","UG","HW","RP","JM","PC","29RD","FC","LL","DF","MSM","HT","HC","SW","SF","PP","SR","MSN"
+))
+
+ggplot(data = is_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "A.americanum", x = "Site", y = "# of ticks")
+
+```
+
+## Part 4 - Landscape analyses of Amblyomma americanum 
+
+### 4.1: Prepare data 
 Read in the covariate data for all 18 sites 
 This file contains information on if the environment type was manicured or natural, the proportion of forest landcover at 500m, 1km, and 2km buffers, and the PC1 and PC2 land use metrics at 1km buffers
 ```{r}
 covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
 head(covar)
 ```
-### THIS IS WHERE I AM PAUSING FOR TODAY - 18 FEB 2022
 
 join the covariate data to the A.americanum data 
 ```{r}
 aa_var <- aa_allvisits %>%
   left_join(covar)
-str(aa_var)
+head(aa_var)
 
-### change to factors 
-aa_var$Forested_Manicured <- as.factor(aa_var$Forested_Manicured)
-aa_var$Lifestage <- as.factor(aa_var$Lifestage)
+aa_combined <- aa_allvisits %>%
+  group_by(Site_ID) %>%
+  summarise(total = sum(total),
+            density = sum(density)) %>%
+  left_join(covar)
+head(aa_combined)
 
-
-### make some visuals 
-ggplot(aa_var, aes(x= PC1, y = log1p(total), col = Forested_Manicured)) + 
-  geom_point(aes(shape = Lifestage))
-ggplot(aa_var, aes(x= PC1, y = density, col = Forested_Manicured)) + 
-  geom_point(aes(shape = Lifestage))
-ggplot(aa_var, aes(x= Forest1km, y = log1p(total), col = Forested_Manicured)) + 
-  geom_point(aes(shape = Lifestage))
-ggplot(aa_var, aes(x= Forest1km, y = density, col = Forested_Manicured)) + 
-  geom_point(aes(shape = Lifestage))
+aa_combined$Forested_Manicured <- as.factor(aa_combined$Forested_Manicured)
 ```
 
-# Part 2: Test for spatial "scale of effect" and spatial autocorrelation 
+### 4.2: Test for spatial "scale of effect" and spatial autocorrelation 
+here I will work with combined adult and nymph dataset (adults and nymphs have similar patterns over space and time so it makes more sense to combince their analyses)
 
-Here I will work with combined adult and nymph dataset, as well as adults and nymphys on their own 
-
-```{r}
-aa_adults <- aa_var %>%
-  filter(Lifestage == "A")
-
-aa_nymphs <- aa_var %>%
-  filter(Lifestage == "N")
-```
-
-## test for "scale of effect for combined, adults, and nymphs using a buffer based approach 
+test for "scale of effect" using a buffer based approach 
 for the final go i should probably derive more scales but for now i will work with what there is 
 
 ```{r}
-n.pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_nymphs)
-n.pres.1km<-glm(total ~ Forest1km, family = "poisson", data = aa_nymphs)
-n.pres.2km<-glm(total ~ Forest2km, family = "poisson", data = aa_nymphs)
-
-a.pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_adults)
-a.pres.1km<-glm(total ~ Forest1km, family = "poisson", data = aa_adults)
-a.pres.2km<-glm(total ~ Forest2km, family = "poisson", data = aa_adults)
-
-pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_var)
-pres.1km<-glm(total ~ Forest1km, family = "poisson", data = aa_var)
-pres.2km<-glm(total ~ Forest2km, family = "poisson", data = aa_var)
-
-library(MuMIn)  #for model selection
+pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_combined)
+pres.1km<-glm(total ~ Forest1km, family = "poisson", data = aa_combined)
+pres.2km<-glm(total ~ Forest2km, family = "poisson", data = aa_combined)
 
 comb.mod<-model.sel(pres.500m, pres.1km, pres.2km)
 comb.mod
-
-nymph.mod<-model.sel(n.pres.500m, n.pres.1km, n.pres.2km)
-nymph.mod
-
-adult.mod<-model.sel(a.pres.500m, a.pres.1km, a.pres.2km)
-adult.mod
 
 scales<-c(500,1000,2000)
 
 ll<-c(logLik(pres.500m),logLik(pres.1km),logLik(pres.2km))
 plot(scales,ll, ylab="Log-likelihood", main = "combined")
 lines(scales,ll)
-
-n.ll<-c(logLik(n.pres.500m),logLik(n.pres.1km),logLik(n.pres.2km))
-plot(scales,n.ll, ylab="Log-likelihood", main = "nymph")
-lines(scales,n.ll)
-
-a.ll<-c(logLik(a.pres.500m),logLik(a.pres.1km),logLik(a.pres.2km))
-plot(scales,a.ll, ylab="Log-likelihood", main = "adult")
-lines(scales,a.ll)
 ```
 these results indicate that 1km is the best scale for both nymphs and adults 
 
 
-## test for spatial autocorrelation 
+### 4.3: test for spatial autocorrelation 
+
+first, calculate the distance matrix 
+```{r}
+coords <- cbind(aa_combined$Easting, aa_combined$Northing)
+colnames(coords) <- c("x", "y")
+distmat <- as.matrix(dist(coords))
+maxdist <- 2/3 * max(distmat) # this is the maximum distance to consider in correlogram/variogram
+```
+
+Method #1: correlograms (smoothed) in ncf: 
+here we can use splines with bootstrapping
+
+```{r}
+library(ncf)
+#spline correlogram with 95% pointwise bootstrap confidence intervals and maximum lag distance of 10 km
+spline.corr <- spline.correlog(x = aa_combined$Easting, y = aa_combined$Northing, z = aa_combined$total, 
+                               xmax = maxdist, resamp=1000, type="boot") ##the number of resamples for the bootstrap or the null distribution
+
+summary(spline.corr)
+#plot shows point-wise 95% CIs from bootstrap:
+plot(spline.corr)
+```
+the 95% CI overlaps 0 for all distances, indicating no evidence of spatial autocorrelation 
+
+Method #2: correlograms in spdep 
+
+```{r}
+library(spdep)
+# first, calculate Moran's i global statistic
+
+#make a matrix with coordinates, needed for spdep
+#make a neighborhood list to include. d1 is minimum distance, d2 is max distance
+neigh <- dnearneigh(x=coords, d1=0, d2=20000, longlat=F) 
+
+#plot the neighorhood
+plot(neigh,coordinates(coords))
+
+#create weights for the neighbors. We will use row-standardized weights (W); i.e., rows sum to 1
+#zero.policy allows the function to work if there are points that don't fall into this category 
+#(i.e., if a point has no neighbors within 0-2 meters, as above)
+wts <- nb2listw(neighbours=neigh, style='W', zero.policy=T) #default style W
+
+#moran's i with a Monte Carlo permutation test (similar to the permutations with variograms above
+#which is useful for 0/1 data
+mor.mc <- moran.mc(x=aa_combined$total, listw=wts, nsim=999, zero.policy=T) #monte carlo
+mor.norm <- moran.test(x=aa_combined$total, listw=wts, randomisation=F, zero.policy=T)#normal approximation
+
+mor.mc  #no spatial autocorrelation
+mor.norm  #no spatial autocorrelation 
+```
+both methods generate similar estimates of Moran's I (-0.05) and non-significant p-values (0.3-0.4)
+we can accept the null hypothesis that there is no spatial autocorrelation
+
+
+### 4.4 generalize linear models (GLMs)! 
+
+```{r}
+glm0 <- glm(total ~ 1, data = aa_combined, family = "poisson")
+glm1 <- glm(total ~ Forest1km , data = aa_combined, family = "poisson")
+glm2 <- glm(total ~ Forested_Manicured, data = aa_combined, family = "poisson")
+glm3 <- glm(total ~ Forest1km + Forested_Manicured, data = aa_combined, family = "poisson")
+glm4 <- glm(total ~ Forest1km * Forested_Manicured, data = aa_combined, family = "poisson")
+
+### compare AICc of models 
+AICc(glm0, glm1, glm2, glm3, glm4)
+summary(glm4)
+
+stargazer(glm4, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+glm4 is best model
+
+now, check model assumptions 
+```{r}
+#plot pearon residuals
+e1 <- resid(glm4, type = "pearson")
+f1 <- fitted(glm4)
+eta <- predict(glm4, type = "link")
+
+plot(f1, e1, xlab = "fitted values", ylab = "pearson resid")
+abline(h=0, v=0, lty=2)
+
+plot(eta, e1, xlab = "eta", ylab = "pearson resid")
+abline(h=0, v=0, lty=2)
+
+plot(aa_combined$Forest1km, e1, xlab = "forest cover", ylab = "pearson resid")
+abline(h=0, v=0, lty=2)
+
+### well first let's measure dispersion 
+n <- nrow(aa_combined)
+p <- length(coef(glm4))
+dispersion <- sum(e1^2)/n-p
+dispersion
+```
+there is overdispersion so a poisson is NOT appropriate 
+
+is a negative binomial distribution appropriate? 
+```{r}
+nb.glm0 <- glm.nb(total ~ 1, data = aa_combined)
+nb.glm1 <- glm.nb(total ~ Forest1km , data = aa_combined)
+nb.glm2 <- glm.nb(total ~ Forested_Manicured, data = aa_combined)
+nb.glm3 <- glm.nb(total ~ Forest1km + Forested_Manicured, data = aa_combined)
+nb.glm4 <- glm.nb(total ~ Forest1km * Forested_Manicured, data = aa_combined)
+nb.glm5 <- glm.nb(total ~ PC1 , data = aa_combined)
+nb.glm6 <- glm.nb(total ~ PC1 + Forested_Manicured, data = aa_combined)
+nb.glm7 <- glm.nb(total ~ PC1 * Forested_Manicured, data = aa_combined)
+
+### compare AICc of models 
+AICc(nb.glm0, nb.glm1, nb.glm2, nb.glm3, nb.glm4, nb.glm5, nb.glm6, nb.glm7)
+summary(nb.glm4)
+
+stargazer(nb.glm3, nb.glm4, nb.glm6, nb.glm7, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+
+```
+lowest AICc does not include the interaction term - but many models are within 2 delta AIC 
+lowest AIC does include the interaction term **use model with interaction** 
+
+check for overdispersion
+```{r}
+e4 <- resid(nb.glm4, type = "pearson")
+n <- nrow(aa_combined)
+p <- length(coef(nb.glm4)) + 1
+dispersion <- sum(e4^2)/(n-p)
+dispersion
+
+e7 <- resid(nb.glm7, type = "pearson")
+n <- nrow(aa_combined)
+p <- length(coef(nb.glm7)) + 1
+dispersion <- sum(e7^2)/(n-p)
+dispersion
+```
+
+negative binomial has much lower AIC and more appropriate dispersion stat 
+
+now for the validation steps - forest at 1km first 
+```{r}
+#plot pearson residuals
+par(mfrow = c(2, 2), mar = c(5,5,2,2))
+E4 <- resid(nb.glm4, type = "pearson")
+F4 <- fitted(nb.glm4, type = "response")
+plot(x = F4, 
+     y = E4,
+     xlab = "Fitted values",
+     ylab = "Residuals",
+     cex.lab = 1.5)
+abline(0, 0, lty = 2)
+
+plot(cooks.distance(nb.glm4),
+     type = "h",
+     ylim=c(0,1),cex.lab = 1.5)
+abline(h=1)
+
+#Independence:
+plot(x = aa_combined$Forest1km, 
+     y = E4,
+     xlab = "forest cover",
+     ylab = "Pearson residuals", cex.lab = 1.5)
+abline(0,0, lty=2)
+
+boxplot(E4 ~ Forested_Manicured, 
+        data = aa_combined, 
+        xlab = "type",
+        ylab = "Pearson residuals",
+        cex.lab = 1.5)
+```
+
+```{r}
+library(lattice)
+xyplot(E4 ~ Forest1km | factor(Forested_Manicured), 
+       data = aa_combined,
+       xlab = list(label = "forest cover", cex = 1.5),
+       ylab = list(label = "Pearson residuals", cex = 1.5),
+       panel = function(x,y){
+         panel.points(x,y, col = 1, pch = 16, cex = 0.7)
+         panel.loess(x,y, col = 1, lwd = 2)
+         panel.abline(h=0)
+       })
+```
+
+now for the validation steps - PC1
+```{r}
+#plot pearson residuals
+par(mfrow = c(2, 2), mar = c(5,5,2,2))
+E7 <- resid(nb.glm7, type = "pearson")
+F7 <- fitted(nb.glm7, type = "response")
+plot(x = F7, 
+     y = E7,
+     xlab = "Fitted values",
+     ylab = "Residuals",
+     cex.lab = 1.5)
+abline(0, 0, lty = 2)
+
+plot(cooks.distance(nb.glm7),
+     type = "h",
+     ylim=c(0,1),cex.lab = 1.5)
+abline(h=1)
+
+#Independence:
+plot(x = aa_combined$PC1, 
+     y = E7,
+     xlab = "PC1",
+     ylab = "Pearson residuals", cex.lab = 1.5)
+abline(0,0, lty=2)
+
+boxplot(E7 ~ Forested_Manicured, 
+        data = aa_combined, 
+        xlab = "type",
+        ylab = "Pearson residuals",
+        cex.lab = 1.5)
+
+```
+
+```{r}
+library(lattice)
+xyplot(E7 ~ PC1 | factor(Forested_Manicured), 
+       data = aa_combined,
+       xlab = list(label = "PC1", cex = 1.5),
+       ylab = list(label = "Pearson residuals", cex = 1.5),
+       panel = function(x,y){
+         panel.points(x,y, col = 1, pch = 16, cex = 0.7)
+         panel.loess(x,y, col = 1, lwd = 2)
+         panel.abline(h=0)
+       })
+```
+
+optional: possible removal of outliers 
+```{r}
+#  remove the top outlier (12) to have a look
+top_x_outlier <- 2
+cooksd <- cooks.distance(nb.glm3)
+influential <- as.numeric(names(sort(cooksd, decreasing = TRUE)[1:top_x_outlier]))
+
+aa_screen <- aa_combined[-influential, ]
+
+plot1 <- ggplot(data = aa_combined, aes(x = Forest1km, y = total)) +
+  geom_point(aes(col = Forested_Manicured)) + 
+  geom_smooth(method = lm) +
+  xlim(0, 1) + 
+  ggtitle("Before")
+plot2 <- ggplot(data = aa_screen, aes(x = Forest1km, y = total)) +
+  geom_point(aes(col = Forested_Manicured)) + 
+  geom_smooth(method = lm) +
+  xlim(0, 1) + 
+  ggtitle("After")
+
+gridExtra::grid.arrange(plot1, plot2, ncol=2)
+
+#### compare model results for full and screened glm 
+nb.glm5 <- glm.nb(total ~ Forest1km + Forested_Manicured, data = aa_screen)
+
+stargazer(nb.glm3, nb.glm5, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+removing site changes the estimates but not if variables are significant or not 
+
+
+now let's plot the models - two methods for the same plot... starting with the forest cover 1km model
+```{r}
+#INTERACTION MODEL 
+Inter.Total <- effect('Forest1km*Forested_Manicured', nb.glm4,
+                      xlevels=list(Forest1km = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9)),
+                      se=TRUE, confidence.level=.95, typical=mean)
+#Put data in data frame 
+Inter.Total<-as.data.frame(Inter.Total)
+
+#Plot!
+Plot.Total<-ggplot(data=Inter.Total, aes(x=Forest1km, y=fit, group=Forested_Manicured))+
+  #coord_cartesian(ylim = c(0,11))+  
+  geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("A.americanum abundance")+
+  xlab("proportion of forest cover")+
+  #scale_y_log10() +  ## may or may not want to use a log axis.... 
+  #ggtitle("Forest1km and Land Type as Predictors of tick count")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.position = "none") +
+  scale_color_discrete(name = "Environment Type", labels = c("natural", "manicured")) 
+  
+
+Plot.Total.Log<-ggplot(data=Inter.Total, aes(x=Forest1km, y=fit, group=Forested_Manicured))+
+  #coord_cartesian(ylim = c(0,11))+  
+  geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("A.americanum abundance")+
+  xlab("proportion of forest cover")+
+  scale_y_log10() +  ## may or may not want to use a log axis.... 
+  #ggtitle("Forest1km and Land Type as Predictors of tick count")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.position = c(0.3,0.8)) +
+  scale_color_discrete(name = "Environment Type", labels = c("natural", "manicured"))
+
+library(gridExtra)
+grid.arrange(Plot.Total, Plot.Total.Log, ncol = 2)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(46.18-21.22)/46.18
+```
+
+
+now let's plot the models - two methods for the same plot... starting with the PC1 1km model
+```{r}
+#INTERACTION MODEL 
+Inter.Total <- effect('PC1*Forested_Manicured', nb.glm7,
+                      xlevels=list(PC1 = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3)),
+                      se=TRUE, confidence.level=.95, typical=mean)
+
+#Put data in data frame 
+Inter.Total<-as.data.frame(Inter.Total)
+
+#Plot!
+Plot.Total<-ggplot(data=Inter.Total, aes(x=PC1, y=fit, group=Forested_Manicured))+
+  #coord_cartesian(ylim = c(0,11))+  
+  geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("A.americanum abundance")+
+  xlab("PC1")+
+  #ggtitle("PC1 and Land Type as Predictors of tick count")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.position = "none") +
+  scale_color_discrete(name = "Mgmt Type", labels = c("natural", "manicured"))
+
+Plot.Total.Log<-ggplot(data=Inter.Total, aes(x=PC1, y=fit, group=Forested_Manicured))+
+  #coord_cartesian(ylim = c(0,11))+  
+  geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("A.americanum abundance")+
+  xlab("PC1")+
+  scale_y_log10() +  ## may or may not want to use a log axis.... 
+  #ggtitle("PC1 and Land Type as Predictors of tick count")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+         legend.position = c(0.3,0.8)) +
+  scale_color_discrete(name = "Environment Type", labels = c("natural", "manicured"))
+
+grid.arrange(Plot.Total, Plot.Total.Log, ncol = 2)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(44.22-21.18)/44.22
+```
+
+
+## Part 5 - Ixodes scapularis 
+
+### Part 5.1: data prep
+
+join the covariate data to the Ixodes scapularis data 
+```{r}
+is_var <- is_allvisits %>%
+  left_join(covar)
+head(is_var)
+
+is_combined <- is_allvisits %>%
+  group_by(Site_ID) %>%
+  summarise(total = sum(total),
+            density = sum(density)) %>%
+  left_join(covar)
+head(is_combined)
+
+is_combined$Forested_Manicured <- as.factor(is_combined$Forested_Manicured)
+```
+
+
+### 5.2: Test for spatial "scale of effect" and spatial autocorrelation 
+test for "scale of effect" using a buffer based approach 
+for the final go i should probably derive more scales but for now i will work with what there is 
+
+```{r}
+pres.500m<-glm(total ~ Forest500m, family = "poisson", data = is_combined)
+pres.1km<-glm(total ~ Forest1km, family = "poisson", data = is_combined)
+pres.2km<-glm(total ~ Forest2km, family = "poisson", data = is_combined)
+
+comb.mod<-model.sel(pres.500m, pres.1km, pres.2km)
+comb.mod
+
+scales<-c(500,1000,2000)
+
+ll<-c(logLik(pres.500m),logLik(pres.1km),logLik(pres.2km))
+plot(scales,ll, ylab="Log-likelihood", main = "combined")
+lines(scales,ll)
+```
+2km is best scales tested so far....for IS 
+
+### 5.3: test for spatial autocorrelation 
+
+first, calculate the distance matrix 
+```{r}
+coords <- cbind(is_combined$Easting, aa_combined$Northing)
+colnames(coords) <- c("x", "y")
+distmat <- as.matrix(dist(coords))
+maxdist <- 2/3 * max(distmat) # this is the maximum distance to consider in correlogram/variogram
+```
+
+Method #1: correlograms (smoothed) in ncf: 
+here we can use splines with bootstrapping
+```{r}
+library(ncf)
+#spline correlogram with 95% pointwise bootstrap confidence intervals and maximum lag distance of 10 km
+spline.corr <- spline.correlog(x = is_combined$Easting, y = is_combined$Northing, z = is_combined$total, 
+                               xmax = maxdist, resamp=1000, type="boot") ##the number of resamples for the bootstrap or the null distribution
+
+summary(spline.corr)
+#plot shows point-wise 95% CIs from bootstrap:
+plot(spline.corr)
+```
+no evidence of spatial autocorrelation 
+
+Method #2: correlograms in spdep 
+```{r}
+library(spdep)
+# first, calculate Moran's i global statistic
+
+#make a matrix with coordinates, needed for spdep
+#make a neighborhood list to include. d1 is minimum distance, d2 is max distance
+neigh <- dnearneigh(x=coords, d1=0, d2=20000, longlat=F) 
+
+#plot the neighorhood
+plot(neigh,coordinates(coords))
+
+#create weights for the neighbors. We will use row-standardized weights (W); i.e., rows sum to 1
+#zero.policy allows the function to work if there are points that don't fall into this category 
+#(i.e., if a point has no neighbors within 0-2 meters, as above)
+wts <- nb2listw(neighbours=neigh, style='W', zero.policy=T) #default style W
+
+#moran's i with a Monte Carlo permutation test (similar to the permutations with variograms above
+#which is useful for 0/1 data
+mor.mc <- moran.mc(x=is_combined$total, listw=wts, nsim=999, zero.policy=T) #monte carlo
+mor.norm <- moran.test(x=is_combined$total, listw=wts, randomisation=F, zero.policy=T)#normal approximation
+
+mor.mc  #no spatial autocorrelation
+mor.norm  #no spatial autocorrelation 
+```
+both methods generate similar estimates of Moran's I (-0.05) and non-significant p-values (>0.4)
+we can accept the null hypothesis that there is no spatial autocorrelation
+
+
+### 5.4 generalize linear models (GLMs)! 
+```{r}
+glm0 <- glm(total ~ 1, data = is_combined, family = "poisson")
+glm1 <- glm(total ~ Forest2km , data = is_combined, family = "poisson")
+glm2 <- glm(total ~ Forested_Manicured, data = is_combined, family = "poisson")
+glm3 <- glm(total ~ Forest2km + Forested_Manicured, data = is_combined, family = "poisson")
+glm4 <- glm(total ~ Forest2km * Forested_Manicured, data = is_combined, family = "poisson")
+
+### compare AICc of models 
+AICc(glm0, glm1, glm2, glm3, glm4)
+summary(glm4)
+
+stargazer(glm3, glm4, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+model without the interaction term has lowest AIC and AICc 
+
+now, check model assumptions 
+```{r}
+#plot pearon residuals
+e1 <- resid(glm3, type = "pearson")
+f1 <- fitted(glm3)
+eta <- predict(glm3, type = "link")
+
+plot(f1, e1, xlab = "fitted values", ylab = "pearson resid")
+abline(h=0, v=0, lty=2)
+
+plot(eta, e1, xlab = "eta", ylab = "pearson resid")
+abline(h=0, v=0, lty=2)
+
+plot(aa_combined$Forest1km, e1, xlab = "forest cover", ylab = "pearson resid")
+abline(h=0, v=0, lty=2)
+
+### well first let's measure dispersion 
+n <- nrow(aa_combined)
+p <- length(coef(glm3))
+dispersion <- sum(e1^2)/n-p
+dispersion
+```
+there is overdispersion... try out nb glm 
+
+
+does a negative binomial distribution work then? 
+```{r}
+nb.glm0 <- glm.nb(total ~ 1, data = is_combined)
+nb.glm1 <- glm.nb(total ~ Forest2km , data = is_combined)
+nb.glm2 <- glm.nb(total ~ Forested_Manicured, data = is_combined)
+nb.glm3 <- glm.nb(total ~ Forest2km + Forested_Manicured, data = is_combined)
+nb.glm4 <- glm.nb(total ~ Forest2km * Forested_Manicured, data = is_combined)
+nb.glm5 <- glm.nb(total ~ PC1 , data = is_combined)
+nb.glm6 <- glm.nb(total ~ PC1 + Forested_Manicured, data = is_combined)
+nb.glm7 <- glm.nb(total ~ PC1 * Forested_Manicured, data = is_combined)
+
+### compare AICc of models 
+AICc(nb.glm0, nb.glm1, nb.glm2, nb.glm3, nb.glm4, nb.glm5, nb.glm6, nb.glm7)
+#summary(nb.glm4)
+
+stargazer(nb.glm2, nb.glm3, nb.glm4, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+
+stargazer(nb.glm5, nb.glm6, nb.glm7, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+top model (using AIC) includes both variable but not the interaction term... both Forest2km and PC1 good 
+**use model WITHOUT interaction** 
+
+forest2km model 
+check for overdispersion
+```{r}
+e4 <- resid(nb.glm3, type = "pearson")
+n <- nrow(is_combined)
+p <- length(coef(nb.glm3)) +1
+dispersion <- sum(e4^2)/(n-p)
+dispersion
+```
+negative binomial has much lower AIC and more appropriate dispersion stat
+
+now for the validation steps 
+```{r}
+#plot pearson residuals
+par(mfrow = c(2, 2), mar = c(5,5,2,2))
+E5 <- resid(nb.glm3, type = "pearson")
+F5 <- fitted(nb.glm3, type = "response")
+plot(x = F5, 
+     y = E5,
+     xlab = "Fitted values",
+     ylab = "Residuals",
+     cex.lab = 1.5)
+abline(0, 0, lty = 2)
+
+plot(cooks.distance(nb.glm3),
+     type = "h",
+     ylim=c(0,1),cex.lab = 1.5)
+abline(h=1)
+
+#Independence:
+plot(x = is_combined$Forest2km, 
+     y = E5,
+     xlab = "Forest Cover",
+     ylab = "Pearson residuals", cex.lab = 1.5)
+abline(0,0, lty=2)
+
+boxplot(E5 ~ Forested_Manicured, 
+        data = is_combined, 
+        xlab = "type",
+        ylab = "Pearson residuals",
+        cex.lab = 1.5)
+```
+
+
+```{r}
+library(lattice)
+xyplot(E5 ~ Forest2km | factor(Forested_Manicured), 
+       data = is_combined,
+       xlab = list(label = "forest cover", cex = 1.5),
+       ylab = list(label = "Pearson residuals", cex = 1.5),
+       panel = function(x,y){
+         panel.points(x,y, col = 1, pch = 16, cex = 0.7)
+         panel.loess(x,y, col = 1, lwd = 2)
+         panel.abline(h=0)
+       })
+```
+
+now let's plot the models: 
+```{r}
+df1 <- expand.grid(Forest2km = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9), Forested_Manicured = c("Forest","Manicured"), abundance = NA)
+
+df1$abundance <- predict(nb.glm3, newdata = data.frame(df1), type = "response")
+
+p1 <- ggplot(df1, aes(x=Forest2km, y=abundance, group = Forested_Manicured)) + 
+         geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("Ixodes scapularis abundance")+
+  xlab("% Forest within 2km")+
+  #scale_y_log10() + 
+  #ggtitle("Forest2km and Land Type as Predictors of tick count - all sites")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.position = "none") +
+  scale_fill_grey()
+
+p2 <- ggplot(df1, aes(x=Forest2km, y=abundance, group = Forested_Manicured)) + 
+         geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("Ixodes scapularis abundance")+
+  xlab("% Forest within 2km")+
+  scale_y_log10() + 
+  #ggtitle("Forest2km and Land Type as Predictors of tick count - all sites")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.position = c(0.3,0.8)) +
+  scale_fill_grey() +
+  scale_color_discrete(name = "Environment Type", labels = c("natural", "manicured"))
+
+grid.arrange(p1, p2, ncol = 2)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(32.29-17.71)/32.29 
+```
 
 
 
+PC1 model 
+check for overdispersion
+```{r}
+e6 <- resid(nb.glm6, type = "pearson")
+n <- nrow(is_combined)
+p <- length(coef(nb.glm6)) +1
+dispersion <- sum(e6^2)/(n-p)
+dispersion
+```
+negative binomial has much lower AIC and more appropriate dispersion stat
 
+now for the validation steps 
+```{r}
+#plot pearson residuals
+par(mfrow = c(2, 2), mar = c(5,5,2,2))
+E6 <- resid(nb.glm6, type = "pearson")
+F6 <- fitted(nb.glm6, type = "response")
+plot(x = F6, 
+     y = E6,
+     xlab = "Fitted values",
+     ylab = "Residuals",
+     cex.lab = 1.5)
+abline(0, 0, lty = 2)
 
+plot(cooks.distance(nb.glm6),
+     type = "h",
+     ylim=c(0,1),cex.lab = 1.5)
+abline(h=1)
 
+#Independence:
+plot(x = is_combined$Forest2km, 
+     y = E6,
+     xlab = "PC1",
+     ylab = "Pearson residuals", cex.lab = 1.5)
+abline(0,0, lty=2)
+
+boxplot(E6 ~ Forested_Manicured, 
+        data = is_combined, 
+        xlab = "type",
+        ylab = "Pearson residuals",
+        cex.lab = 1.5)
+```
+
+```{r}
+xyplot(E6 ~ PC1 | factor(Forested_Manicured), 
+       data = is_combined,
+       xlab = list(label = "PC1", cex = 1.5),
+       ylab = list(label = "Pearson residuals", cex = 1.5),
+       panel = function(x,y){
+         panel.points(x,y, col = 1, pch = 16, cex = 0.7)
+         panel.loess(x,y, col = 1, lwd = 2)
+         panel.abline(h=0)
+       })
+``` 
+
+now let's plot the models: 
+```{r}
+df1 <- expand.grid(PC1 = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Forested_Manicured = c("Forest","Manicured"), abundance = NA)
+
+df1$abundance <- predict(nb.glm6, newdata = data.frame(df1), type = "response")
+
+p3 <- ggplot(df1, aes(x=PC1, y=abundance, group = Forested_Manicured)) + 
+         geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("Ixodes scapularis abundance")+
+  xlab("PC1")+
+  #scale_y_log10() + 
+  #ggtitle("PC1 and Land Type as Predictors of tick count - all sites")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.position = "none") +
+  scale_fill_grey()
+
+p4 <- ggplot(df1, aes(x=PC1, y=abundance, group = Forested_Manicured)) + 
+         geom_line(size=2, aes(color=Forested_Manicured))+
+  ylab("Ixodes scapularis abundance")+
+  xlab("PC1")+
+  scale_y_log10() + 
+  #ggtitle("PC1 and Land Type as Predictors of tick count - all sites")+
+  theme_bw()+ 
+  theme(panel.grid.major=element_blank(),
+        panel.grid.minor=element_blank(),
+        legend.position = c(0.3,0.8)) +
+  scale_fill_grey() +
+  scale_color_discrete(name = "Environment Type", labels = c("natural", "manicured"))
+
+grid.arrange(p3, p4, ncol = 2)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(36.41-18.54)/36.41 
+```
 

@@ -414,8 +414,9 @@ p <- length(coef(nb.glm7)) + 1
 dispersion <- sum(e7^2)/(n-p)
 dispersion
 ```
-
 negative binomial has much lower AIC and more appropriate dispersion stat 
+less dispersion using PC1
+
 
 now for the validation steps - forest at 1km first 
 ```{r}
@@ -461,6 +462,57 @@ xyplot(E4 ~ Forest1km | factor(Forested_Manicured),
          panel.abline(h=0)
        })
 ```
+
+another way to code residual plots - this code is much cleaner that above...
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm4)
+```
+site 12 and 17 could be problimatic... 
+
+test for spatial autocorrelation (Moran's I)
+
+Before we interpret the models, let’s check whether the assumption of independent residuals is violated by spatial autocorrelation in the residuals.
+To calculate and test Moran’s I, we first need to define neighbours and spatial weights.
+There are many ways to define weights  
+Will use a Generalized Least Squares (GLS) approach
+
+start by defining weights matrix using several graph types - do i need to test more? 
+```{r}
+nb.gab <- spdep::graph2nb(spdep::gabrielneigh(coords), sym = TRUE) 
+plot(nb.gab, coords)
+listw.gab <- spdep::nb2listw(nb.gab)
+
+nb.rel <- spdep::graph2nb(spdep::relativeneigh(coords), sym = TRUE) 
+plot(nb.rel, coords)
+listw.rel <- spdep::nb2listw(nb.rel)
+
+#distance-based neighbors 
+library(spdep)
+neigh <- dnearneigh(x=coords, d1=0, d2=0.5*maxdist, longlat = F)
+plot(neigh, coords)
+listw.neigh <- nb2listw(neigh, style = "W")
+```
+
+
+test for spatial autocorrelation in explainatory and predictor variables
+```{r}
+spdep::moran.test(aa_combined$total, listw.gab)
+spdep::moran.test(aa_combined$Forest1km, listw.gab)
+spdep::moran.test(aa_combined$PC1, listw.gab)
+```
+
+
+
+now test model for autocorrelation in the residuals 
+```{r}
+spdep::lm.morantest(nb.glm4, listw.gab) 
+spdep::lm.morantest(nb.glm4, listw.rel) 
+spdep::lm.morantest(nb.glm4, listw.neigh) 
+
+```
+no significant spatial autocorrelation in residuals... cool! 
+
 
 now for the validation steps - PC1
 ```{r}
@@ -508,6 +560,23 @@ xyplot(E7 ~ PC1 | factor(Forested_Manicured),
        })
 ```
 
+another way to code residual plots - this code is much cleaner that above...
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm7)
+```
+again sites 12 and 17 could be problematic... 
+
+
+```{r}
+spdep::lm.morantest(nb.glm7, listw.gab) 
+spdep::lm.morantest(nb.glm7, listw.rel) 
+spdep::lm.morantest(nb.glm7, listw.neigh) 
+
+```
+again no spatial autocorrelation! woo!  
+
+
 optional: possible removal of outliers 
 ```{r}
 #  remove the top outlier (12) to have a look
@@ -540,6 +609,7 @@ stargazer(nb.glm3, nb.glm5, type = "text",
           header=FALSE)
 ```
 removing site changes the estimates but not if variables are significant or not 
+
 
 
 now let's plot the models - two methods for the same plot... starting with the forest cover 1km model
@@ -860,7 +930,294 @@ xyplot(E5 ~ Forest2km | factor(Forested_Manicured),
        })
 ```
 
-now let's plot the models: 
+try this cleaner way to plot model assumptions 
+
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm3)
+```
+sites 2 and 13 could be problematic... 
+
+test for spatial autocorrelation in explainatory and predictor variables - gabrial
+```{r}
+spdep::moran.test(is_combined$total, listw.gab)
+spdep::moran.test(is_combined$Forest1km, listw.gab)
+spdep::moran.test(is_combined$PC1, listw.gab)
+```
+yes there is autocorrelation in the response and predictor variables (using the gabriel weights)
+
+test for spatial autocorrelation in explainatory and predictor variables - relative
+```{r}
+spdep::moran.test(is_combined$total, listw.rel)
+spdep::moran.test(is_combined$Forest1km, listw.rel)
+spdep::moran.test(is_combined$PC1, listw.rel)
+```
+yes there is autocorrelation in the response and predictor variables (using the relative weights)
+
+test for spatial autocorrelation in explainatory and predictor variables - neighbor
+```{r}
+spdep::moran.test(is_combined$total, listw.neigh)
+spdep::moran.test(is_combined$Forest1km, listw.neigh)
+spdep::moran.test(is_combined$PC1, listw.neigh)
+```
+there is autocorrelation in the predictor variables, but NOT response (using the neighborhood weights)
+
+
+now test model for autocorrelation in the residuals - Forest2km
+```{r}
+spdep::lm.morantest(nb.glm3, listw.gab) 
+spdep::lm.morantest(nb.glm3, listw.rel) 
+spdep::lm.morantest(nb.glm3, listw.neigh) 
+
+```
+there is spatial autocorrelation in model residuals!!! 
+need to rework the Forest2km models...
+
+now test model for autocorrelation in the residuals - PC1
+```{r}
+spdep::lm.morantest(nb.glm6, listw.gab) 
+spdep::lm.morantest(nb.glm6, listw.rel) 
+spdep::lm.morantest(nb.glm6, listw.neigh) 
+
+```
+there is spatial autocorrelation in model residuals!!! 
+need to rework the PC1 models...
+
+
+try a regular gls 
+```{r}
+gls0 <- gls(total ~ 1, data = is_combined, method = "REML")
+gls1 <- gls(total ~ Forest2km , data = is_combined, method = "REML")
+gls2 <- gls(total ~ Forested_Manicured, data = is_combined, method = "REML")
+gls3 <- gls(total ~ Forest2km + Forested_Manicured, data = is_combined, method = "REML")
+gls4 <- gls(total ~ Forest2km * Forested_Manicured, data = is_combined, method = "REML")
+gls5 <- gls(total ~ PC1 , data = is_combined, method = "REML")
+gls6 <- gls(total ~ PC1 + Forested_Manicured, data = is_combined, method = "REML")
+gls7 <- gls(total ~ PC1 * Forested_Manicured, data = is_combined, method = "REML")
+
+### compare AICc of models 
+AICc(gls0, gls1, gls2, gls3, gls4, gls5, gls6, gls7)
+```
+okay, so with this gls4 and gls7 have lowest AICc
+
+
+this doesn't seem to plot the residuals properly... 
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(gls4)
+plot(gls7)
+```
+
+check semivariance - should be a horizontal line at 1 
+```{r}
+semivario.gls4 <- nlme::Variogram(gls4, form = ~ Easting + Northing, resType = "normalized")
+plot(semivario.gls4)
+```
+
+add correlation structure to models 
+```{r}
+mod.corExp <- update(gls4, correlation = nlme::corExp(form = ~ Easting + Northing, nugget=T))
+mod.corGaus <- update(gls4, correlation = nlme::corGaus(form = ~ Easting + Northing, nugget=T))
+mod.corSpher <- update(gls4, correlation = nlme::corSpher(form = ~ Easting + Northing, nugget=T))
+mod.corRatio <- update(gls4, correlation = nlme::corRatio(form = ~ Easting + Northing, nugget=T))
+#mod.corLin <- update(gls4, correlation = nlme::corLin(form = ~ Easting + Northing, nugget=T))
+
+MuMIn::model.sel(gls4, mod.corExp, mod.corGaus, mod.corSpher, mod.corRatio)     
+```
+
+We refit the best model with maximum likelihood to test the fixed effects
+```{r}
+gls4.ML <- gls(total ~ Forest2km * Forested_Manicured, data = is_combined, method = "ML", correlation = nlme::corRatio(form = ~ Easting + Northing, nugget=T))
+
+car::Anova(gls4.ML)
+```
+
+```{r}
+plot(gls4.ML)
+qqnorm(gls4.ML)
+```
+
+try a glm with glmmTMB - start with a basic negative binomial GLM 
+
+```{r}
+library(glmmTMB)
+library(bbmle)
+
+tmb.nb0 <- glmmTMB(total ~ 1, data = is_combined, family = nbinom2)
+tmb.nb1 <- glmmTMB(total ~ Forest2km , data = is_combined, family = nbinom2)
+tmb.nb2 <- glmmTMB(total ~ Forested_Manicured, data = is_combined, family = nbinom2)
+tmb.nb3 <- glmmTMB(total ~ Forest2km + Forested_Manicured, data = is_combined, family = nbinom2)
+tmb.nb4 <- glmmTMB(total ~ Forest2km * Forested_Manicured, data = is_combined, family = nbinom2)
+tmb.nb5 <- glmmTMB(total ~ PC1 , data = is_combined, family = nbinom2)
+tmb.nb6 <- glmmTMB(total ~ PC1 + Forested_Manicured, data = is_combined, family = nbinom2)
+tmb.nb7 <- glmmTMB(total ~ PC1 * Forested_Manicured, data = is_combined, family = nbinom2)
+
+AICtab(tmb.nb0, tmb.nb1, tmb.nb2, tmb.nb3, tmb.nb4, tmb.nb5, tmb.nb6, tmb.nb7)
+```
+similar model results to glm.nb 
+
+
+now add it spatial autocorrelation 
+```{r}
+# fitst we need to create a numeric factor recording the coordinates of the sampled locations
+is_combined$pos <- numFactor(scale(is_combined$Easting), scale(is_combined$Northing))
+# use Site ID dummy group factor to be used as a random term
+
+tmb.nb0 <- glmmTMB(total ~ 1 + mat(pos + 0 |Site_ID), data = is_combined, family = nbinom2)
+tmb.nb1 <- glmmTMB(total ~ Forest2km + mat(pos + 0 |Site_ID), data = is_combined, family = nbinom2)
+tmb.nb2 <- glmmTMB(total ~ Forested_Manicured + mat(pos + 0 | Site_ID), data = is_combined, family = nbinom2)
+tmb.nb3 <- glmmTMB(total ~ Forest2km + Forested_Manicured + mat(pos + 0 | Site_ID), data = is_combined, family = nbinom2)
+tmb.nb4 <- glmmTMB(total ~ Forest2km * Forested_Manicured + mat(pos + 0 | Site_ID), data = is_combined, family = nbinom2)
+tmb.nb5 <- glmmTMB(total ~ PC1 + mat(pos + 0 | Site_ID), data = is_combined, family = nbinom2)
+tmb.nb6 <- glmmTMB(total ~ PC1 + Forested_Manicured + mat(pos + 0 | Site_ID), data = is_combined, family = nbinom2)
+tmb.nb7 <- glmmTMB(total ~ PC1 * Forested_Manicured + mat(pos + 0 | Site_ID), data = is_combined, family = nbinom2)
+
+AICtab(tmb.nb0, tmb.nb1, tmb.nb2, tmb.nb3, tmb.nb4, tmb.nb5, tmb.nb6, tmb.nb7)
+```
+
+look at the models that converged
+```{r}
+summary(tmb.nb7)
+summary(tmb.nb5)
+summary(tmb.nb4)
+```
+
+
+check model fit 
+```{r}
+library(DHARMa)
+sims <- simulateResiduals(tmb.nb7)
+plot(sims)
+```
+
+
+
+first try removing outliers from dataset and see if that takes care of spatial autocorrelation 
+optional: possible removal of outliers 
+```{r}
+#  remove the top two outliers to have a look - for nb.glm3 this would be 2 and 13 
+top_x_outlier <- 2
+cooksd <- cooks.distance(nb.glm3)
+influential <- as.numeric(names(sort(cooksd, decreasing = TRUE)[1:top_x_outlier]))
+
+is_screen <- is_combined[-influential, ]
+
+plot1 <- ggplot(data = is_combined, aes(x = Forest2km, y = total)) +
+  geom_point(aes(col = Forested_Manicured)) + 
+  geom_smooth(method = lm) +
+  xlim(0, 1) + 
+  ggtitle("Before")
+plot2 <- ggplot(data = is_screen, aes(x = Forest2km, y = total)) +
+  geom_point(aes(col = Forested_Manicured)) + 
+  geom_smooth(method = lm) +
+  xlim(0, 1) + 
+  ggtitle("After")
+
+gridExtra::grid.arrange(plot1, plot2, ncol=2)
+
+#### compare model results for full and screened glm 
+nb.glm0.reduced <- glm.nb(total ~ 1, data = is_screen)
+nb.glm1.reduced <- glm.nb(total ~ Forest2km , data = is_screen)
+nb.glm2.reduced <- glm.nb(total ~ Forested_Manicured, data = is_screen)
+nb.glm3.reduced <- glm.nb(total ~ Forest2km + Forested_Manicured, data = is_screen)
+nb.glm4.reduced <- glm.nb(total ~ Forest2km * Forested_Manicured, data = is_screen)
+nb.glm5.reduced <- glm.nb(total ~ PC1 , data = is_screen)
+nb.glm6.reduced <- glm.nb(total ~ PC1 + Forested_Manicured, data = is_screen)
+nb.glm7.reduced <- glm.nb(total ~ PC1 * Forested_Manicured, data = is_screen)
+
+### compare AICc of models 
+AICc(nb.glm0.reduced, nb.glm1.reduced, nb.glm2.reduced, nb.glm3.reduced, nb.glm4.reduced, nb.glm5.reduced, nb.glm6.reduced, nb.glm7.reduced)
+
+stargazer(nb.glm3, nb.glm3.reduced, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+
+stargazer(nb.glm6, nb.glm6.reduced, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+plot model residuals
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm3.reduced)
+```
+doesn't really improve... new sites are now outside ranges
+
+
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm6.reduced)
+```
+doesn't really improve... new sites are now outside ranges
+
+
+test for spatial autocorrelation in the top models using the screened data set 
+
+first i need to recreate the spatial weights matrix without the outlier sites 
+
+```{r}
+coords.screen <- coords[-influential, ]
+
+nb.gab.screen <- spdep::graph2nb(spdep::gabrielneigh(coords.screen), sym = TRUE) 
+plot(nb.gab.screen, coords.screen)
+listw.gab.screen <- spdep::nb2listw(nb.gab.screen)
+
+nb.rel.screen <- spdep::graph2nb(spdep::relativeneigh(coords.screen), sym = TRUE) 
+plot(nb.rel.screen, coords.screen)
+listw.rel.screen <- spdep::nb2listw(nb.rel.screen)
+
+#distance-based neighbors 
+neigh.screen <- dnearneigh(x=coords.screen, d1=0, d2=0.5*maxdist, longlat = F)
+plot(neigh.screen, coords.screen)
+listw.neigh.screen <- nb2listw(neigh.screen, style = "W")
+```
+
+
+
+now test model for autocorrelation in the residuals - Forest2km
+```{r}
+spdep::lm.morantest(nb.glm3.reduced, listw.gab.screen) 
+spdep::lm.morantest(nb.glm3.reduced, listw.rel.screen) 
+spdep::lm.morantest(nb.glm3.reduced, listw.neigh.screen) 
+
+```
+there is spatial autocorrelation in model residuals!!! 
+need to rework the Forest2km models...
+
+now test model for autocorrelation in the residuals - PC1
+```{r}
+spdep::lm.morantest(nb.glm6.reduced, listw.gab.screen) 
+spdep::lm.morantest(nb.glm6.reduced, listw.rel.screen) 
+spdep::lm.morantest(nb.glm6.reduced, listw.neigh.screen) 
+
+```
+there is spatial autocorrelation in model residuals!!! 
+need to rework the PC1 models...
+
+
+
+
+
+okay, now try to account for spatial autocorrelation by fitting models with spatially correlated error (GLS) using the package 'nlme'
+
+```{r}
+# original model
+#nb.glm3 <- glm.nb(total ~ Forest2km + Forested_Manicured, data = is_combined)
+
+library(nlme)
+gls1 <- gls(total ~ Forest2km + Forested_Manicured, data = is_combined)
+summary(gls1)
+```
+
+
+
+
+now let's plot the models: REDO THIS WITH MODEL THAT ACCOUNTS FOR SPATIAL AUTOCORRELATION!!! 
 ```{r}
 df1 <- expand.grid(Forest2km = c(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9), Forested_Manicured = c("Forest","Manicured"), abundance = NA)
 

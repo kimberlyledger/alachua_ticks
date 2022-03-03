@@ -2,24 +2,31 @@
 title: "aa_pathogens"
 author: "Kimberly Ledger"
 date: "2/17/2022"
-output: html_document
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
 ---
 
-# This code will explore the pathogens in ticks (mostly Amblyomma americanum) in Alachua Co.
+# *Amblyomma americanum* pathogen analyses
+
+This code will explore the pathogens *Amblyomma americanum* collected in Alachua Co.
 
 Load libraries 
-```{r}
+```{r, message=FALSE}
 library(tidyverse)
 library(ggplot2)
-
+library(lattice)
+library(lme4)
+library(MuMIn)
 #library(car)
 #library(MASS)
 #library(stargazer)
 #library(effects)
 ```
 
-
-Read in raw Alachua County Tick Data -  NEED TO UPDATE WITH CORRECTED gDNA_Sample Id's
+## Part 1: Prepare the data
+Read in raw Alachua County Tick Data
 ```{r}
 ticks <- read.csv("AlachuaTicksAllSites.csv")
 str(ticks)
@@ -34,103 +41,620 @@ str(pathogen)
 Join pathogen results with the raw tick data by the gDNA_Sample and Collection_Sample identities
 
 ```{r}
-#data <- ticks %>%
-#  dplyr::left_join(pathogen, by = c("gDNA_Sample", "Collection_Sample"))
-
 data <- ticks %>%
-  dplyr::left_join(pathogen, by = c("Collection_Sample"))
+  dplyr::left_join(pathogen, by = c("gDNA_Sample", "Collection_Sample"))
 
-data
+#data <- ticks %>%
+#  dplyr::left_join(pathogen, by = c("Collection_Sample"))
+
+head(data)
 ```
 for now there are NA's in the data for any tick sample that was not processed in the lab
 
 verify the data was joined correctly....
-
 ```{r}
-data %>%
-  filter(Babesia_sp == 1)
-
-#data %>%
-#  filter(Borrelia_lonestari == 1)
+tc <- data %>%
+  filter(Theileria_cervi== 1)
 ```
+all good to go except for something is off with Rickettsia amblyommatis.. this data only shows 563 positive but the original spreadsheet indicates 583 positive... moving on for now but will need to fix if we want to run any analyses on R.amblyommatis later
 
-
-Make a summary table of pathogens detected in each tick species 
-
+Make a summary table of microorganisms detected in each tick species 
 ```{r}
 data %>%
   dplyr::select(-c(Visit, Tick_No_Tube)) %>%
   group_by(Species) %>%
-  summarise(across(where(is.integer), sum, na.rm = TRUE))
+  dplyr::summarise(across(where(is.integer), sum, na.rm = TRUE))
 ```
-Okay what PATHOGENIC microorganisms do we have with decent enough sample sizes to run some models?
-**for AA**, Babesia sp Coco (8), Borrelia lonestari (14), Ehrlichia chaffeensis (7), Ehrlichia ewingii (10), Ehrlichia sp. PM (9),  Theileria cervi (48)
-**for IS**, Babesia odocoieli (8)
+
+Okay, what PATHOGENIC microorganisms to humans or domestic animals are presest in *A. americanum*
+
+* Babesia sp Coco (8)
+* Cytauxozoon felis (1)
+* Ehrlichia chaffeensis (7)
+* Ehrlichia ewingii (10)
+* Ehrlichia sp. PM (9) 
+* Rickettsia parkeri (3)
 
 
-Now i want to separate out just the Amblyomma americanum to look at... 
-
+Now i want to separate out just the *Amblyomma americanum* to look at... 
 ```{r}
 aa <- data %>%
-  filter(Species == "AA")
+  filter(Species == "AA") %>%
+  mutate_all(na_if, "")
 head(aa)
-```
-make a table that summarizes AA abundance and pathogen prevalence per site
-```{r}
-aa_path <- aa %>%
-  group_by(Site_ID) %>%
-  summarize(abundance = n(),
-            tested = sum(!is.na(gDNA_Sample.y)),
-            BACO = sum(Babesia_sp_Coco),
-            BACO_prev = BACO/tested,
-            BOLO = sum(Borrelia_lonestari),
-            BOLO_prev = BOLO/tested,
-            EH = sum(Ehrlichia_chaffeensis,Ehrlichia_ewingii,Ehrlichia_sp_PanolaMountain),
-            EH_prev = EH/tested,
-            THCE = sum(Theileria_cervi),
-            THCE_prev = THCE/tested,
-            pos = sum(BACO, BOLO, EH, THCE),
-            pos_prev = pos/tested)
 ```
 
 Read in the covariate data for all 18 sites 
-This site contains information on if the environment type was manicured or natural, the proportion of forest landcover at 500m, 1km, and 2km buffers, and the PC1 and PC2 land use metrics at 1km buffers
-
+This site contains information on if the environment type was manicured or natural, and the forest, PC1 and PC2 landscape buffers
 ```{r}
 covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
 head(covar)
 ```
 
-Join site covariated to AA pathogen summary 
+create columns that indicate the presence or absence of the pathogens/pathogen groups of interest for *Amblyomma americanum*
+
+* all human and domestic animal pathogens
+* all human and domestic animal Ehrlichia sp.
+* *Theileria cervi* - will not be included in this manuscript but could be interesting for something later on...
 
 ```{r}
-aa_path_join <- aa_path %>%
+aa_join <- aa %>%
+  filter(!is.na(gDNA_Sample)) %>%
+  dplyr::select(Site_ID, Babesia_sp_Coco, Babesia_odocoieli, Cytauxozoon_felis, Ehrlichia_chaffeensis, Ehrlichia_ewingii, Ehrlichia_sp_PanolaMountain, Rickettsia_parkeri, Theileria_cervi) %>%
+  mutate(zoo_path = Babesia_sp_Coco + Babesia_odocoieli + Cytauxozoon_felis + Ehrlichia_chaffeensis + Ehrlichia_ewingii + Ehrlichia_sp_PanolaMountain + Rickettsia_parkeri) %>%
+  mutate(zoo_ehr = Ehrlichia_chaffeensis + Ehrlichia_ewingii + Ehrlichia_sp_PanolaMountain) %>%
+  dplyr::select(Site_ID, zoo_path, zoo_ehr, Theileria_cervi) %>%
+  dplyr::left_join(covar, by = "Site_ID")
+
+aa_join$zoo_path[aa_join$zoo_path > 0] <- 1  ## set coinfections to 1 
+aa_join$zoo_ehr[aa_join$zoo_ehr > 0] <- 1  ## set coinfections to 1 
+
+head(aa_join)
+```
+
+now let's plot the relationship of pres/absence of pathogens with PC1 
+```{r}
+#plot(x=aa_join$PC1_500m, y=aa_join$zoo_path)
+xyplot(zoo_path ~ PC1_500m | Field_Type, 
+       data = aa_join)
+
+#plot(x=aa_join$PC1_500m, y=aa_join$zoo_ehr)
+xyplot(zoo_ehr ~ PC1_500m | Field_Type, 
+       data = aa_join)
+
+#plot(x=aa_join$PC1_500m, y=aa_join$Theileria_cervi)
+xyplot(Theileria_cervi~ PC1_500m | Field_Type, 
+       data = aa_join)
+```
+
+#### model presence/absence of any zoonotic pathogen at the individual level
+
+try out mixed-effects GLM w/ binomial distribution - using Site ID as a random effect
+```{r, message=FALSE}
+B0 <- glmer(zoo_path ~ 1 + (1|Site_ID), family = binomial, data = aa_join)
+B1 <- glmer(zoo_path ~ Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+B2 <- glmer(zoo_path ~ PC1_500m + (1|Site_ID), family = binomial, data = aa_join)
+B3 <- glmer(zoo_path ~ PC1_500m + Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+B4 <- glmer(zoo_path ~ PC1_500m * Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+
+AICc(B0,B1,B2,B3,B4)
+```
+
+null model is as good or better than others
+```{r}
+summary(B4)
+```
+
+#### model presence/absence of zoonotic Ehrlichia at the individual level
+
+try out mixed-effects GLM w/ binomial distribution - using Site ID as a random effect
+```{r, message=FALSE}
+E0 <- glmer(zoo_ehr ~ 1 + (1|Site_ID), family = binomial, data = aa_join)
+E1 <- glmer(zoo_ehr ~ Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+E2 <- glmer(zoo_ehr ~ PC1_500m + (1|Site_ID), family = binomial, data = aa_join)
+E3 <- glmer(zoo_ehr ~ PC1_500m + Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+E4 <- glmer(zoo_ehr ~ PC1_500m * Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+
+AICc(E0,E1,E2,E3,E4)
+```
+
+model with lowest AIC includes PC1 and field type, but no interaction
+
+look at the model 
+```{r}
+summary(E3)
+```
+
+#### model presence/absence of Theileria cervi at the individual level
+
+try out mixed-effects GLM w/ binomial distribution - using Site ID as a random effect
+```{r, message=FALSE}
+T0 <- glmer(Theileria_cervi ~ 1 + (1|Site_ID), family = binomial, data = aa_join)
+T1 <- glmer(Theileria_cervi ~ Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+T2 <- glmer(Theileria_cervi ~ PC1_500m + (1|Site_ID), family = binomial, data = aa_join)
+T3 <- glmer(Theileria_cervi ~ PC1_500m + Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+T4 <- glmer(Theileria_cervi ~ PC1_500m * Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+
+AICc(T0,T1,T2,T3,T4)
+```
+
+null model is better 
+
+## try using GLMs for proportional data 
+
+summarize proportion of infected AA with any zoonotic pathogen, ehrlichia, and theileria cervi by site.  
+also add column indicating pres/abs of the pathogen by site 
+
+all zoonotic pathogens
+```{r, message=FALSE}
+aa_zoo <- aa_join %>%
+  group_by(Site_ID, zoo_path) %>%
+  dplyr::summarise(n=n()) %>%
+  pivot_wider(names_from = zoo_path, values_from = n)
+
+colnames(aa_zoo) <- c("Site_ID", "neg", "pos")
+aa_zoo$pos[is.na(aa_zoo$pos)] <- 0
+aa_zoo$sampled <- aa_zoo$neg+aa_zoo$pos
+aa_zoo$prop <- aa_zoo$pos/aa_zoo$sampled
+aa_zoo$pos_site <- 0
+aa_zoo$pos_site[aa_zoo$pos > 0] <- 1 
+  
+aa_zoo[17,] <- list("UG", 0, 0, 0, 0, 0)
+aa_zoo[18,] <- list("GA", 0, 0, 0, 0, 0)
+
+aa_zoo
+```
+
+zoonotic ehrlichia 
+```{r}
+aa_ehr <- aa_join %>%
+  group_by(Site_ID, zoo_ehr) %>%
+  dplyr::summarise(n=n()) %>%
+  pivot_wider(names_from = zoo_ehr, values_from = n)
+
+colnames(aa_ehr) <- c("Site_ID", "neg", "pos")
+aa_ehr$pos[is.na(aa_ehr$pos)] <- 0
+aa_ehr$sampled <- aa_ehr$neg+aa_ehr$pos
+aa_ehr$prop <- aa_ehr$pos/aa_ehr$sampled
+aa_ehr$pos_site <- 0
+aa_ehr$pos_site[aa_ehr$pos > 0] <- 1 
+
+aa_ehr[17,] <- list("UG", 0, 0, 0, 0, 0)
+aa_ehr[18,] <- list("GA", 0, 0, 0, 0, 0)
+
+aa_ehr
+```
+
+theileria cervi
+```{r}
+aa_tc <- aa_join %>%
+  group_by(Site_ID, Theileria_cervi) %>%
+  dplyr::summarise(n=n()) %>%
+  pivot_wider(names_from = Theileria_cervi, values_from = n)
+
+colnames(aa_tc) <- c("Site_ID", "neg", "pos")
+aa_tc$pos[is.na(aa_tc$pos)] <- 0
+aa_tc$sampled <- aa_tc$neg+aa_tc$pos
+aa_tc$prop <- aa_tc$pos/aa_tc$sampled
+aa_tc$pos_site <- 0
+aa_tc$pos_site[aa_tc$pos > 0] <- 1 
+
+aa_tc[17,] <- list("UG", 0, 0, 0, 0, 0)
+aa_tc[18,] <- list("GA", 0, 0, 0, 0, 0)
+  
+aa_tc
+```
+
+
+### proportion of any zoonotic pathogen (full dataset)
+
+join site covariates to aa_zoo summary 
+```{r}
+aa_zoo_join <- aa_zoo %>%
   left_join(covar, by = "Site_ID")
-
-head(aa_path_join)
+aa_zoo_join
 ```
-let's just use combined athogen prevalence for now 
 
-start by visualising the distribution 
+plot the distribution of proportions
 ```{r}
-hist(aa_path_join$pos_prev)
+hist(aa_zoo_join$prop)
 ```
 
-VERY non-normal... try something like a poisson's 
+try transforming the proportions 
+let's go with a arcsine tranformation (the alternative logit transformation does something weird with 0's)
+```{r}
+asinTransform <- function(p) { asin(sqrt(p)) }
+
+aa_zoo_join$prop_asin <- asinTransform(aa_zoo_join$prop)
+
+hist(aa_zoo_join$prop_asin)
+```
+
+
+now try some glm's with original proportions 
+```{r, message=FALSE}
+Z0 <- glm(prop ~ 1, family = binomial, data = aa_zoo_join, weights = sampled)
+Z1 <- glm(prop ~ Field_Type, family = binomial, data = aa_zoo_join, weights = sampled)
+Z2 <- glm(prop ~ PC1_500m, family = binomial, data = aa_zoo_join, weights = sampled)
+Z3 <- glm(prop ~ PC1_500m + Field_Type, family = binomial, data = aa_zoo_join, weights = sampled)
+Z4 <- glm(prop ~ PC1_500m * Field_Type, family = binomial, data = aa_zoo_join, weights = sampled)
+
+AICc(Z0, Z1, Z2, Z3, Z4)
+```
+
+all models are VERY similar... models with explanatory variables are no better than the null
+
+
+now try some glm's with the transformed data 
+```{r, message=FALSE}
+Z0 <- glm(prop_asin ~ 1, family = binomial, data = aa_zoo_join, weights = sampled)
+Z1 <- glm(prop_asin ~ Field_Type, family = binomial, data = aa_zoo_join, weights = sampled)
+Z2 <- glm(prop_asin ~ PC1_500m, family = binomial, data = aa_zoo_join, weights = sampled)
+Z3 <- glm(prop_asin ~ PC1_500m + Field_Type, family = binomial, data = aa_zoo_join, weights = sampled)
+Z4 <- glm(prop_asin ~ PC1_500m * Field_Type, family = binomial, data = aa_zoo_join, weights = sampled)
+
+AICc(Z0, Z1, Z2, Z3, Z4)
+```
+
+alrighty, the model with PC1 at 500m, field type, AND there interaction is the top model
+
+look at the model 
+```{r}
+summary(Z4)
+```
+
+pseudo R2
+```{r}
+100*(78.028/60.377)/78.028
+```
+this is very low... maybe there is a different way to calculate a psuedo R2 for proportion data 
+
+model validation 
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(Z4, which = 1)
+plot(Z4, which = 2)
+plot(Z4, which = 3)
+plot(Z4, which = 5)
+```
+sites 5, 9, and 15 are outside the envelope
+
+
+### proportion of any zoonotic pathogen (screened dataset) 
+repeat models for propotion but screen out sites 5,9, and 15 
+
+```{r, message=FALSE}
+aa_zoo_join_screen <- aa_zoo_join[-c(5,9,15),]
+
+Z0.screen <- glm(prop_asin ~ 1, family = binomial, data = aa_zoo_join_screen, weights = sampled)
+Z1.screen <- glm(prop_asin ~ Field_Type, family = binomial, data = aa_zoo_join_screen, weights = sampled)
+Z2.screen <- glm(prop_asin ~ PC1_500m, family = binomial, data = aa_zoo_join_screen, weights = sampled)
+Z3.screen  <- glm(prop_asin ~ PC1_500m + Field_Type, family = binomial, data = aa_zoo_join_screen, weights = sampled)
+Z4.screen  <- glm(prop_asin ~ PC1_500m * Field_Type, family = binomial, data = aa_zoo_join_screen, weights = sampled)
+
+AICc(Z0.screen , Z1.screen , Z2.screen , Z3.screen , Z4.screen )
+```
+
+lowest AIC is now the null model... 
 
 ```{r}
-mod1 <- glm(pos_prev ~ Forested_Manicured, data = aa_path_join, family = "poisson")
-summary(mod1)
+summary(Z1.screen)
+summary(Z2.screen)
+```
 
-boxplot(aa_path_join$pos_prev ~ aa_path_join$Forested_Manicured)
-plot(aa_path_join$pos_prev ~ aa_path_join$PC1)
+okay so the proportion of A. americanum infected with a zoonotic pathogen is NOT influenced by field type or the PC1 axis 
 
-ggplot(data = aa_path_join, aes(x = PC1 , y = pos_prev)) + 
-  geom_point(aes(col = Forested_Manicured))
+
+### proportion of any ehrlichia pathogen (full dataset)
+
+join site covariates to aa_ehr summary 
+```{r}
+aa_ehr_join <- aa_ehr %>%
+  left_join(covar, by = "Site_ID")
+aa_ehr_join
+```
+
+plot the distribution of proportions
+```{r}
+hist(aa_ehr_join$prop)
+```
+
+try transforming the proportions 
+let's go with a arcsine tranformation (the alternative logit transformation does something weird with 0's)
+```{r}
+asinTransform <- function(p) { asin(sqrt(p)) }
+
+aa_ehr_join$prop_asin <- asinTransform(aa_ehr_join$prop)
+
+hist(aa_ehr_join$prop_asin)
 ```
 
 
+now try some glm's with original proportions 
+```{r, message=FALSE}
+Z0 <- glm(prop ~ 1, family = binomial, data = aa_ehr_join, weights = sampled)
+Z1 <- glm(prop ~ Field_Type, family = binomial, data = aa_ehr_join, weights = sampled)
+Z2 <- glm(prop ~ PC1_500m, family = binomial, data = aa_ehr_join, weights = sampled)
+Z3 <- glm(prop ~ PC1_500m + Field_Type, family = binomial, data = aa_ehr_join, weights = sampled)
+Z4 <- glm(prop ~ PC1_500m * Field_Type, family = binomial, data = aa_ehr_join, weights = sampled)
+
+AICc(Z0, Z1, Z2, Z3, Z4)
+```
+
+model with PC1 and field type best 
+
+```{r}
+summary(Z3)
+```
+
+pseudo R2
+```{r}
+100*(17.173/10.615)/17.173
+```
+
+model validation 
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(Z3, which = 1)
+plot(Z3, which = 2)
+plot(Z3, which = 3)
+plot(Z3, which = 5)
+```
+
+probably do not need to filter out any sites... 
+
+now try some glm's with the transformed data 
+```{r, message=FALSE}
+Z0 <- glm(prop_asin ~ 1, family = binomial, data = aa_ehr_join, weights = sampled)
+Z1 <- glm(prop_asin ~ Field_Type, family = binomial, data = aa_ehr_join, weights = sampled)
+Z2 <- glm(prop_asin ~ PC1_500m, family = binomial, data = aa_ehr_join, weights = sampled)
+Z3 <- glm(prop_asin ~ PC1_500m + Field_Type, family = binomial, data = aa_ehr_join, weights = sampled)
+Z4 <- glm(prop_asin ~ PC1_500m * Field_Type, family = binomial, data = aa_ehr_join, weights = sampled)
+
+AICc(Z0, Z1, Z2, Z3, Z4)
+```
+model with PC1 and field type best 
+
+```{r}
+summary(Z3)
+```
+
+
+pseudo R2
+```{r}
+100*(69.617/47.661)/69.617
+```
+this is very low... maybe there is a different way to calculate a psuedo R2 for proportion data  
+this is even lower than the untransformed data... put the p-values are more significant... 
+
+
+model validation 
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(Z3, which = 1)
+plot(Z3, which = 2)
+plot(Z3, which = 3)
+plot(Z3, which = 5)
+```
+
+sites 2 and 15 may need be be removed... 
+
+
+### proportion of any ehrlichia pathogen (screened dataset)
+
+only the dataset with the transformed response might need sites removed 
+```{r, message=FALSE}
+aa_ehr_join_screen <- aa_ehr_join[-c(2,15),]
+
+Z0 <- glm(prop_asin ~ 1, family = binomial, data = aa_ehr_join_screen, weights = sampled)
+Z1 <- glm(prop_asin ~ Field_Type, family = binomial, data = aa_ehr_join_screen, weights = sampled)
+Z2 <- glm(prop_asin ~ PC1_500m, family = binomial, data = aa_ehr_join_screen, weights = sampled)
+Z3 <- glm(prop_asin ~ PC1_500m + Field_Type, family = binomial, data = aa_ehr_join_screen, weights = sampled)
+Z4 <- glm(prop_asin ~ PC1_500m * Field_Type, family = binomial, data = aa_ehr_join_screen, weights = sampled)
+
+AICc(Z0, Z1, Z2, Z3, Z4)
+```
+model with just field type best 
+
+```{r}
+summary(Z1)
+```
+
+field site is not significant in the best model 
+
+
+### proportion of Theileria cervi (full dataset)
+
+join site covariates to aa_tc summary 
+```{r}
+aa_tc_join <- aa_tc %>%
+  left_join(covar, by = "Site_ID")
+aa_tc_join
+```
+
+plot the distribution of proportions
+```{r}
+hist(aa_tc_join$prop)
+```
+
+try transforming the proportions 
+let's go with a arcsine tranformation (the alternative logit transformation does something weird with 0's)
+```{r}
+asinTransform <- function(p) { asin(sqrt(p)) }
+
+aa_tc_join$prop_asin <- asinTransform(aa_tc_join$prop)
+
+hist(aa_tc_join$prop_asin)
+```
+
+transforming actually looks worse so i will only try original proportions 
+
+now try some glm's with original proportions 
+```{r}
+Z0 <- glm(prop ~ 1, family = binomial, data = aa_tc_join, weights = sampled)
+Z1 <- glm(prop ~ Field_Type, family = binomial, data = aa_tc_join, weights = sampled)
+Z2 <- glm(prop ~ PC1_500m, family = binomial, data = aa_tc_join, weights = sampled)
+Z3 <- glm(prop ~ PC1_500m + Field_Type, family = binomial, data = aa_tc_join, weights = sampled)
+Z4 <- glm(prop ~ PC1_500m * Field_Type, family = binomial, data = aa_tc_join, weights = sampled)
+
+AICc(Z0, Z1, Z2, Z3, Z4)
+```
+
+null model is best 
+
+```{r}
+summary(Z0)
+```
+
+
+## presence/absence at the site level
+
+### presense/absence of any zoonotic pathogen at the site level
+
+try out a set of models that is for pres/abs of pathogen at the site level 
+```{r}
+P0 <- glm(pos_site ~ 1, family = binomial, data = aa_zoo_join)
+P1 <- glm(pos_site ~ Field_Type, family = binomial, data = aa_zoo_join)
+P2 <- glm(pos_site ~ PC1_500m, family = binomial, data = aa_zoo_join)
+P3 <- glm(pos_site ~ PC1_500m + Field_Type, family = binomial, data = aa_zoo_join)
+P4 <- glm(pos_site ~ PC1_500m * Field_Type, family = binomial, data = aa_zoo_join)
+
+AICc(P0, P1, P2, P3, P4)
+```
+
+top model for pres/abs at a site is P2 (PC1 at 500m) 
+
+look at the model 
+```{r}
+summary(P2)
+```
+
+model fit 
+```{r}
+100*(24.953-19.194)/24.953
+```
+
+
+model validation 
+```{r}
+plot(P2, which = 1)
+plot(P2, which = 2)
+plot(P2, which = 3)
+plot(P2, which = 4)
+plot(P2, which = 5)
+```
+
+
+plot the prediction 
+
+```{r}
+mydata <- data.frame(PC1_500m = seq(-3,3, length = 50))
+mydata$pred <- predict(P2, newdata = mydata, type = "response")
+plot(x = aa_zoo_join$PC1_500m, y = aa_zoo_join$pos_site)
+lines(mydata$PC1_500m, mydata$pred)
+```
+
+
+### presense/absence of any Ehrlichia pathogen at the site level
+
+try out a set of models that is for pres/abs of pathogen at the site level 
+```{r}
+#aa_ehr_join$pos_site <- as.factor(aa_ehr_join$pos_site)
+#levels(aa_ehr_join$pos_site) <- c("0", "1")
+
+P0 <- glm(pos_site ~ 1, family = binomial, data = aa_ehr_join)
+P1 <- glm(pos_site ~ Field_Type, family = binomial, data = aa_ehr_join)
+P2 <- glm(pos_site ~ PC1_500m, family = binomial, data = aa_ehr_join)
+P3 <- glm(pos_site ~ PC1_500m + Field_Type, family = binomial, data = aa_ehr_join)
+P4 <- glm(pos_site ~ PC1_500m * Field_Type, family = binomial, data = aa_ehr_join)
+
+AICc(P0, P1, P2, P3, P4)
+```
+
+top model for pres/abs at a site is P1 (field type) 
+
+look at the model 
+```{r}
+summary(P1)
+summary(P3)
+```
+
+model fit 
+```{r}
+100*(24.057-17.736)/24.057
+100*(24.057-15.470 )/24.057
+```
+
+AIC and model fit is better for the model that include both field type and PC1 
+
+
+model validation 
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(P3, which = 1)
+plot(P3, which = 2)
+plot(P3, which = 3)
+plot(P3, which = 5)
+```
+
+looks okay!
+
+plot the prediction 
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Natural","Manicured"))
+mydata$pred <- predict(P3, newdata = mydata, type = "response")
+
+ggplot(aa_ehr_join, aes(x = PC1_500m, y = pos_site, group = Field_Type)) + 
+  geom_point(aes(color = Field_Type)) + 
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
+  theme_bw()
+```
+
+i f'd up changing the pres/ab to a factor and now it is funky... 
 
 
 
+### presense/absence of Theileria cervi at the site level
 
+try out a set of models that is for pres/abs of pathogen at the site level 
+```{r}
+P0 <- glm(pos_site ~ 1, family = binomial, data = aa_tc_join)
+P1 <- glm(pos_site ~ Field_Type, family = binomial, data = aa_tc_join)
+P2 <- glm(pos_site ~ PC1_500m, family = binomial, data = aa_tc_join)
+P3 <- glm(pos_site ~ PC1_500m + Field_Type, family = binomial, data = aa_tc_join)
+P4 <- glm(pos_site ~ PC1_500m * Field_Type, family = binomial, data = aa_tc_join)
+
+AICc(P0, P1, P2, P3, P4)
+```
+
+top model for pres/abs at a site is P2 (PC1 at 500m) 
+
+look at the model 
+```{r}
+summary(P2)
+```
+
+model fit 
+```{r}
+100*(24.953-12.990)/24.953
+```
+
+
+model validation 
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(P2, which = 1)
+plot(P2, which = 2)
+plot(P2, which = 3)
+plot(P2, which = 5)
+```
+
+
+plot the prediction 
+
+```{r}
+mydata <- data.frame(PC1_500m = seq(-3,3, length = 50))
+mydata$pred <- predict(P2, newdata = mydata, type = "response")
+plot(x = aa_tc_join$PC1_500m, y = aa_tc_join$pos_site)
+lines(mydata$PC1_500m, mydata$pred)
+```

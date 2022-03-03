@@ -2,9 +2,10 @@
 title: "Alachua County Ticks"
 author: "Kimberly Ledger"
 date: "2/17/2022"
-output: html_document
-toc: true
-toc_depth: 3
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
 ---
 
 Load libraries 
@@ -15,7 +16,7 @@ library(MASS)
 library(stargazer)
 library(effects)
 library(ggplot2)
-library(MuMIn)  #for model selection
+library(MuMIn)
 library(spdep)
 library(corrplot)
 library(gridExtra)
@@ -104,7 +105,7 @@ p2 <- ggplot(data = site, aes(x=Site_ID, y=log1p(total), fill =Spp_Lifestage)) +
 gridExtra::grid.arrange(p1,p2, ncol=2)
 ```
 
-## Part 2: Visualize *Amblyomma americanum* data 
+# Part 2: Visualize *Amblyomma americanum* data 
 
 Let's work some more with just *Amblyomma americanum* since it is by far the most abundant species of tick collected during the study
 ```{r}
@@ -170,7 +171,7 @@ ggplot(data = aa_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) +
 
 ```
 
-## Part 3: Visualize *Ixodes scapularis* data 
+# Part 3: Visualize *Ixodes scapularis* data 
 
 Let's investigate *Ixodes scapularis*, as it was the second most abundant tick species in the study and is of great public health interest
 ```{r}
@@ -210,7 +211,7 @@ gridExtra::grid.arrange(g3,g4, ncol=2)
 ```
 
 now let's combine counts across all visits and keep the sites seperate 
-```{r}
+```{r, message=FALSE}
 is_allvisits <- is %>%
   group_by(Site_ID, Lifestage) %>%
   summarize(total = n(),
@@ -237,9 +238,9 @@ ggplot(data = is_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) +
 The order of sites is the *I.scapularis* plot is the same as the *A. americanum* plot earlier. Just using the eyeball test this shows many of the sites with high *A. americanum* abundance also have *I.scapularis*, but there are some deviations from this trend. 
 
 
-## Part 4: Landscape analyses of *Amblyomma americanum* 
+# Part 4: Landscape analyses of *Amblyomma americanum* 
 
-### 4.1: Prepare data 
+## 4.1: Prepare data 
 Read in the covariate data for all 18 sites 
 This file contains information on if the environment type was manicured or natural, the proportion of forest landcover and the PC1 and PC2 scores at multiple spatial scales (250m, 500m, 1km, 2km, 3km, 4km buffers)
 ```{r}
@@ -247,7 +248,7 @@ covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites
 head(covar)
 ```
 explore the relationship between different buffers by plotting them using the package 'corrplot'
-```{r}
+```{r, message=FALSE}
 covar_sub <- covar[,c(6:23)]
 M <- cor(covar_sub)
 #head(round(M,2))
@@ -273,10 +274,10 @@ head(aa_combined)
 aa_combined$Field_Type <- as.factor(aa_combined$Field_Type)
 ```
 
-### 4.2: Test for spatial "scale of effect" 
+## 4.2: Test for spatial "scale of effect" 
 here I will work with combined adult and nymph dataset (adults and nymphs have similar patterns over space and time so it makes more sense to combince their analyses)
 
-#### Forest cover - test for "scale of effect" using a buffer based approach
+### Forest cover - test for "scale of effect" using a buffer based approach
 ```{r}
 pres.250m<-glm(total ~ Forest250m, family = "poisson", data = aa_combined)
 pres.500m<-glm(total ~ Forest500m, family = "poisson", data = aa_combined)
@@ -297,7 +298,7 @@ lines(scales,ll)
 ```
 these results indicate that 1km for forest cover is the best scale for combined nymphs and adults 
 
-#### PC1 - test for "scale of effect" using a buffer based approach
+### PC1 - test for "scale of effect" using a buffer based approach
 ```{r}
 pres.250m<-glm(total ~ PC1_250m, family = "poisson", data = aa_combined)
 pres.500m<-glm(total ~ PC1_500m, family = "poisson", data = aa_combined)
@@ -319,10 +320,10 @@ lines(scales,ll)
 these results indicate that 500m for PC1 is the best scale for combined nymphs and adults 
 
 
-### 4.3: Generalize linear models (GLMs)! 
+## 4.3: Generalize linear models (GLMs)! 
 
-#### First, let's try a glm with a poisson distribution
-```{r}
+### First, let's try a glm with a poisson distribution
+```{r, message=FALSE}
 glm0 <- glm(total ~ 1, data = aa_combined, family = "poisson")
 glm1 <- glm(total ~ Forest1km , data = aa_combined, family = "poisson")
 glm2 <- glm(total ~ Field_Type, data = aa_combined, family = "poisson")
@@ -352,8 +353,8 @@ dispersion
 there is overdispersion so **a poisson is NOT appropriate*** 
 
 
-#### Second, let's try a glm with a negative binomial distribution
-```{r}
+### Second, let's try a glm with a negative binomial distribution
+```{r, message=FALSE}
 nb.glm0 <- glm.nb(total ~ 1, data = aa_combined)
 nb.glm1 <- glm.nb(total ~ Forest1km , data = aa_combined)
 nb.glm2 <- glm.nb(total ~ Field_Type, data = aa_combined)
@@ -385,7 +386,30 @@ stargazer(nb.glm12, nb.glm13, type = "text",
 lowest AICc is for **PC1 at 500m scale** and **Field_Type**  
 lowest AICc does not include the interaction term - but many models are within 2 delta AIC 
 
-#### plot model residuals for top model
+### model check across all spatial scales of PC1 
+compare models at all PC1 scales with field_type 
+```{r}
+nb.glm_250m <- glm.nb(total ~ PC1_250m + Field_Type, data = aa_combined)
+nb.glm_500m <- glm.nb(total ~ PC1_500m + Field_Type, data = aa_combined)
+nb.glm_1km <- glm.nb(total ~ PC1_1km + Field_Type, data = aa_combined)
+nb.glm_2km <- glm.nb(total ~ PC1_2km + Field_Type, data = aa_combined)
+nb.glm_3km <- glm.nb(total ~ PC1_3km + Field_Type, data = aa_combined)
+nb.glm_4km <- glm.nb(total ~ PC1_4km + Field_Type, data = aa_combined)
+
+MuMIn::AICc(nb.glm_250m, nb.glm_500m, nb.glm_1km, nb.glm_2km, nb.glm_3km, nb.glm_4km)
+```
+compare top two models 
+```{r}
+stargazer(nb.glm_250m, nb.glm_500m, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+**PC1 at 500m scale is best**
+
+
+### plot model residuals for top model (full dataset)
 ```{r}
 par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(nb.glm12)
@@ -393,13 +417,13 @@ plot(nb.glm12)
 sites 12 and 17 could be problimatic... 
 
 
-#### test for spatial autocorrelation (Moran's I)
+### test for spatial autocorrelation (Moran's I) (full dataset)
 Before we interpret the models, let’s check whether the assumption of independent residuals is violated by spatial autocorrelation in the residuals.
 To calculate and test Moran’s I, we first need to define neighbours and spatial weights.
 There are many ways to define weights.  
 
 start by defining weights matrix using several graph types
-```{r}
+```{r, message=FALSE}
 coords <- cbind(aa_combined$Easting, aa_combined$Northing)
 colnames(coords) <- c("x", "y")
 distmat <- as.matrix(dist(coords))
@@ -419,7 +443,7 @@ plot(neigh, coords)
 listw.neigh <- nb2listw(neigh, style = "W")
 ```
 test for spatial autocorrelation in explainatory and predictor variables
-```{r}
+```{r, message=FALSE}
 spdep::moran.test(aa_combined$total, listw.gab)
 spdep::moran.test(aa_combined$Forest1km, listw.gab)
 spdep::moran.test(aa_combined$PC1_1km, listw.gab)
@@ -427,14 +451,14 @@ spdep::moran.test(aa_combined$PC1_500m, listw.gab)
 ```
 
 now test model for autocorrelation in the model residuals 
-```{r}
+```{r, message=FALSE}
 spdep::lm.morantest(nb.glm12, listw.gab) 
 spdep::lm.morantest(nb.glm12, listw.rel) 
 spdep::lm.morantest(nb.glm12, listw.neigh) 
 ```
 **no significant spatial autocorrelation** in residuals for any of the weight matrices... cool! 
 
-#### summary of top model *Amblyomma americanum* model 
+### summary of top model *Amblyomma americanum* model (full dataset)
 ```{r}
 stargazer(nb.glm12, type = "text",
           intercept.bottom = FALSE, 
@@ -450,47 +474,7 @@ pseudo r-squared of model
 ```
 The pseudo r-squared of the top model = **62.1**. This is quite a high model fit!!! 
 
-
-#### remove potentially problimatic sites 
-let's see how removing the two sites (12 and 17) that fall outside model assumptions affect the model 
-```{r, message=FALSE}
-aa_screen <- aa_combined[-c(12,17), ]
-
-plot1 <- ggplot(data = aa_combined, aes(x = PC1_500m, y = total)) +
-  geom_point(aes(col = Field_Type)) + 
-  geom_smooth(method = lm) +
-  xlim(-3,3) + 
-  ggtitle("Before")
-plot2 <- ggplot(data = aa_screen, aes(x = PC1_500m, y = total)) +
-  geom_point(aes(col = Field_Type)) + 
-  geom_smooth(method = lm) +
-  xlim(-3,3) + 
-  ggtitle("After")
-
-gridExtra::grid.arrange(plot1, plot2, ncol=2)
-
-#### compare model results for full and screened glm 
-nb.glm12.screen <- glm.nb(total ~ PC1_500m + Field_Type, data = aa_screen)
-
-summary(nb.glm12.screen)
-
-stargazer(nb.glm12, nb.glm12.screen, type = "text",
-          intercept.bottom = FALSE, 
-          single.row=FALSE,     
-          notes.append = FALSE, 
-          header=FALSE)
-```
-pseudo r-squared of screened model 
-```{r}
-100*(96.922-18.974)/96.922
-```
-the pseudo r-squared of the screened model = **80.4**.  this is even higher than unscreen model!   
-The AIC and LL are also much better for the screened data set. And, the models estimates and significance are minimally affected by the sites that fall outside assumptions. 
-
-
-
-#### plot the top model for *Amblyomma americanum*  
-
+### plot the top model for *Amblyomma americanum* (full dataset) 
 ```{r, message=FALSE}
 df1 <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Natural","Manicured"), total = NA)
 df1$total <- predict(nb.glm12, newdata = data.frame(df1), type="response")
@@ -527,14 +511,101 @@ plot.log <-ggplot(data = aa_combined, aes(x=PC1_500m, y=total, group=Field_Type)
 grid.arrange(plot, plot.log, ncol = 2)
 ```
 
+### screen data by removing potentially problimatic sites 
+let's see how removing the two sites (12 and 17) that fall outside model assumptions affect the model 
+```{r, message=FALSE}
+aa_screen <- aa_combined[-c(12,17), ]
+
+plot1 <- ggplot(data = aa_combined, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(col = Field_Type)) + 
+  geom_smooth(method = lm) +
+  xlim(-3,3) + 
+  ggtitle("Before")
+plot2 <- ggplot(data = aa_screen, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(col = Field_Type)) + 
+  geom_smooth(method = lm) +
+  xlim(-3,3) + 
+  ggtitle("After")
+
+gridExtra::grid.arrange(plot1, plot2, ncol=2)
+
+#### compare model results for full and screened glm 
+nb.glm12.screen <- glm.nb(total ~ PC1_500m + Field_Type, data = aa_screen)
+```
+### summary of top model *Amblyomma americanum* model (screened dataset)
+```{r}
+summary(nb.glm12.screen)
+
+stargazer(nb.glm12, nb.glm12.screen, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+pseudo r-squared of screened model 
+```{r}
+100*(96.922-18.974)/96.922
+```
+the pseudo r-squared of the screened model = **80.4**.  this is even higher than unscreen model!   
+The AIC and LL are also much better for the screened data set. And, the models estimates and significance are minimally affected by the sites that fall outside assumptions. 
+
+### plot model residuals for top model (screened dataset)
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm12.screen)
+```
+the screened model looks good!  
+
+
+
+### plot the top model for *Amblyomma americanum*  (screened dataset) 
+```{r, message=FALSE}
+df1 <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Natural","Manicured"), total = NA)
+df1$total <- predict(nb.glm12.screen, newdata = data.frame(df1), type="response")
+
+#plot
+plot <-ggplot(data = aa_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size = 2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("A.americanum abundance") +
+                    xlab("PC1 at 500m")+
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+                    scale_size(guide = 'none')
+  
+
+plot.log <-ggplot(data = aa_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size =2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("A.americanum abundance") +
+                    xlab("PC1 at 500m")+
+                    scale_y_log10() +  ## may or may not want to use a log axis.... 
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+                    scale_size(guide = 'none')
+
+grid.arrange(plot, plot.log, ncol = 2)
+```
+
+
+### create a final plot for the screened A.americanum data 
 get 95%CI for model prediction 
 ```{r}
 ## grad the inverse link function
-ilink <- family(nb.glm12)$linkinv
+ilink <- family(nb.glm12.screen)$linkinv
 ## add predition, fit, and se.fit on the **link** scale
 ndata <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Manicured", "Natural"))
-ndata$total <- predict(nb.glm12, newdata = data.frame(ndata), type = "response")
-ndata <- bind_cols(ndata, setNames(as_tibble(predict(nb.glm12, ndata, se.fit = TRUE)[1:2]),
+ndata$total <- predict(nb.glm12.screen, newdata = data.frame(ndata), type = "response")
+ndata <- bind_cols(ndata, setNames(as_tibble(predict(nb.glm12.screen, ndata, se.fit = TRUE)[1:2]),
                                    c('fit_link','se_link')))
 ## create the interval and backtransform
 ndata <- mutate(ndata,
@@ -547,7 +618,7 @@ ndata
 
 plot it
 ```{r, message=FALSE}
-plt <- ggplot(aa_combined, aes(x = PC1_500m, y = total)) +
+plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
   geom_point(aes(color=Field_Type, size =2)) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
@@ -562,7 +633,7 @@ plt <- ggplot(aa_combined, aes(x = PC1_500m, y = total)) +
   ylab("A. americanum abundance") +
   xlab("PC1 at 500m")
 
-plt.log <- ggplot(aa_combined, aes(x = PC1_500m, y = total)) +
+plt.log <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
   geom_point(aes(color=Field_Type, size =2)) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
@@ -582,11 +653,9 @@ grid.arrange(plt, plt.log, ncol = 2)
 ```   
 
 
+# Part 5: Landscape analyses of *Ixodes scapularis* 
 
-
-## Part 5 - Ixodes scapularis 
-
-### 5.1: Prepare data
+## 5.1: Prepare data
 
 join the covariate data to the *Ixodes scapularis* data 
 ```{r, message=FALSE}
@@ -605,12 +674,12 @@ is_combined$Field_Type <- as.factor(is_combined$Field_Type)
 ```
 
 
-### 5.2: Test for spatial "scale of effect"
+## 5.2: Test for spatial "scale of effect"
 test for "scale of effect" using a buffer based approach 
 for the final go i should probably derive more scales but for now i will work with what there is 
 
-#### Forest cover: test for "scale of effect" using a buffer based approach 
-```{r}
+### Forest cover: test for "scale of effect" using a buffer based approach 
+```{r, message=FALSE}
 pres.250m<-glm(total ~ Forest250m, family = "poisson", data = is_combined)
 pres.500m<-glm(total ~ Forest500m, family = "poisson", data = is_combined)
 pres.1km<-glm(total ~ Forest1km, family = "poisson", data = is_combined)
@@ -631,7 +700,7 @@ lines(scales,ll)
 these results indicate that 250m and 2km for forest cover is the best scale for *I.scapularis adults*
 
 
-#### PC1: test for "scale of effect" using a buffer based approach
+### PC1: test for "scale of effect" using a buffer based approach
 ```{r}
 pres.250m<-glm(total ~ PC1_250m, family = "poisson", data = is_combined)
 pres.500m<-glm(total ~ PC1_500m, family = "poisson", data = is_combined)
@@ -652,9 +721,9 @@ lines(scales,ll)
 these results indicate that 500m and 1km for PC1 is the best scale for *I.scapularis adults*
 
 
-### 5.3: Generalize linear models (GLMs)! 
+## 5.3: Generalize linear models (GLMs)! 
 
-#### First, let's try a glm with poisson distribution 
+### First, let's try a glm with poisson distribution 
 ```{r}
 glm0 <- glm(total ~ 1, data = is_combined, family = "poisson")
 glm1 <- glm(total ~ Forest2km , data = is_combined, family = "poisson")
@@ -677,7 +746,7 @@ model with **Forest2km** and **Field_Type** but **no interaction** term has lowe
 now, check model for overdispersion
 ```{r}
 e1 <- resid(glm3, type = "pearson")
-n <- nrow(aa_combined)
+n <- nrow(is_combined)
 p <- length(coef(glm3))
 dispersion <- sum(e1^2)/n-p
 dispersion
@@ -685,7 +754,7 @@ dispersion
 as expected... **there is overdispersion**
 
 
-#### Second, let's try a glm with a negative binomial distribution 
+### Second, let's try a glm with a negative binomial distribution 
 ```{r}
 nb.glm0 <- glm.nb(total ~ 1, data = is_combined)
 nb.glm1 <- glm.nb(total ~ Field_Type, data = is_combined)
@@ -723,7 +792,22 @@ stargazer(nb.glm8, nb.glm9, nb.glm11, nb.glm12, type = "text",
 top model (using AIC) includes both **PC1** and **field type** variable but **no interaction term**  
 PC1 at 500m is slightly better than PC1 at 1km, and because 500m matches the *A.americanum* analysis we will move forward with that 
 
-#### plot model residuals for top model
+### model check across all spatial scales of PC1 
+compare models at all PC1 scales with field_type 
+
+```{r}
+nb.glm_250m <- glm.nb(total ~ PC1_250m + Field_Type, data = is_combined)
+nb.glm_500m <- glm.nb(total ~ PC1_500m + Field_Type, data = is_combined)
+nb.glm_1km <- glm.nb(total ~ PC1_1km + Field_Type, data = is_combined)
+nb.glm_2km <- glm.nb(total ~ PC1_2km + Field_Type, data = is_combined)
+nb.glm_3km <- glm.nb(total ~ PC1_3km + Field_Type, data = is_combined)
+nb.glm_4km <- glm.nb(total ~ PC1_4km + Field_Type, data = is_combined)
+
+MuMIn::AICc(nb.glm_250m, nb.glm_500m, nb.glm_1km, nb.glm_2km, nb.glm_3km, nb.glm_4km)
+```
+really not much difference in AICc between spatial scales... will go with 500m to match *A.americanum* analysis
+
+### plot model residuals for top model (full datset)
 ```{r}
 par(mfrow=c(2,2), mar=c(4,4,2,1))
 #plot(nb.glm6) #forest @2km
@@ -732,7 +816,7 @@ plot(nb.glm9) #PC1 @ 500m
 ```
 site 2 could be probematic for PC1
 
-#### test for spatial autocorrelation (Moran's I)
+### test for spatial autocorrelation (Moran's I) (full datset)
 
 start by defining weights matrix using several graph types (this is a repeat of the same code used for *A.americanum*)
 ```{r}
@@ -811,8 +895,7 @@ the gab weights only should significance for the PC1_1km model...
 
 check correlograms for where the spatial autocorrelation may be occuring in the model
 
-#### plot correlograms to check for spatial autocorrelation 
-
+###  plot correlograms to check for spatial autocorrelation (full dataset)
 add a function to plot correlograms 
 ```{r}
 icorrelogram <- function(locations,z, binsize, maxdist){
@@ -864,7 +947,11 @@ there is only spatial autocorrelation at one point and it is at a fairly large l
 
 from what i can see from Fletcher's book, methods to account for spatial autocorrelation mostly address the issue at small lag distances, not intermediate to large. so i am going to move forward with the model as is. 
 
-#### summary of top *I. scapularis* model 
+### summary of top *I. scapularis* model (full dataset)
+```{r}
+summary(nb.glm9)
+```
+
 pseudo r-squared of model 
 ```{r}
 100*(36.215-18.487)/36.215 
@@ -908,7 +995,7 @@ plot.log <- ggplot(data = is_combined, aes(x=PC1_500m, y=total, group=Field_Type
 grid.arrange(plot, plot.log, ncol = 2)
 ```
 
-#### remove potentially problematic sites 
+### screendata by removing potentially problematic sites 
 how does removing the sites that were violating models influence things? 
 for now just remove site 2 for PC1 analyses 
 
@@ -949,11 +1036,11 @@ nb.glm9.reduced <- glm.nb(total ~ PC1_500m + Field_Type, data = is_screen)
 nb.glm12.reduced <- glm.nb(total ~ PC1_1km + Field_Type, data = is_screen)
 #nb.glm13.reduced <- glm.nb(total ~ PC1_1km * Field_Type, data = is_screen)
 
-stargazer(nb.glm6, nb.glm6.reduced, type = "text",
-          intercept.bottom = FALSE, 
-          single.row=FALSE,     
-          notes.append = FALSE, 
-          header=FALSE)
+#stargazer(nb.glm6, nb.glm6.reduced, type = "text",
+#          intercept.bottom = FALSE, 
+#          single.row=FALSE,     
+#          notes.append = FALSE, 
+#          header=FALSE)
 
 stargazer(nb.glm9, nb.glm9.reduced, type = "text",
           intercept.bottom = FALSE, 
@@ -961,35 +1048,24 @@ stargazer(nb.glm9, nb.glm9.reduced, type = "text",
           notes.append = FALSE, 
           header=FALSE)
 
-stargazer(nb.glm12, nb.glm12.reduced, type = "text",
-          intercept.bottom = FALSE, 
-          single.row=FALSE,     
-          notes.append = FALSE, 
-          header=FALSE)
+#stargazer(nb.glm12, nb.glm12.reduced, type = "text",
+#          intercept.bottom = FALSE, 
+#          single.row=FALSE,     
+#          notes.append = FALSE, 
+#          header=FALSE)
 ```
 
-plot model residuals
-```{r}
-par(mfrow=c(2,2), mar=c(4,4,2,1))
-plot(nb.glm6.reduced)
-```
-removing site 2 doesn't really improve the residuals, now new sites are a bit off 
 
-
+### plot model residuals for top model (screened datset)
 ```{r}
 par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(nb.glm9.reduced)
 ```
 the reduced model for PC1_500m is looking pretty good 
 
-```{r}
-par(mfrow=c(2,2), mar=c(4,4,2,1))
-plot(nb.glm12.reduced)
-```
-this reduced model is okay, but some new sites have residual that are now slightly off 
 
-#### test for spatial autocorrelation in the screened PC1_500m model (nb.glm9.reduced)
-the PC1 @ 500m is an improvement to the original model so i will move forwared using the screened dataset  
+### test for spatial autocorrelation (screened dataset)
+the PC1 at 500m is an improvement to the original model so i will move forwared using the screened dataset  
 ```{r}
 #must redo weigh matrices to not include site 2
 coords.screen <- coords[-2, ]
@@ -1014,7 +1090,7 @@ spdep::lm.morantest(nb.glm9.reduced, listw.neigh.screen)
 ```
 now only the neighboorhood matrix has significant spatial autocorrelation 
 
-plot the correlogram
+###  plot correlograms to check for spatial autocorrelation (screened dataset)
 ```{r}
 # save residuals for negative binomial models 
 nb.glm9.reduced.res <- residuals(nb.glm9.reduced, type = "deviance")
@@ -1032,7 +1108,7 @@ lines(cor_plot$dist, cor_plot$null.ucl)
 ```
 only one point barely falls outside the 95% CI so i believe we are good to go
 
-#### summary of the NEW top *I. scapularis* model 
+### summary of the top *I. scapularis* model (screened dataset)
 ```{r}
 summary(nb.glm9.reduced)
 ```
@@ -1043,10 +1119,10 @@ pseudo r-squared of model
 ```
 the reduced model has a much better R2 than the original 
 
-#### plot the top model for *I. scapularis* 
+### plot the top model for *I. scapularis* (screened dataset)
 
-get model predictions and 95%CI
-```{r}
+get model predictions and 95%CI - this is using the screened dataset 
+```{r, message=FALSE}
 ## grad the inverse link function
 ilink <- family(nb.glm9.reduced)$linkinv
 ## add predition, fit, and se.fit on the **link** scale
@@ -1064,7 +1140,7 @@ ndata
 ```
 
 plot it
-```{r}
+```{r, message=FALSE}
 plt <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
   geom_point(aes(color=Field_Type, size =2)) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
@@ -1093,7 +1169,7 @@ plt.log <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
                     scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
                     scale_size(guide = 'none') +
   scale_y_log10() +
-  ylab("log(I. scapularis abundance)") +
+  ylab("I. scapularis abundance") +
   xlab("PC1 at 500m")
 
 grid.arrange(plt, plt.log, ncol = 2)

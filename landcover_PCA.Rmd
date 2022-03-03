@@ -1,0 +1,141 @@
+---
+title: "landcover_PCA"
+author: "Kimberly Ledger"
+date: "3/3/2022"
+output: html_document
+---
+
+this code will plot PCA's using landcover proportion at multiple buffer scales around potential tick collection sites in Alachua County, Florida 
+
+
+load libraries 
+```{r, message=FALSE}
+library(tidyverse)
+library(ggplot2)
+library(ggbiplot)
+```
+
+
+read in the data
+```{r}
+lc <- read.csv("AlCo_landcover_allscales.csv")
+head(lc)
+```
+
+this is the landcover classification
+
+*  1 = Agriculture 
+*  2 = Developed
+*  3 = Forest
+*  4 = Manicured 
+*  5 = Residential
+*  6 = Water
+*  7 = Wetland
+
+sampling site selection was based on PC1 using land cover proportions using a 1km buffer around all potential sites 
+
+filter data to only include land cover at 1km 
+```{r}
+lc_1km <- lc[,c(26:32)]
+head(lc_1km)
+```
+
+log transform and apply z-score standardization to the data 
+```{r}
+lc_1km_log <- log1p(lc_1km)   
+z_lc <- lc_1km_log
+```
+
+
+run a PCA using the function princomp from the stats package
+```{r}
+lc_pca <- princomp(z_lc, cor=F)
+#cor=F, because we are using the covariance matrix instead of the correlation matrix 
+
+summary(lc_pca)
+
+#get factor loadings for each PC
+loadings(lc_pca)
+
+# get factor scores for each site 
+lc_pca$scores
+
+#access using a scree plot 
+plot(lc_pca, type="lines")
+```
+
+plot the first two axes of the PCA - landcovers
+```{r}
+plot(lc_pca$loadings,type="n",xlab="PC 1", ylab="PC 2")
+text(lc_pca$loadings, labels=as.character(colnames(z_lc)), pos=1, cex=1)
+```
+
+plot the first two axes of the PCA - sites
+```{r}
+plot(lc_pca$scores,type="n",xlab="PC 1", ylab="PC 2")
+text(lc_pca$scores, labels=as.character(rownames(z_lc)), pos=1, cex=1)
+```
+
+biplot 
+```{r}
+biplot(lc_pca$scores,lc_pca$loading,xlab="PC 1", ylab="PC 2",ylim=c(-0.2,0.4), xlim=c(-0.4,0.5))
+```
+
+biplot - replace site numbers with '*'
+```{r}
+biplot(lc_pca$scores,lc_pca$loading,xlabs= rep("*",52), xlab="PC 1", ylab="PC 2",ylim=c(-0.2,0.4), xlim=c(-0.4,0.5))
+
+```
+
+make a nicer plot using ggplot 
+
+start by reformating the pca dataframe to have information on site
+```{r}
+df_out <- as.data.frame(lc_pca$scores)
+df_out$group <- lc$Field_Type
+df_out$sampled <- lc$sampled
+
+df_out <- df_out %>%
+  mutate(sampled2 = recode(sampled, "N" = 0.5, "Y"=1))
+
+df_out$sampled2 <- as.factor(df_out$sampled2)
+```
+
+```{r}
+ggplot(df_out, aes(x=Comp.1, y =Comp.2, color=group))+ 
+  geom_point(aes(alpha = sampled), position = position_jitter(h=0.01,w=0.01)) + 
+  scale_alpha_discrete(range = c(0.4,1)) +
+  theme_bw()
+```
+
+now try ggbiplot 
+
+```{r}
+#lc.groups <- lc$Field_Type
+#lc.samp <- lc$sampled
+
+lc <- lc %>%
+  unite("GS", Field_Type, sampled, remove = F)
+
+unique(lc$GS)
+lc.newgroups <- lc$GS
+
+ggbiplot(lc_pca, groups = lc.newgroups) +
+  scale_color_manual(name = "site type", values = c("pink", "darkred","lightblue", "blue")) +
+  theme_minimal()
+
+```
+
+the issue here is that site points are overlapping... 
+
+
+okay so the negative values of PC1 have high proportions of developed and residential 
+and the positive values of PC1 have high proportions of forest (and to some extent wetland)
+
+## to do 
+rename PC1km_# with the actual land cover they represent   
+recreate for PC1 at 500m when i figure out the best way to plot...   
+make something like the last plot in section 5.4 of this website: https://bioconductor.org/packages/devel/bioc/vignettes/PCAtools/inst/doc/PCAtools.html#modify-bi-plots
+
+
+

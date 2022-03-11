@@ -2,7 +2,7 @@
 title: "aa_path_network"
 author: "Kimberly Ledger"
 date: "3/11/2022"
-output: html_document
+output: github_document
 ---
 
 this code creates a network plot of pathogen co-infections found in Amblyomma americanum 

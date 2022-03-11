@@ -1,0 +1,70 @@
+---
+title: "aa_path_network"
+author: "Kimberly Ledger"
+date: "3/11/2022"
+output: html_document
+---
+
+this code creates a network plot of pathogen co-infections found in Amblyomma americanum 
+
+libraries
+```{r, message = FALSE}
+library(tidyverse)
+library(igraph)
+library(intergraph)
+library(ggnetwork)
+```
+
+
+read in the data - this is an edge list where each row represents a connection between a microbe in the column (micro1) and another column (micro2)
+```{r, message = FALSE}
+edge_data <- read.csv("AA_pathogen_edgelist.csv")
+```
+
+make object with just co-infections 
+```{r, message = FALSE}
+links <- edge_data[,c(4,5)]
+```
+
+create network object
+```{r, message = FALSE}
+network <- graph_from_data_frame(d=links, directed = F)
+```
+
+plot it 
+```{r, message = FALSE}
+plot(network)
+```
+
+plot in a circle
+```{r, message = FALSE}
+plot(network, layout = layout_in_circle(network))
+```
+
+make an adjacency matrix 
+
+```{r, message = FALSE}
+adj_mat <- get.adjacency(network)
+adj_mat
+```
+
+
+
+try making a prettier plot - weight the connections by coinfections 
+```{r, message = FALSE}
+plot(network, vertex.label.color="black", 
+     vertex.label.cex=.5,vertex.label.dist=0.2, 
+     edge.curved=0.5, edge.width = edge.betweenness(network),
+     layout=layout_in_circle(network))
+
+#plot(network, vertex.label.color="black", 
+#     vertex.label.cex=.5,vertex.label.dist=0.2, 
+#     edge.curved=0.5, edge.width = edge.betweenness(network), edge.color = edge.betweenness(network),
+#     layout=layout_in_circle(network))
+```
+
+
+
+
+
+

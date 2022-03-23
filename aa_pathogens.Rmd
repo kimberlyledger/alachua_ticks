@@ -21,7 +21,7 @@ library(lme4)
 library(MuMIn)
 #library(car)
 #library(MASS)
-#library(stargazer)
+library(stargazer)
 #library(effects)
 ```
 
@@ -42,7 +42,8 @@ Join pathogen results with the raw tick data by the gDNA_Sample and Collection_S
 
 ```{r}
 data <- ticks %>%
-  dplyr::left_join(pathogen, by = c("gDNA_Sample", "Collection_Sample"))
+  dplyr::left_join(pathogen, by = c("gDNA_Sample", "Collection_Sample")) %>%
+  mutate_all(na_if, "")
 
 #data <- ticks %>%
 #  dplyr::left_join(pathogen, by = c("Collection_Sample"))
@@ -66,6 +67,137 @@ data %>%
   dplyr::summarise(across(where(is.integer), sum, na.rm = TRUE))
 ```
 
+
+Read in the covariate data for all 18 sites 
+This site contains information on if the environment type was manicured or natural, and the forest, PC1 and PC2 landscape buffers
+```{r}
+covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
+head(covar)
+```
+
+### First, test for any pathogenenic microorganism in any tick spcies 
+
+join the complete tick data to the pathogen data 
+```{r}
+all_join <- data %>%
+  filter(!is.na(gDNA_Sample)) %>%
+  dplyr::select(gDNA_Sample, Site_ID, Babesia_sp_Coco, Babesia_odocoieli, Cytauxozoon_felis, Ehrlichia_chaffeensis, Ehrlichia_ewingii, Ehrlichia_sp_PanolaMountain, Rickettsia_parkeri) %>%
+  mutate(zoo_path = Babesia_sp_Coco + Babesia_odocoieli + Cytauxozoon_felis + Ehrlichia_chaffeensis + Ehrlichia_ewingii + Ehrlichia_sp_PanolaMountain + Rickettsia_parkeri) %>%
+  dplyr::select(Site_ID, gDNA_Sample, zoo_path) %>%
+  dplyr::left_join(covar, by = "Site_ID")
+
+all_join$zoo_path[all_join$zoo_path > 0] <- 1  ## set coinfections to 1 
+
+head(all_join)
+```
+
+plot pres/abs of pathogen
+```{r}
+xyplot(zoo_path ~ PC1_500m | Field_Type, 
+       data = all_join)
+```
+
+#### model presence/absence of any zoonotic pathogen at the individual level
+
+try out mixed-effects GLM w/ binomial distribution - using Site ID as a random effect
+```{r, message=FALSE}
+B0 <- glmer(zoo_path ~ 1 + (1|Site_ID), family = binomial, data = all_join)
+B1 <- glmer(zoo_path ~ Field_Type + (1|Site_ID), family = binomial, data = all_join)
+B2 <- glmer(zoo_path ~ PC1_500m + (1|Site_ID), family = binomial, data = all_join)
+B3 <- glmer(zoo_path ~ PC1_500m + Field_Type + (1|Site_ID), family = binomial, data = all_join)
+B4 <- glmer(zoo_path ~ PC1_500m * Field_Type + (1|Site_ID), family = binomial, data = all_join)
+
+AICc(B0,B1,B2,B3,B4)
+```
+
+```{r}
+summary(B2)
+```
+
+no significant variables 
+
+all zoonotic pathogens
+```{r, message=FALSE}
+all_zoo <- all_join %>%
+  group_by(Site_ID, zoo_path) %>%
+  dplyr::summarise(n=n()) %>%
+  pivot_wider(names_from = zoo_path, values_from = n)
+
+colnames(all_zoo) <- c("Site_ID", "neg", "pos")
+all_zoo$pos[is.na(all_zoo$pos)] <- 0
+all_zoo$sampled <- all_zoo$neg+all_zoo$pos
+all_zoo$prop <- all_zoo$pos/all_zoo$sampled
+all_zoo$pos_site <- 0
+all_zoo$pos_site[all_zoo$pos > 0] <- 1 
+  
+all_zoo[18,] <- list("GA", 0, 0, 0, 0, 0)
+
+all_zoo
+```
+
+
+join site covariates to aa_zoo summary 
+```{r}
+all_zoo_join <- all_zoo %>%
+  left_join(covar, by = "Site_ID")
+all_zoo_join
+```
+
+### presense/absence of any zoonotic pathogen in any tick species at the site level
+
+try out a set of models that is for pres/abs of pathogen at the site level 
+```{r}
+P0 <- glm(pos_site ~ 1, family = binomial, data = all_zoo_join)
+P1 <- glm(pos_site ~ Field_Type, family = binomial, data = all_zoo_join)
+P2 <- glm(pos_site ~ PC1_500m, family = binomial, data = all_zoo_join)
+P3 <- glm(pos_site ~ PC1_500m + Field_Type, family = binomial, data = all_zoo_join)
+#P4 <- glm(pos_site ~ PC1_500m * Field_Type, family = binomial, data = all_zoo_join)
+
+AICc(P0, P1, P2, P3)
+```
+
+
+```{r}
+stargazer(P0, P1, P2, P3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+
+summary(P3)
+```
+
+```{r}
+100*(24.731-11.146)/24.731
+```
+
+plot
+
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Natural","Manicured"))
+mydata$pred <- predict(P3, newdata = mydata, type = "response")
+
+v3 <- ggplot(all_zoo_join, aes(x = PC1_500m, y = pos_site, group = Field_Type)) + 
+  geom_point(aes(color = Field_Type)) + 
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
+  #theme_bw() + 
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"))+ 
+  scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("Presense/Absence of Pathogen") +
+  xlab("PC1")
+
+v3
+
+```
+
+
+
+### Amblyomma americanum
 Okay, what PATHOGENIC microorganisms to humans or domestic animals are presest in *A. americanum*
 
 * Babesia sp Coco (8)
@@ -84,12 +216,6 @@ aa <- data %>%
 head(aa)
 ```
 
-Read in the covariate data for all 18 sites 
-This site contains information on if the environment type was manicured or natural, and the forest, PC1 and PC2 landscape buffers
-```{r}
-covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
-head(covar)
-```
 
 create columns that indicate the presence or absence of the pathogens/pathogen groups of interest for *Amblyomma americanum*
 
@@ -153,9 +279,9 @@ E0 <- glmer(zoo_ehr ~ 1 + (1|Site_ID), family = binomial, data = aa_join)
 E1 <- glmer(zoo_ehr ~ Field_Type + (1|Site_ID), family = binomial, data = aa_join)
 E2 <- glmer(zoo_ehr ~ PC1_500m + (1|Site_ID), family = binomial, data = aa_join)
 E3 <- glmer(zoo_ehr ~ PC1_500m + Field_Type + (1|Site_ID), family = binomial, data = aa_join)
-E4 <- glmer(zoo_ehr ~ PC1_500m * Field_Type + (1|Site_ID), family = binomial, data = aa_join)
+#E4 <- glmer(zoo_ehr ~ PC1_500m * Field_Type + (1|Site_ID), family = binomial, data = aa_join)
 
-AICc(E0,E1,E2,E3,E4)
+AICc(E0,E1,E2,E3)
 ```
 
 model with lowest AIC includes PC1 and field type, but no interaction
@@ -163,7 +289,16 @@ model with lowest AIC includes PC1 and field type, but no interaction
 look at the model 
 ```{r}
 summary(E3)
+
+stargazer(E0, E1, E2, E3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
 ```
+
+need to figure out how to calculate an R2 for model E3...
+
 
 #### model presence/absence of Theileria cervi at the individual level
 
@@ -526,12 +661,20 @@ top model for pres/abs at a site is P2 (PC1 at 500m)
 
 look at the model 
 ```{r}
+stargazer(P0, P1, P2, P3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+
 summary(P2)
+summary(P3)
 ```
 
 model fit 
 ```{r}
 100*(24.953-19.194)/24.953
+100*(24.953-17.861)/24.953
 ```
 
 
@@ -554,6 +697,30 @@ plot(x = aa_zoo_join$PC1_500m, y = aa_zoo_join$pos_site)
 lines(mydata$PC1_500m, mydata$pred)
 ```
 
+pretty plot of the predictions 
+
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Natural","Manicured"))
+mydata$pred <- predict(P2, newdata = mydata, type = "response")
+
+v1 <- ggplot(aa_zoo_join, aes(x = PC1_500m, y = pos_site, group = Field_Type)) + 
+  geom_point(aes(color = Field_Type)) + 
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, group = Field_Type)) +
+  #theme_bw() + 
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "none") + 
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("Presense/Absence of Pathgogen") +
+  xlab("PC1")
+v1
+```
+
+
 
 ### presense/absence of any Ehrlichia pathogen at the site level
 
@@ -575,6 +742,12 @@ top model for pres/abs at a site is P1 (field type)
 
 look at the model 
 ```{r}
+stargazer(P0, P1, P2, P3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+
 summary(P1)
 summary(P3)
 ```
@@ -604,10 +777,23 @@ plot the prediction
 mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Natural","Manicured"))
 mydata$pred <- predict(P3, newdata = mydata, type = "response")
 
-ggplot(aa_ehr_join, aes(x = PC1_500m, y = pos_site, group = Field_Type)) + 
+v2 <- ggplot(aa_ehr_join, aes(x = PC1_500m, y = pos_site, group = Field_Type)) + 
   geom_point(aes(color = Field_Type)) + 
   geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
-  theme_bw()
+  #theme_bw() + 
+  theme(axis.text.y=element_blank(),
+        axis.ticks.y = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "none") + 
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("Presense/Absence of Ehrlichia") +
+  xlab("PC1")
+
+v2
+
 ```
 
 i f'd up changing the pres/ab to a factor and now it is funky... 
@@ -658,3 +844,23 @@ mydata$pred <- predict(P2, newdata = mydata, type = "response")
 plot(x = aa_tc_join$PC1_500m, y = aa_tc_join$pos_site)
 lines(mydata$PC1_500m, mydata$pred)
 ```
+
+
+### final plot for publication 
+
+```{r}
+library(cowplot)
+
+final_plot <- ggdraw()+
+  draw_plot(v3, x=0, y=0.5, width = 1, height =0.5)+
+  draw_plot(v1,x=0, y=0, width = 0.5, height =0.5 )+
+  draw_plot(v2, x=0.5, y=0, width = 0.5, height =0.5)+
+  draw_plot_label(c("A","B","C"), c(0,0, 0.5), c(1,0.5,0.5), size=10)
+
+final_plot
+```
+
+
+> ggsave("path_binomial.tiff", dpi=300, height = 6, width = 8)
+
+

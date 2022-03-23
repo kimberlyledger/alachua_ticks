@@ -18,7 +18,7 @@ library(ggbiplot)
 
 read in the data
 ```{r}
-lc <- read.csv("AlCo_landcover_allscales.csv")
+lc <- read.csv("AlCo_landcover_allscales_sort.csv")
 head(lc)
 ```
 
@@ -46,6 +46,10 @@ lc_1km_log <- log1p(lc_1km)
 z_lc <- lc_1km_log
 ```
 
+update column names 
+```{r}
+colnames(z_lc) <- c("agriculture", "developed", "forest", "manicured", "residential", "water", "wetland")
+```
 
 run a PCA using the function princomp from the stats package
 ```{r}
@@ -98,14 +102,24 @@ df_out$sampled <- lc$sampled
 df_out <- df_out %>%
   mutate(sampled2 = recode(sampled, "N" = 0.5, "Y"=1))
 
-df_out$sampled2 <- as.factor(df_out$sampled2)
+#df_out$sampled2 <- as.factor(df_out$sampled2)
 ```
 
 ```{r}
+# Extract loadings of the variables
+var <- rownames(lc_pca$loadings)
+load <- loadings(lc_pca)[]
+PCAloadings <- data.frame(Variables = var, c1 = load[,1], c2 = load[,2])
+
+
 ggplot(df_out, aes(x=Comp.1, y =Comp.2, color=group))+ 
+  geom_segment(data = PCAloadings, aes(x=0 , y =0, xend = c1*0.3, yend = c2*0.3),
+               arrow = arrow(length = unit(1/2, "picas")), color = "black") + 
   geom_point(aes(alpha = sampled), position = position_jitter(h=0.01,w=0.01)) + 
   scale_alpha_discrete(range = c(0.4,1)) +
-  theme_bw()
+  annotate("text", x = (PCAloadings$c1*0.3), y = (PCAloadings$c2*0.3),
+     label = PCAloadings$Variables) +
+  theme_classic()
 ```
 
 now try ggbiplot 
@@ -115,27 +129,51 @@ now try ggbiplot
 #lc.samp <- lc$sampled
 
 lc <- lc %>%
-  unite("GS", Field_Type, sampled, remove = F)
+  unite("GS", Field_Type, sampled, sep = "/", remove = F)
 
 unique(lc$GS)
-lc.newgroups <- lc$GS
+lc.newgroups <- as.factor(lc$GS)
+lc.new <- factor(lc.newgroups, levels = c("Manicured/Yes", "Natural/Yes", "Manicured/No", "Natural/No"))
 
-ggbiplot(lc_pca, groups = lc.newgroups) +
-  scale_color_manual(name = "site type", values = c("pink", "darkred","lightblue", "blue")) +
-  theme_minimal()
 
+biplot <- ggbiplot(lc_pca, groups = lc.new) +
+  scale_color_manual(name = "Type/Sampled?", values = c("#F8766D", "#00BFC4", "#F5C9C6", "#D5F0EE")) + 
+  theme_classic() + 
+  xlim(c(-2,2))
+
+biplot
 ```
 
-the issue here is that site points are overlapping... 
+
+the issue here is that site points are overlapping... but i rearrange sites so that all sampled sites plot on top 
 
 
 okay so the negative values of PC1 have high proportions of developed and residential 
 and the positive values of PC1 have high proportions of forest (and to some extent wetland)
 
 ## to do 
-rename PC1km_# with the actual land cover they represent   
 recreate for PC1 at 500m when i figure out the best way to plot...   
 make something like the last plot in section 5.4 of this website: https://bioconductor.org/packages/devel/bioc/vignettes/PCAtools/inst/doc/PCAtools.html#modify-bi-plots
+
+
+## now try PCAtools 
+
+```{r}
+#BiocManager::install('PCAtools')
+
+library(PCAtools)
+```
+
+must use pca() function
+```{r}
+#rotate data 
+
+pca_t <- t(z_lc)
+
+pca2 <- pca(pca_t)
+
+biplot(pca2, showLoadings = T)
+```
 
 
 

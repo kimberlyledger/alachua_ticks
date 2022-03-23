@@ -34,13 +34,13 @@ How many individuals of each species and life stage were collected?
 ```{r, message=FALSE}
 ticks %>%
   group_by(Species, Lifestage) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 ```
 How many individuals of each species were collected in natural vs manicured sites? 
 ```{r, message=FALSE}
 ticks %>%
-  group_by(Species, Field_Type) %>%
-  summarise(total = n())
+  group_by(Species, Lifestage, Field_Type) %>%
+  dplyr::summarise(total = n())
 ```
 
 How many individuals were collected at each visit? 
@@ -48,7 +48,7 @@ First plot combined, and then by species, and then by life stage of each species
 ```{r, message=FALSE}
 visit <- ticks %>%
   group_by(Visit) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 
 ggplot(data = visit, aes(x=Visit, y=total)) + 
   theme_classic() + 
@@ -57,7 +57,7 @@ ggplot(data = visit, aes(x=Visit, y=total)) +
 
 visit_species <- ticks %>%
   group_by(Species, Visit) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 
 ggplot(data = visit_species, aes(x=Visit, y=total, fill = Species)) + 
   theme_classic() + 
@@ -67,7 +67,7 @@ ggplot(data = visit_species, aes(x=Visit, y=total, fill = Species)) +
 visit_species_lifestage <- ticks %>%
   unite("Spp_Lifestage", Species, Lifestage) %>%
   group_by(Spp_Lifestage, Visit) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 
 ggplot(data = visit_species_lifestage, aes(x=Visit, y=total, fill = Spp_Lifestage)) + 
   theme_classic() + 
@@ -75,34 +75,71 @@ ggplot(data = visit_species_lifestage, aes(x=Visit, y=total, fill = Spp_Lifestag
   labs(title = "tick abundance - by species and life stage", x = "Visit", y = "# of ticks")
 ```
 
+PUBLICATION FIGURE!  
+```{r}
+require(ochRe)
+pal_names <- names(ochre_palettes)
+
+ggplot(data = visit_species, aes(x=Visit, y=total, fill = Species)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "", x = "", y = "number of ticks") + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()) +
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                    values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860"))  # can change colors here 
+
+f1 <- ggplot(data = visit_species, aes(x=Visit, y=log1p(total), fill = Species)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "", x = "", y = "log(number of ticks)") + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()) +
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                      values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860"))  # can change colors here 
+
+```
+
+
+
 How does each site differ in tick abundance? 
 **remember:** GA had 0 ticks the entire study 
 ```{r, message=FALSE}
 site1 <- ticks %>%
   group_by(Site_ID) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 site1[18,] <- list("GA", 0)
 
 site <- ticks %>%
-  unite("Spp_Lifestage", Species, Lifestage) %>%
-  group_by(Spp_Lifestage, Site_ID, Field_Type) %>%
-  summarise(total = n())
-site[52,] <- list("AA_A","GA","Manicured",0)
+  group_by(Species, Site_ID, Field_Type) %>%
+  dplyr::summarise(total = n())
+site[38,] <- list("AA","GA","Manicured",0)
 
 site$Site_ID <- factor(site$Site_ID, levels = c("GA","HW","RP","UG","JM","PC","29RD","FC","LL","DF","HT","MSM","SW","HC","SF","PP","SR","MSN"
 ))
 
-p1 <- ggplot(data = site, aes(x=Site_ID, y=total, fill =Spp_Lifestage)) + 
+p1 <- ggplot(data = site, aes(x=Site_ID, y=total, fill =Species)) + 
   theme_classic() + 
   geom_bar(stat = "identity") + 
-  labs(title = "Spp_Lifestage", x = "Site", y = "# of ticks")
+  labs(x = "Site", y = "number of ticks") + 
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                      values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860")) 
 
-p2 <- ggplot(data = site, aes(x=Site_ID, y=log1p(total), fill =Spp_Lifestage)) + 
+p2 <- ggplot(data = site, aes(x=Site_ID, y=log1p(total), fill =Species)) + 
   theme_classic() + 
   geom_bar(stat = "identity") + 
-  labs(title = "Spp_Lifestage", x = "Site", y = "log(# of ticks)")
+  labs(x = "Site", y = "log(number of ticks)") + 
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                      values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860")) 
 
-gridExtra::grid.arrange(p1,p2, ncol=2)
+#gridExtra::grid.arrange(p1,p2, ncol=2)
+p2
 ```
 
 # Part 2: Visualize *Amblyomma americanum* data 
@@ -118,7 +155,7 @@ Let's plot the count of *A.americanum* (nymphs and adults combined) by visit and
 ```{r, message=FALSE}
 aa_visit <- aa %>%
   group_by(Site_ID, Visit) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 
 ggplot(data = aa_visit, aes(x=Visit, y=total, col = Site_ID)) + 
   theme_classic() + 
@@ -130,7 +167,7 @@ Let's take a closer look at the seasonality of *A.americanum* by combining count
 ```{r, message=FALSE}
 aa_allsites <- aa %>%
   group_by(Lifestage, Visit) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 
 g1 <- ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
   theme_classic() + 
@@ -150,7 +187,7 @@ Now let's combine counts across all visits and keep the sites seperate
 ```{r, message=FALSE}
 aa_allvisits <- aa %>%
   group_by(Site_ID, Lifestage) %>%
-  summarize(total = n(),
+  dplyr::summarize(total = n(),
             density = (total/12000) * 100)
 
 ## add in rows for the sites and life stages with no observations
@@ -184,7 +221,7 @@ Now let's plot the count of I.scapularis (rembember there were only adults colle
 ```{r, message=FALSE}
 is_visit <- is %>%
   group_by(Site_ID, Visit) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 
 ggplot(data = is_visit, aes(x=Visit, y=total, col = Site_ID)) + 
   theme_classic() + 
@@ -195,7 +232,7 @@ let's take a closer look at the seasonality of I.scapularis by combining counts 
 ```{r, message=FALSE}
 is_allsites <- is %>%
   group_by(Lifestage, Visit) %>%
-  summarise(total = n())
+  dplyr::summarise(total = n())
 
 g3 <- ggplot(data = is_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
   theme_classic() + 
@@ -214,7 +251,7 @@ now let's combine counts across all visits and keep the sites seperate
 ```{r, message=FALSE}
 is_allvisits <- is %>%
   group_by(Site_ID, Lifestage) %>%
-  summarize(total = n(),
+  dplyr::summarize(total = n(),
             density = (total/12000) * 100)
 
 ## add in rows for the sites and life stages with no observations
@@ -232,7 +269,7 @@ is_allvisits$Site_ID <- factor(is_allvisits$Site_ID, levels = c("GA","UG","HW","
 ggplot(data = is_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) + 
   theme_classic() + 
   geom_bar(stat = "identity") + 
-  labs(title = "A.americanum", x = "Site", y = "# of ticks")
+  labs(title = "I.scapularis", x = "Site", y = "# of ticks")
 
 ```
 The order of sites is the *I.scapularis* plot is the same as the *A. americanum* plot earlier. Just using the eyeball test this shows many of the sites with high *A. americanum* abundance also have *I.scapularis*, but there are some deviations from this trend. 
@@ -266,7 +303,7 @@ head(aa_var)
 
 aa_combined <- aa_allvisits %>%
   group_by(Site_ID) %>%
-  summarise(total = sum(total),
+  dplyr::summarise(total = sum(total),
             density = sum(density)) %>%
   left_join(covar)
 head(aa_combined)
@@ -369,6 +406,7 @@ nb.glm13 <- glm.nb(total ~ PC1_500m * Field_Type, data = aa_combined)
 
 ### compare AICc of models 
 MuMIn::AICc(nb.glm0, nb.glm1, nb.glm2, nb.glm3, nb.glm4, nb.glm5, nb.glm6, nb.glm7)
+
 MuMIn::AICc(nb.glm0, nb.glm2, nb.glm11, nb.glm12, nb.glm13)
 
 stargazer(nb.glm3, nb.glm4, nb.glm6, nb.glm7, type = "text",
@@ -377,7 +415,7 @@ stargazer(nb.glm3, nb.glm4, nb.glm6, nb.glm7, type = "text",
           notes.append = FALSE, 
           header=FALSE)
 
-stargazer(nb.glm12, nb.glm13, type = "text",
+stargazer(nb.glm12, nb.glm11, type = "text",
           intercept.bottom = FALSE, 
           single.row=FALSE,     
           notes.append = FALSE, 
@@ -385,6 +423,19 @@ stargazer(nb.glm12, nb.glm13, type = "text",
 ```
 lowest AICc is for **PC1 at 500m scale** and **Field_Type**  
 lowest AICc does not include the interaction term - but many models are within 2 delta AIC 
+
+
+```{r}
+summary(nb.glm12)
+summary(nb.glm11)
+```
+
+pseudo R2
+```{r}
+100*(54.865-20.811)/54.865
+100*(44.483-20.78)/44.483
+```
+
 
 ### model check across all spatial scales of PC1 
 compare models at all PC1 scales with field_type 
@@ -442,6 +493,18 @@ neigh <- dnearneigh(x=coords, d1=0, d2=0.5*maxdist, longlat = F)
 plot(neigh, coords)
 listw.neigh <- nb2listw(neigh, style = "W")
 ```
+
+inverse distance weights  
+```{r}
+dlist <- spdep::nbdists(nb.gab, coords)
+dlist <- lapply(dlist, function(x) 1/x)
+listw.d1 <- spdep::nb2listw(nb.gab, style = "W", glist=dlist)
+
+spdep::lm.morantest(nb.glm12, listw.d1) 
+```
+
+
+
 test for spatial autocorrelation in explainatory and predictor variables
 ```{r, message=FALSE}
 spdep::moran.test(aa_combined$total, listw.gab)
@@ -532,6 +595,20 @@ gridExtra::grid.arrange(plot1, plot2, ncol=2)
 #### compare model results for full and screened glm 
 nb.glm12.screen <- glm.nb(total ~ PC1_500m + Field_Type, data = aa_screen)
 ```
+
+compared all screened models
+
+```{r}
+nb.glm0.screen <- glm.nb(total ~ 1, data = aa_screen)
+nb.glm2.screen <- glm.nb(total ~ Field_Type, data = aa_screen)
+nb.glm11.screen <- glm.nb(total ~ PC1_500m, data = aa_screen)
+nb.glm12.screen <- glm.nb(total ~ PC1_500m + Field_Type, data = aa_screen)
+nb.glm13.screen <- glm.nb(total ~ PC1_500m * Field_Type, data = aa_screen)
+
+AICc(nb.glm0.screen,nb.glm2.screen,nb.glm11.screen,nb.glm12.screen,nb.glm13.screen)
+```
+
+
 ### summary of top model *Amblyomma americanum* model (screened dataset)
 ```{r}
 summary(nb.glm12.screen)
@@ -616,9 +693,10 @@ ndata <- mutate(ndata,
 ndata
 ```
 
-plot it
+plot it - FIGURE FOR PUBLICATIONS 
 ```{r, message=FALSE}
-plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
+
+aa.plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
   geom_point(aes(color=Field_Type, size =2)) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
@@ -627,31 +705,34 @@ plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
   theme_bw() +
   theme(panel.grid.major=element_blank(),
                     panel.grid.minor=element_blank(),
-                    legend.position = c(0.3,0.85)) +
+                    legend.position = c(0.3,0.7)) +
                     scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
                     scale_size(guide = 'none') +
   ylab("A. americanum abundance") +
-  xlab("PC1 at 500m")
+  xlab("PC1")
 
-plt.log <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
+#remove the two sites with zeros so that they do not make the plot look funny on the log axis 
+aa_screen2 <- aa_screen[-c(1,2),]
+
+aa.plt.log <- ggplot(aa_screen2, aes(x = PC1_500m, y = total)) +
   geom_point(aes(color=Field_Type, size =2)) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
                   aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
                   alpha = 0.1)+ 
   theme_bw() +
+  theme(legend.position = "none") +
   theme(panel.grid.major=element_blank(),
-                    panel.grid.minor=element_blank(),
-                    legend.position = c(0.3,0.85)) +
-                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
-                    scale_size(guide = 'none') +
-  scale_y_log10() +
+                    panel.grid.minor=element_blank()) +
+  #                  legend.position = c(0.3,0.85)) +
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+  #scale_size(guide = 'none') +
+  scale_y_log10(labels = scales::number_format(accuracy = 1)) +
   ylab("A. americanum abundance") +
-  xlab("PC1 at 500m")
+  xlab("PC1")
 
-grid.arrange(plt, plt.log, ncol = 2)
+grid.arrange(aa.plt, aa.plt.log, ncol = 2)
 ```   
-
 
 # Part 5: Landscape analyses of *Ixodes scapularis* 
 
@@ -665,7 +746,7 @@ head(is_var)
 
 is_combined <- is_allvisits %>%
   group_by(Site_ID) %>%
-  summarise(total = sum(total),
+  dplyr::summarise(total = sum(total),
             density = sum(density)) %>%
   left_join(covar)
 head(is_combined)
@@ -775,7 +856,7 @@ nb.glm13 <- glm.nb(total ~ PC1_1km * Field_Type, data = is_combined)
 
 ### compare AICc of models - forest cover 
 MuMIn::AICc(nb.glm0, nb.glm1, nb.glm2, nb.glm3, nb.glm4, nb.glm5, nb.glm6, nb.glm7)
-MuMIn::AICc(nb.glm0, nb.glm1, nb.glm8, nb.glm9, nb.glm10, nb.glm11, nb.glm12, nb.glm13)
+MuMIn::AICc(nb.glm0, nb.glm1, nb.glm8, nb.glm9, nb.glm10)
 
 stargazer(nb.glm6, type = "text",
           intercept.bottom = FALSE, 
@@ -783,7 +864,7 @@ stargazer(nb.glm6, type = "text",
           notes.append = FALSE, 
           header=FALSE)
 
-stargazer(nb.glm8, nb.glm9, nb.glm11, nb.glm12, type = "text",
+stargazer(nb.glm8, nb.glm9, type = "text",
           intercept.bottom = FALSE, 
           single.row=FALSE,     
           notes.append = FALSE, 
@@ -957,6 +1038,17 @@ pseudo r-squared of model
 100*(36.215-18.487)/36.215 
 ```
 
+```{r}
+summary(nb.glm8)
+```
+
+pseudo R2
+```{r}
+100*(28.726-18.064)/28.726
+```
+
+
+
 plot the effects of PC1 and Enviro type 
 ```{r, message=FALSE}
 df1 <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Natural","Manicured"), total = NA)
@@ -1019,22 +1111,24 @@ gridExtra::grid.arrange(plot1, plot2, ncol=2)
 rerun models using the screened dataset 
 ```{r}
 #### compare model results for full and screened glm 
-#nb.glm0.reduced <- glm.nb(total ~ 1, data = is_screen)
-#nb.glm1.reduced <- glm.nb(total ~ Field_Type, data = is_screen)
+nb.glm0.reduced <- glm.nb(total ~ 1, data = is_screen)
+nb.glm1.reduced <- glm.nb(total ~ Field_Type, data = is_screen)
 # models for forest cover at 250m and 2km buffers
 #nb.glm2.reduced <- glm.nb(total ~ Forest250m , data = is_screen)
 #nb.glm3.reduced <- glm.nb(total ~ Forest250m + Field_Type, data = is_screen)
 #nb.glm4.reduced <- glm.nb(total ~ Forest250m * Field_Type, data = is_screen)
 #nb.glm5.reduced <- glm.nb(total ~ Forest2km , data = is_screen)
-nb.glm6.reduced <- glm.nb(total ~ Forest2km + Field_Type, data = is_screen)
+#nb.glm6.reduced <- glm.nb(total ~ Forest2km + Field_Type, data = is_screen)
 #nb.glm7.reduced <- glm.nb(total ~ Forest2km * Field_Type, data = is_screen)
 # models for PC1 at 500m and 1km buffers
-#nb.glm8.reduced <- glm.nb(total ~ PC1_500m , data = is_screen)
+nb.glm8.reduced <- glm.nb(total ~ PC1_500m , data = is_screen)
 nb.glm9.reduced <- glm.nb(total ~ PC1_500m + Field_Type, data = is_screen)
-#nb.glm10.reduced <- glm.nb(total ~ PC1_500m * Field_Type, data = is_screen)
+nb.glm10.reduced <- glm.nb(total ~ PC1_500m * Field_Type, data = is_screen)
 #nb.glm11.reduced <- glm.nb(total ~ PC1_1km , data = is_screen)
-nb.glm12.reduced <- glm.nb(total ~ PC1_1km + Field_Type, data = is_screen)
+#nb.glm12.reduced <- glm.nb(total ~ PC1_1km + Field_Type, data = is_screen)
 #nb.glm13.reduced <- glm.nb(total ~ PC1_1km * Field_Type, data = is_screen)
+
+AICc(nb.glm0.reduced, nb.glm1.reduced ,nb.glm8.reduced ,nb.glm9.reduced ,nb.glm10.reduced )
 
 #stargazer(nb.glm6, nb.glm6.reduced, type = "text",
 #          intercept.bottom = FALSE, 
@@ -1042,7 +1136,7 @@ nb.glm12.reduced <- glm.nb(total ~ PC1_1km + Field_Type, data = is_screen)
 #          notes.append = FALSE, 
 #          header=FALSE)
 
-stargazer(nb.glm9, nb.glm9.reduced, type = "text",
+stargazer(nb.glm8.reduced, nb.glm9.reduced, type = "text",
           intercept.bottom = FALSE, 
           single.row=FALSE,     
           notes.append = FALSE, 
@@ -1141,37 +1235,64 @@ ndata
 
 plot it
 ```{r, message=FALSE}
-plt <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
+is.plt <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
   geom_point(aes(color=Field_Type, size =2)) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
                   aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
                   alpha = 0.1)+ 
   theme_bw() +
+  theme(legend.position = "none") +
   theme(panel.grid.major=element_blank(),
-                    panel.grid.minor=element_blank(),
-                    legend.position = c(0.3,0.85)) +
-                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
-                    scale_size(guide = 'none') +
+                    panel.grid.minor=element_blank()) +
+  #                  legend.position = c(0.3,0.85)) +
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+  scale_size(guide = 'none') +
   ylab("I. scapularis abundance") +
-  xlab("PC1 at 500m")
+  xlab("PC1")
 
-plt.log <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
+is_screen2 <- is_screen[-c(1,3,5,6,7,8,11),]
+
+is.plt.log <- ggplot(is_screen2, aes(x = PC1_500m, y = total)) +
   geom_point(aes(color=Field_Type, size =2)) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
                   aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
                   alpha = 0.1)+ 
   theme_bw() +
+  theme(legend.position = "none") +
   theme(panel.grid.major=element_blank(),
-                    panel.grid.minor=element_blank(),
-                    legend.position = c(0.3,0.85)) +
-                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
-                    scale_size(guide = 'none') +
-  scale_y_log10() +
+                    panel.grid.minor=element_blank()) +
+  #                  legend.position = c(0.3,0.85)) +
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+  scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+  scale_size(guide = 'none') +
+  scale_y_log10(labels = scales::number_format(accuracy = 1)) +
   ylab("I. scapularis abundance") +
-  xlab("PC1 at 500m")
+  xlab("PC1")
 
-grid.arrange(plt, plt.log, ncol = 2)
+grid.arrange(is.plt, is.plt.log, ncol = 2)
 ```   
+
+put all the plots together... 
+
+```{r}
+grid.arrange(aa.plt, aa.plt.log, is.plt, is.plt.log, ncol = 2)
+```
+
+doesn't ggsave correct.. try this... 
+
+```{r}
+library(cowplot)
+
+final_plot <- ggdraw()+
+  draw_plot(aa.plt, x=0, y=0.5, width = 0.5, height =0.5)+
+  draw_plot(aa.plt.log, x=0.5, y=0.5, width = 0.5, height =0.5)+
+  draw_plot(is.plt,x=0, y=0, width = 0.5, height =0.5 )+
+  draw_plot(is.plt.log, x=0.5, y=0, width = 0.5, height =0.5)+
+  draw_plot_label(c("A","B","C","D"), c(0, 0.5, 0, 0.5), c(1,1,0.5,0.5), size=10)
+
+final_plot
+```
+
 

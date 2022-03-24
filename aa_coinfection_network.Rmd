@@ -63,8 +63,17 @@ plot(network, vertex.label.color="black",
 #     layout=layout_in_circle(network))
 ```
 
+```{r}
+plot(network, 
+     vertex.size = 15, vertex.color = "#486090", vertex.frame.color = "black",
+     vertex.label.cex=.8, vertex.label.dist= 2,
+     vertex.label.color = "black",
+     vertex.label.font = 4, 
+     vertex.label.degree = c(-pi/2,-pi/2,-pi/2, -pi/2,-pi/2,-pi/2, pi/2, pi/2, pi/2 , pi/2),
+     edge.curved=0.5, edge.width = edge.betweenness(network)*2, #edge.color = "#f0a860",
+     layout=layout_in_circle(network))
 
+```
 
-
-
-
+saved using: 
+tiff(filename = "coinf_grey.tiff", height = 2000, width = 2000, res = 300)

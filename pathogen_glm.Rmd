@@ -1,0 +1,389 @@
+---
+title: "tick_pathogens"
+author: "Kimberly Ledger"
+date: "4/18/2022"
+output: github_document
+---
+
+Code for analyses of pathogens in Alachua County ticks.  
+
+load libraries
+```{r, message=FALSE}
+library(tidyverse) # for data manipulation
+library(ggplot2) # for visualizations
+library(lme4) #for glm()
+library(MuMIn) # for AICc() 
+library(stargazer) # for stargazer() model comparison
+library(MASS) # for glm.nb()
+```
+
+
+# Part 1: Prepare the data
+Read in raw Alachua County tick data
+```{r}
+ticks <- read.csv("AlachuaTicksAllSites.csv")
+str(ticks)
+```
+
+Read in raw pathogen data 
+```{r}
+pathogen <- read.csv("AlCo_Pathogens.csv")
+str(pathogen)
+```
+
+
+Join pathogen results with the raw tick data by the gDNA_Sample and Collection_Sample identities
+```{r}
+data <- ticks %>%
+  dplyr::left_join(pathogen, by = c("gDNA_Sample", "Collection_Sample")) %>%
+  mutate_all(na_if, "")
+
+head(data)
+```
+
+note: there are NA's in the data for any tick sample that was not processed in the lab
+
+Read in the covariate data for all 18 sites 
+This site contains information on if the environment type was manicured or natural, and the forest, PC1 and PC2 landscape buffers
+```{r}
+covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
+head(covar)
+```
+
+# Part 2: Create summary table with response variables 
+
+* = presence/absence of infected ticks by site 
+* = abundance of infected ticks per site 
+* = richness of pathogens per site
+
+important: we are only considering microorganisms that are known to be human or veterinary important pathogens as "pathogens" in these analyses 
+
+```{r}
+pathogen_df <- data %>%
+  filter(!is.na(gDNA_Sample)) %>%
+  group_by(Site_ID) %>%
+  summarise(Babesia_sp_Coco = sum(Babesia_sp_Coco),
+            Babesia_odocoieli = sum(Babesia_odocoieli),
+            Cytauxozoon_felis = sum(Cytauxozoon_felis),
+            Ehrlichia_chaffeensis = sum(Ehrlichia_chaffeensis),
+            Ehrlichia_ewingii = sum(Ehrlichia_ewingii),
+            Ehrlichia_sp_PanolaMountain = sum(Ehrlichia_sp_PanolaMountain),
+            Rickettsia_parkeri = sum(Rickettsia_parkeri), 
+            sum_path = sum(Babesia_sp_Coco, Babesia_odocoieli, Cytauxozoon_felis,
+                           Ehrlichia_chaffeensis, Ehrlichia_ewingii, Ehrlichia_sp_PanolaMountain,
+                           Rickettsia_parkeri))
+
+pathogen_df[18,] <- list("GA", 0, 0, 0, 0, 0, 0, 0, 0)
+```
+
+
+create df for pathogen richness 
+```{r}
+richness_df <- pathogen_df
+
+richness_df$Babesia_sp_Coco[richness_df$Babesia_sp_Coco > 0] <- 1 
+richness_df$Babesia_odocoieli[richness_df$Babesia_odocoieli > 0] <- 1 
+richness_df$Cytauxozoon_felis[richness_df$Cytauxozoon_felis > 0] <- 1 
+richness_df$Ehrlichia_chaffeensis[richness_df$Ehrlichia_chaffeensis > 0] <- 1 
+richness_df$Ehrlichia_ewingii[richness_df$Ehrlichia_ewingii > 0] <- 1 
+richness_df$Ehrlichia_sp_PanolaMountain[richness_df$Ehrlichia_sp_PanolaMountain > 0] <- 1
+richness_df$Rickettsia_parkeri[richness_df$Rickettsia_parkeri > 0] <- 1 
+richness_df$Babesia_sp_Coco[richness_df$Babesia_sp_Coco > 0] <- 1 
+
+richness_df <- richness_df %>%
+  dplyr::select(!sum_path) %>%
+  mutate(all_rich = rowSums(across(where(is.numeric))))
+```
+
+put the explanitory (field_type and PC1 @ 500m) and response variables into one data frame 
+```{r}
+covar1 <- covar %>%
+  dplyr::select(Site_ID, Field_Type, PC1_500m)
+
+in_abun <- pathogen_df %>%
+  dplyr::select(Site_ID, sum_path)
+
+in_rich <- richness_df %>%
+  dplyr::select(Site_ID, all_rich)
+
+join_path <- covar1 %>%
+  left_join(in_abun) %>%
+  left_join(in_rich)
+
+join_path$pres <- 0 
+join_path$pres[join_path$all_rich > 0] <- 1  ## set coinfections to 1 
+
+join_path <- join_path %>%
+  arrange(PC1_500m)
+```
+
+
+# Part 3: model time! 
+
+## presence of pathogens at the site level 
+## (i.e. whether or not at least one infected tick was found with any pathogen in a site)
+
+binomial glm's 
+```{r}
+P0 <- glm(pres ~ 1, family = binomial, data = join_path)
+P1 <- glm(pres ~ Field_Type, family = binomial, data = join_path)
+P2 <- glm(pres ~ PC1_500m, family = binomial, data = join_path)
+P3 <- glm(pres ~ PC1_500m + Field_Type, family = binomial, data = join_path)
+#P4 <- glm(pres ~ PC1_500m * Field_Type, family = binomial, data = join_path)
+
+AICc(P0, P1, P2, P3)
+```
+
+compare the top models  
+```{r}
+stargazer(P2, P3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+
+top model summary and model validation plots
+```{r}
+summary(P3)
+plot(P3, which = 1)
+plot(P3, which = 2)
+plot(P3, which = 3)
+plot(P3, which = 4)
+plot(P3, which = 5)
+```
+
+sites 5, 9, and 12 could be are problematic... consider removing 
+
+
+pretty plot of the predictions 
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
+mydata$pred <- predict(P3, newdata = mydata, type = "response")
+
+v1 <- ggplot(join_path, aes(x = PC1_500m, y = pres, group = Field_Type)) + 
+  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
+             color = "black", pch = 21, position = position_jitter(w = 0.05, h = 0)) + 
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
+  #theme_bw() + 
+  theme(axis.text.y= element_blank(),   
+        axis.ticks.y = element_blank(),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "none") + 
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("Probability of Pathogen") +
+  xlab("Development Gradient")
+v1
+```
+
+***UPDATE COLORS?*** 
+
+
+## abundance of infected ticks per site
+
+```{r}
+hist(join_path$sum_path)
+```
+
+try a negative binomial glm 
+```{r}
+A0 <- glm.nb(sum_path ~ 1, data = join_path)
+A1 <- glm.nb(sum_path ~ Field_Type, data = join_path)
+A2 <- glm.nb(sum_path ~ PC1_500m, data = join_path)
+A3 <- glm.nb(sum_path ~ PC1_500m + Field_Type, data = join_path)
+A4 <- glm.nb(sum_path ~ PC1_500m * Field_Type, data = join_path)
+
+AICc(A0, A1, A2, A3, A4)
+```
+
+model summary and validation
+```{r}
+summary(A3)
+plot(A3, which = 1)
+plot(A3, which = 2)
+plot(A3, which = 3)
+plot(A3, which = 4)
+plot(A3, which = 5)
+```
+
+site 11 could be problematic... 
+
+pretty plot of the predictions 
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
+mydata$pred <- predict(A3, newdata = mydata, type = "response")
+
+v2 <- ggplot(join_path, aes(x = PC1_500m, y = sum_path, group = Field_Type)) + 
+  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
+             color = "black", pch = 21) +
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
+  #theme_bw() + 
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "none") + 
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("Abundance of Infected Ticks") +
+  xlab("Development Gradient")
+v2
+```
+
+
+An alternative would be to log-transform data and run linear model... 
+
+```{r}
+join_path$log_sum_path <- log1p(join_path$sum_path)
+join_path$log_all_rich <- log1p(join_path$all_rich)
+```
+
+
+try lms 
+```{r}
+L0 <- lm(log_sum_path ~ 1, data = join_path)
+L1 <- lm(log_sum_path ~ Field_Type, data = join_path)
+L2 <- lm(log_sum_path ~ PC1_500m, data = join_path)
+L3 <- lm(log_sum_path ~ PC1_500m + Field_Type, data = join_path)
+L4 <- lm(log_sum_path ~ PC1_500m * Field_Type, data = join_path)
+
+AICc(L0, L1, L2, L3, L4)
+```
+
+model summary and validation
+```{r}
+summary(L3)
+plot(L3, which = 1)
+plot(L3, which = 2)
+plot(L3, which = 3)
+plot(L3, which = 4)
+plot(L3, which = 5)
+```
+
+pretty plot of the predictions 
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
+mydata$pred <- predict(L3, newdata = mydata, type = "response")
+
+v3 <- ggplot(join_path, aes(x = PC1_500m, y = log_sum_path, group = Field_Type)) + 
+  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
+             color = "black", pch = 21) +
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
+  #theme_bw() + 
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "none") + 
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("log(Abundance of Infected Ticks)") +
+  xlab("Development Gradient")
+v3
+```
+
+
+
+## pathogen richness per site
+```{r}
+hist(join_path$all_rich)
+```
+
+try a negative binomial glm 
+```{r}
+R0 <- glm.nb(all_rich ~ 1, data = join_path)
+R1 <- glm.nb(all_rich ~ Field_Type, data = join_path)
+R2 <- glm.nb(all_rich ~ PC1_500m, data = join_path)
+R3 <- glm.nb(all_rich ~ PC1_500m + Field_Type, data = join_path)
+R4 <- glm.nb(all_rich ~ PC1_500m * Field_Type, data = join_path)
+
+AICc(R0, R1, R2, R3, R4)
+```
+
+model summary and validation
+```{r}
+summary(R3)
+plot(R3, which = 1)
+plot(R3, which = 2)
+plot(R3, which = 3)
+plot(R3, which = 4)
+plot(R3, which = 5)
+```
+
+
+pretty plot of the predictions 
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
+mydata$pred <- predict(R3, newdata = mydata, type = "response")
+
+v4 <- ggplot(join_path, aes(x = PC1_500m, y = all_rich, group = Field_Type)) + 
+  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5),  #jitter points? 
+             color = "black", pch = 21) +
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
+  #theme_bw() + 
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "none") + 
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("Pathogen Richness") +
+  xlab("Development Gradient")
+v4
+```
+
+
+or does it makes sense to log-transform data and run linear models? 
+
+try lms 
+```{r}
+RL0 <- lm(log_all_rich ~ 1, data = join_path)
+RL1 <- lm(log_all_rich ~ Field_Type, data = join_path)
+RL2 <- lm(log_all_rich ~ PC1_500m, data = join_path)
+RL3 <- lm(log_all_rich ~ PC1_500m + Field_Type, data = join_path)
+RL4 <- lm(log_all_rich ~ PC1_500m * Field_Type, data = join_path)
+
+AICc(RL0, RL1, RL2, RL3, RL4)
+```
+
+model summary and validation
+```{r}
+summary(RL3)
+plot(RL3, which = 1)
+plot(RL3, which = 2)
+plot(RL3, which = 3)
+plot(RL3, which = 4)
+plot(RL3, which = 5)
+```
+
+pretty plot of the predictions 
+```{r}
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
+mydata$pred <- predict(RL3, newdata = mydata, type = "response")
+
+v5 <- ggplot(join_path, aes(x = PC1_500m, y = log_all_rich, group = Field_Type)) + 
+  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
+             color = "black", pch = 21) +
+  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
+  #theme_bw() + 
+  theme(panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        legend.position = "none") + 
+  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+  ylab("log(Pathogen Richness)") +
+  xlab("Development Gradient")
+v5
+```
+
+To Do: 
+plot with 95% CI's 
+jitter points? 
+different colors? 
+
+
+
+

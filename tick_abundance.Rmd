@@ -3,7 +3,7 @@ title: "Alachua County Ticks"
 author: "Kimberly Ledger"
 date: "5/20/2022"
 output: 
-  html_document:
+  github_document:
     toc: true
     toc_depth: 3
 ---
@@ -122,7 +122,7 @@ k1 <- ggplot(data = visit_species, aes(x=Visit, y=log1p(total), fill = Species))
                       values = mycol)  # can change colors here 
 k1
 
-#ggsave("Figures/TickAbundanceBySession.tiff", dpi = 300, width = 10)
+#ggsave("Figures/TickAbundanceBySession.png", dpi = 300, width = 10)
 ```
 
 
@@ -1069,7 +1069,7 @@ final_plot <- ggdraw()+
   draw_plot_label(c("A","B","C","D"), c(0, 0.5, 0, 0.5), c(1,1,0.5,0.5), size=10)
 
 final_plot
-#ggsave("Figures/TickAbundanceModels.tiff", dpi = 300)
+ggsave("Figures/TickAbundanceModels.png", dpi = 300)
 ```
 
 

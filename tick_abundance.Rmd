@@ -1,0 +1,1075 @@
+---
+title: "Alachua County Ticks"
+author: "Kimberly Ledger"
+date: "5/20/2022"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+---
+
+Load libraries 
+```{r message=FALSE}
+library(tidyverse)
+library(car)
+library(MASS)
+library(stargazer)
+library(effects)
+library(ggplot2)
+library(MuMIn)
+library(spdep)
+library(corrplot)
+library(gridExtra)
+```
+
+# Part 1: Explore tick abundance data 
+
+Read in the raw Alachua County tick dataset 
+```{r}
+ticks <- read.csv("AlachuaTicksAllSites.csv")
+head(ticks)
+```
+
+How many individuals of each species and life stage were collected? 
+```{r, message=FALSE}
+ticks %>%
+  group_by(Species, Lifestage) %>%
+  dplyr::summarise(total = n())
+```
+How many individuals of each species were collected in natural vs manicured sites? 
+```{r, message=FALSE}
+ticks %>%
+  group_by(Species, Lifestage, Field_Type) %>%
+  dplyr::summarise(total = n())
+```
+
+How many individuals were collected at each visit? 
+First plot combined, and then by species, and then by life stage of each species 
+```{r, message=FALSE}
+visit <- ticks %>%
+  group_by(Visit) %>%
+  dplyr::summarise(total = n())
+
+ggplot(data = visit, aes(x=Visit, y=total)) + 
+  theme_classic() + 
+  geom_point() + 
+  labs(title = "tick abundance - all species combined", x = "Visit", y = "# of ticks")
+
+visit_species <- ticks %>%
+  group_by(Species, Visit) %>%
+  dplyr::summarise(total = n())
+
+ggplot(data = visit_species, aes(x=Visit, y=total, fill = Species)) + 
+  theme_classic() + 
+  geom_point(aes(color = Species)) + 
+  labs(title = "tick abundance - by species", x = "Visit", y = "# of ticks (adults and nymphs)")
+
+visit_species_lifestage <- ticks %>%
+  unite("Spp_Lifestage", Species, Lifestage) %>%
+  group_by(Spp_Lifestage, Visit) %>%
+  dplyr::summarise(total = n())
+
+ggplot(data = visit_species_lifestage, aes(x=Visit, y=total, fill = Spp_Lifestage)) + 
+  theme_classic() + 
+  geom_point(aes(color = Spp_Lifestage)) + 
+  labs(title = "tick abundance - by species and life stage", x = "Visit", y = "# of ticks")
+```
+
+Make a nice figure for the publication 
+```{r}
+require(ochRe)
+pal_names <- names(ochre_palettes)
+
+ggplot(data = visit_species, aes(x=Visit, y=total, fill = Species)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "", x = "", y = "number of ticks") + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()) +
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                    values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860"))  # can change colors here 
+
+f1 <- ggplot(data = visit_species, aes(x=Visit, y=log1p(total), fill = Species)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "", x = "", y = "log(number of ticks)") + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()) +
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                      values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860"))  # can change colors here 
+f1
+```
+
+Make a nice figure that is colorblindness friendly 
+```{r}
+library(viridisLite)
+
+mycol <- viridisLite::viridis(6)
+
+k1 <- ggplot(data = visit_species, aes(x=Visit, y=log1p(total), fill = Species)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "", x = "", y = "log(number of ticks)") + 
+  theme(axis.title.x=element_blank(),
+        axis.text.x=element_blank(),
+        axis.ticks.x=element_blank()) +
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                      values = mycol)  # can change colors here 
+k1
+
+#ggsave("Figures/TickAbundanceBySession.tiff", dpi = 300, width = 10)
+```
+
+
+
+How does each site differ in tick abundance? 
+**remember:** GA had 0 ticks the entire study 
+```{r, message=FALSE}
+site1 <- ticks %>%
+  group_by(Site_ID) %>%
+  dplyr::summarise(total = n())
+site1[18,] <- list("GA", 0)
+
+site <- ticks %>%
+  group_by(Species, Site_ID, Field_Type) %>%
+  dplyr::summarise(total = n())
+site[38,] <- list("AA","GA","Manicured",0)
+
+# sort manicured on left and natural on right
+site$Site_ID <- factor(site$Site_ID, levels = c("GA","RP","UG","PC","FC","LL","DF","HT","MSM",
+                                                "HW","JM","29RD","SW","HC","SF","PP","SR","MSN"))
+
+p1 <- ggplot(data = site, aes(x=Site_ID, y=total, fill =Species)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(x = "Site", y = "number of ticks") + 
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                      values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860")) 
+
+p2 <- ggplot(data = site, aes(x=Site_ID, y=log1p(total), fill =Species)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(x = "Site", y = "log(number of ticks)") + 
+  scale_fill_manual(labels = c("A. americanum", "A. maculatum", "D. variabilis", 
+                                 "H. leporispalustris", "I. affinis", "I. scapularis"),
+                      values = c("#486090", "#786060", "#d8c0a8", "#d8f0f0", "#a890a8", "#f0a860")) 
+
+#gridExtra::grid.arrange(p1,p2, ncol=2)
+p2
+
+#ggsave("alco_abund_bysite.tiff", dpi = 300)
+```
+
+# Part 2: Visualize *Amblyomma americanum* data 
+
+Let's work some more with just *Amblyomma americanum* since it is by far the most abundant species of tick collected during the study
+```{r}
+aa <- ticks %>%
+  filter(Species == "AA")
+head(aa)
+```
+
+Let's plot the count of *A.americanum* (nymphs and adults combined) by visit and site 
+```{r, message=FALSE}
+aa_visit <- aa %>%
+  group_by(Site_ID, Visit) %>%
+  dplyr::summarise(total = n())
+
+ggplot(data = aa_visit, aes(x=Visit, y=total, col = Site_ID)) + 
+  theme_classic() + 
+  geom_point() + 
+  labs(title = "A.americanum", x = "Visit", y = "# of ticks")
+```
+
+Let's take a closer look at the seasonality of *A.americanum* by combining counts from all sites and keeping visits separate 
+```{r, message=FALSE}
+aa_allsites <- aa %>%
+  group_by(Lifestage, Visit) %>%
+  dplyr::summarise(total = n())
+
+g1 <- ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_point(aes(color = Lifestage)) + 
+  labs(title = "A.americanum", x = "Visit", y = "# of ticks")
+
+g2 <- ggplot(data = aa_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_smooth(aes(color = Lifestage)) + 
+  labs(title = "A.americanum", x = "Visit", y = "# of ticks")
+
+gridExtra::grid.arrange(g1, g2, ncol =2)
+```
+
+**interesting:** Both adults and nymphs of *Amblyomma americanum* have similar seasonality of peak abundance in Alachua Co. (at least between January and June) 
+
+Now let's combine counts across all visits and keep the sites seperate 
+```{r, message=FALSE}
+aa_allvisits <- aa %>%
+  group_by(Site_ID, Lifestage) %>%
+  dplyr::summarize(total = n(),
+            density = (total/12000) * 100)
+
+## add in rows for the sites and life stages with no observations
+aa_allvisits[31,] <- list("29RD", "A", 0 , 0)
+aa_allvisits[32,] <- list("HW", "A", 0 , 0)
+aa_allvisits[33,] <- list("UG", "A", 0, 0)
+aa_allvisits[34,] <- list("UG", "N", 0, 0)
+aa_allvisits[35,] <- list("GA", "A", 0, 0)
+aa_allvisits[36,] <- list("GA", "N", 0, 0)
+
+aa_allvisits$Site_ID <- factor(aa_allvisits$Site_ID, levels = c("GA","UG","HW","RP","JM","PC","29RD","FC","LL","DF","MSM","HT","HC","SW","SF","PP","SR","MSN"
+))
+
+ggplot(data = aa_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "A.americanum", x = "Site", y = "# of ticks")
+
+```
+
+# Part 3: Visualize *Ixodes scapularis* data 
+
+Let's investigate *Ixodes scapularis*, as it was the second most abundant tick species in the study and is of great public health interest
+```{r}
+is <- ticks %>%
+  filter(Species == "IS")
+head(is)
+```
+
+Now let's plot the count of I.scapularis (rembember there were only adults collected) by visit and site 
+```{r, message=FALSE}
+is_visit <- is %>%
+  group_by(Site_ID, Visit) %>%
+  dplyr::summarise(total = n())
+
+ggplot(data = is_visit, aes(x=Visit, y=total, col = Site_ID)) + 
+  theme_classic() + 
+  geom_point() + 
+  labs(title = "I.scapularis", x = "Visit", y = "# of ticks")
+```
+let's take a closer look at the seasonality of I.scapularis by combining counts from all sites and keeping visits separate 
+```{r, message=FALSE}
+is_allsites <- is %>%
+  group_by(Lifestage, Visit) %>%
+  dplyr::summarise(total = n())
+
+g3 <- ggplot(data = is_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_point(aes(color = Lifestage)) + 
+  labs(title = "I.scapularis", x = "Visit", y = "# of ticks")
+
+g4 <- ggplot(data = is_allsites, aes(x=Visit, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_smooth(aes(color = Lifestage)) + 
+  labs(title = "I.scapularis", x = "Visit", y = "# of ticks")
+
+gridExtra::grid.arrange(g3,g4, ncol=2)
+```
+
+now let's combine counts across all visits and keep the sites seperate 
+```{r, message=FALSE}
+is_allvisits <- is %>%
+  group_by(Site_ID, Lifestage) %>%
+  dplyr::summarize(total = n(),
+            density = (total/12000) * 100)
+
+## add in rows for the sites and life stages with no observations
+is_allvisits[12,] <- list("29RD", "A", 0 , 0)
+is_allvisits[13,] <- list("GA", "A", 0, 0)
+is_allvisits[14,] <- list("RP", "A", 0, 0)
+is_allvisits[15,] <- list("PC", "A", 0, 0)
+is_allvisits[16,] <- list("FC", "A", 0, 0)
+is_allvisits[17,] <- list("LL", "A", 0, 0)
+is_allvisits[18,] <- list("HT", "A", 0, 0)
+
+is_allvisits$Site_ID <- factor(is_allvisits$Site_ID, levels = c("GA","UG","HW","RP","JM","PC","29RD","FC","LL","DF","MSM","HT","HC","SW","SF","PP","SR","MSN"
+))
+
+ggplot(data = is_allvisits, aes(x=Site_ID, y=total, fill = Lifestage)) + 
+  theme_classic() + 
+  geom_bar(stat = "identity") + 
+  labs(title = "I.scapularis", x = "Site", y = "# of ticks")
+
+```
+
+The order of sites is the *I.scapularis* plot is the same as the *A. americanum* plot earlier. Just using the eyeball test this shows many of the sites with high *A. americanum* abundance also have *I.scapularis*, but there are some deviations from this trend. 
+
+
+# Part 4: Landscape analyses of *Amblyomma americanum* 
+
+## 4.1: Prepare data 
+Read in the covariate data for all 18 sites 
+This file contains information on if the environment type was manicured or natural, the proportion of forest landcover and the PC1 and PC2 scores at multiple spatial scales (250m, 500m, 1km, 2km, 3km, 4km buffers)
+```{r}
+covar <- read.csv("AlCo_SitesCovariates.csv")  ## 18 sites 
+head(covar)
+```
+
+explore the relationship between different buffers by plotting them using the package 'corrplot'
+```{r, message=FALSE}
+covar_sub <- covar[,c(6:23)]
+M <- cor(covar_sub)
+#head(round(M,2))
+
+corrplot(M, type = "upper", order = "hclust")
+```
+
+There is high correlation between proportion of forest and PC1 across all scales.    
+We will need to compare models using individual covariates to determine the appropriate scale and response variable.  
+
+join the covariate data to the *A.americanum* data and summarize total and density by site 
+```{r, message=FALSE}
+aa_var <- aa_allvisits %>%
+  left_join(covar)
+head(aa_var)
+
+aa_combined <- aa_allvisits %>%
+  group_by(Site_ID) %>%
+  dplyr::summarise(total = sum(total),
+            density = sum(density)) %>%
+  left_join(covar)
+head(aa_combined)
+
+aa_combined$Field_Type <- as.factor(aa_combined$Field_Type)
+```
+
+## 4.2: Test for spatial "scale of effect" 
+here I will work with combined adults and nymphs (adults and nymphs have similar patterns over space and time so it makes sense to combine their analyses)
+
+### PC1 - test for "scale of effect" using a buffer based approach
+```{r}
+pres.250m<-glm(total ~ PC1_250m, family = "poisson", data = aa_combined)
+pres.500m<-glm(total ~ PC1_500m, family = "poisson", data = aa_combined)
+pres.1km<-glm(total ~ PC1_1km, family = "poisson", data = aa_combined)
+pres.2km<-glm(total ~ PC1_2km, family = "poisson", data = aa_combined)
+pres.3km<-glm(total ~ PC1_3km, family = "poisson", data = aa_combined)
+pres.4km<-glm(total ~ PC1_4km, family = "poisson", data = aa_combined)
+
+
+comb.mod<-model.sel(pres.250m, pres.500m, pres.1km, pres.2km, pres.3km, pres.4km)
+comb.mod
+
+scales<-c(250,500,1000,2000,3000,4000)
+
+ll<-c(logLik(pres.250m),logLik(pres.500m),logLik(pres.1km),logLik(pres.2km),logLik(pres.3km),logLik(pres.4km))
+plot(scales,ll, ylab="Log-likelihood", main = "PC1")
+lines(scales,ll)
+```
+
+these results indicate that 500m for PC1 is the best scale for Amblyomma americanum
+
+
+## 4.3: Generalize linear models (GLMs)! 
+
+### let's run glms with a negative binomial distribution
+```{r, message=FALSE}
+nb.glm0 <- glm.nb(total ~ 1, data = aa_combined)
+nb.glm2 <- glm.nb(total ~ Field_Type, data = aa_combined)
+nb.glm11 <- glm.nb(total ~ PC1_500m, data = aa_combined)
+nb.glm12 <- glm.nb(total ~ PC1_500m + Field_Type, data = aa_combined)
+nb.glm13 <- glm.nb(total ~ PC1_500m * Field_Type, data = aa_combined)
+
+### compare AICc of models 
+MuMIn::AICc(nb.glm0, nb.glm2, nb.glm11, nb.glm12, nb.glm13)
+
+
+stargazer(nb.glm0, nb.glm2, nb.glm11, nb.glm12, nb.glm13, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+lowest AICc is for **PC1 at 500m scale** and **Field_Type**  
+lowest AICc does not include the interaction term - but many models are within 2 delta AIC 
+
+
+### plot model residuals for top model (full dataset)
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm12)
+```
+sites 12 and 17 are problimatic... 
+
+
+### test for spatial autocorrelation (Moran's I) (full dataset)
+Before we interpret the models, let’s check whether the assumption of independent residuals is violated by spatial autocorrelation in the residuals.
+To calculate and test Moran’s I, we first need to define neighbours and spatial weights.
+There are many ways to define weights.  
+
+start by defining weights matrix using several graph types
+```{r, message=FALSE}
+coords <- cbind(aa_combined$Easting, aa_combined$Northing)
+colnames(coords) <- c("x", "y")
+distmat <- as.matrix(dist(coords))
+maxdist <- 2/3 * max(distmat) # this is the maximum distance to consider in correlogram/variogram
+
+nb.gab <- spdep::graph2nb(spdep::gabrielneigh(coords), sym = TRUE) 
+#plot(nb.gab, coords)
+listw.gab <- spdep::nb2listw(nb.gab)
+
+nb.rel <- spdep::graph2nb(spdep::relativeneigh(coords), sym = TRUE) 
+#plot(nb.rel, coords)
+listw.rel <- spdep::nb2listw(nb.rel)
+
+#distance-based neighbors - can change the distance at which to consider 
+neigh <- dnearneigh(x=coords, d1=0, d2=0.5*maxdist, longlat = F)
+#plot(neigh, coords)
+listw.neigh <- nb2listw(neigh, style = "W")
+```
+
+inverse distance weights  
+```{r}
+dlist <- spdep::nbdists(nb.gab, coords)
+dlist <- lapply(dlist, function(x) 1/x)
+listw.d1 <- spdep::nb2listw(nb.gab, style = "W", glist=dlist)
+
+spdep::lm.morantest(nb.glm12, listw.d1) 
+```
+
+
+
+test for spatial autocorrelation in explainatory and predictor variables
+```{r, message=FALSE}
+spdep::moran.test(aa_combined$total, listw.gab)
+spdep::moran.test(aa_combined$PC1_500m, listw.gab)
+```
+
+now test model for autocorrelation in the model residuals 
+```{r, message=FALSE}
+spdep::lm.morantest(nb.glm12, listw.gab) 
+spdep::lm.morantest(nb.glm12, listw.rel) 
+spdep::lm.morantest(nb.glm12, listw.neigh) 
+```
+**no significant spatial autocorrelation** in residuals for any of the weight matrices
+
+### summary of top model *Amblyomma americanum* model (full dataset)
+```{r}
+stargazer(nb.glm12, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+summary(nb.glm12)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(54.865-20.811)/54.865
+```
+The pseudo r-squared of the top model = **62.1**.
+
+
+### plot the top model for *Amblyomma americanum* (full dataset) 
+```{r, message=FALSE}
+df1 <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Natural","Manicured"), total = NA)
+df1$total <- predict(nb.glm12, newdata = data.frame(df1), type="response")
+
+#plot
+plot <-ggplot(data = aa_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size = 2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("A.americanum abundance") +
+                    xlab("PC1 at 500m")+
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+                    scale_size(guide = 'none')
+  
+
+plot.log <-ggplot(data = aa_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size =2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("A.americanum abundance") +
+                    xlab("PC1 at 500m")+
+                    scale_y_log10() +  ## may or may not want to use a log axis.... 
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+                    scale_size(guide = 'none')
+
+grid.arrange(plot, plot.log, ncol = 2)
+```
+
+### screen data by removing potentially problimatic sites 
+
+let's now remove the two sites (12 and 17) that fall outside model assumptions 
+```{r, message=FALSE}
+aa_screen <- aa_combined[-c(12,17), ]
+
+plot1 <- ggplot(data = aa_combined, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(col = Field_Type)) + 
+  xlim(-3,3) + 
+  ggtitle("Before")
+plot2 <- ggplot(data = aa_screen, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(col = Field_Type)) + 
+  xlim(-3,3) + 
+  ggtitle("After")
+
+gridExtra::grid.arrange(plot1, plot2, ncol=2)
+```
+
+
+compared all screened models
+```{r}
+nb.glm0.screen <- glm.nb(total ~ 1, data = aa_screen)
+nb.glm2.screen <- glm.nb(total ~ Field_Type, data = aa_screen)
+nb.glm11.screen <- glm.nb(total ~ PC1_500m, data = aa_screen)
+nb.glm12.screen <- glm.nb(total ~ PC1_500m + Field_Type, data = aa_screen)
+nb.glm13.screen <- glm.nb(total ~ PC1_500m * Field_Type, data = aa_screen)
+
+AICc(nb.glm0.screen,nb.glm2.screen,nb.glm11.screen,nb.glm12.screen,nb.glm13.screen)
+```
+
+
+### summary of top model *Amblyomma americanum* model (screened dataset)
+```{r}
+summary(nb.glm12.screen)
+
+stargazer(nb.glm12, nb.glm12.screen, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+pseudo r-squared of screened model 
+```{r}
+100*(96.922-18.974)/96.922
+```
+the pseudo r-squared of the screened model = **80.4**. 
+
+The AIC and LL are also much better for the screened data set. And, the models estimates and significance are minimally affected by the sites that fall outside assumptions. 
+
+### plot model residuals for top model (screened dataset)
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm12.screen)
+```
+the screened model looks good!  
+
+
+
+### plot the top model for *Amblyomma americanum*  (screened dataset) 
+```{r, message=FALSE}
+df1 <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Natural","Manicured"), total = NA)
+df1$total <- predict(nb.glm12.screen, newdata = data.frame(df1), type="response")
+
+#plot
+plot <-ggplot(data = aa_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size = 2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("A.americanum abundance") +
+                    xlab("PC1 at 500m")+
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+                    scale_size(guide = 'none')
+  
+
+plot.log <-ggplot(data = aa_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size =2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("A.americanum abundance") +
+                    xlab("PC1 at 500m")+
+                    scale_y_log10() +  ## may or may not want to use a log axis.... 
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+                    scale_size(guide = 'none')
+
+grid.arrange(plot, plot.log, ncol = 2)
+```
+
+
+### create a final plot for *A.americanum* (screened data) 
+get 95%CI for model prediction 
+```{r}
+## grad the inverse link function
+ilink <- family(nb.glm12.screen)$linkinv
+## add predition, fit, and se.fit on the **link** scale
+ndata <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Manicured", "Natural"))
+ndata$total <- predict(nb.glm12.screen, newdata = data.frame(ndata), type = "response")
+ndata <- bind_cols(ndata, setNames(as_tibble(predict(nb.glm12.screen, ndata, se.fit = TRUE)[1:2]),
+                                   c('fit_link','se_link')))
+## create the interval and backtransform
+ndata <- mutate(ndata,
+                fit_resp  = ilink(fit_link),
+                right_upr = ilink(fit_link + (2 * se_link)),
+                right_lwr = ilink(fit_link - (2 * se_link)))
+## show
+ndata
+```
+
+plot it - FIGURE FOR PUBLICATIONS 
+```{r, message=FALSE}
+
+mycol <- viridisLite::viridis(3)
+
+aa.plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(color=Field_Type), size = 4) + 
+  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
+  geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
+  geom_ribbon(data = ndata,
+                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
+                  alpha = 0.1) + 
+  theme_bw() +
+  theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.7)) +
+                    scale_size(guide = 'none') +
+  ylab("A. americanum abundance") +
+  xlab("Development Gradient")
+
+#remove the two sites with zeros so that they do not make the plot look funny on the log axis 
+aa_screen2 <- aa_screen[-c(1,2),]
+
+aa.plt.log <- ggplot(aa_screen2, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(color=Field_Type), size = 4) +
+  scale_color_manual(values = mycol) + 
+  geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
+  geom_ribbon(data = ndata,
+                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
+                  alpha = 0.1)+ 
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank()) +
+  scale_y_log10(labels = scales::number_format(accuracy = 1)) +
+  ylab("A. americanum abundance") +
+  xlab("Development Gradient")
+
+grid.arrange(aa.plt, aa.plt.log, ncol = 2)
+```   
+
+# Part 5: Landscape analyses of *Ixodes scapularis* 
+
+## 5.1: Prepare data
+
+join the covariate data to the *Ixodes scapularis* data 
+```{r, message=FALSE}
+is_var <- is_allvisits %>%
+  left_join(covar)
+head(is_var)
+
+is_combined <- is_allvisits %>%
+  group_by(Site_ID) %>%
+  dplyr::summarise(total = sum(total),
+            density = sum(density)) %>%
+  left_join(covar)
+head(is_combined)
+
+is_combined$Field_Type <- as.factor(is_combined$Field_Type)
+```
+
+
+## 5.2: Test for spatial "scale of effect"
+test for "scale of effect" using a buffer based approach 
+for the final go i should probably derive more scales but for now i will work with what there is 
+
+
+### PC1: test for "scale of effect" using a buffer based approach
+```{r}
+pres.250m<-glm(total ~ PC1_250m, family = "poisson", data = is_combined)
+pres.500m<-glm(total ~ PC1_500m, family = "poisson", data = is_combined)
+pres.1km<-glm(total ~ PC1_1km, family = "poisson", data = is_combined)
+pres.2km<-glm(total ~ PC1_2km, family = "poisson", data = is_combined)
+pres.3km<-glm(total ~ PC1_3km, family = "poisson", data = is_combined)
+pres.4km<-glm(total ~ PC1_4km, family = "poisson", data = is_combined)
+
+comb.mod<-model.sel(pres.250m, pres.500m, pres.1km, pres.2km, pres.3km, pres.4km)
+comb.mod
+
+scales<-c(250,500,1000,2000,3000,4000)
+
+ll<-c(logLik(pres.250m),logLik(pres.500m),logLik(pres.1km),logLik(pres.2km),logLik(pres.3km),logLik(pres.4km))
+plot(scales,ll, ylab="Log-likelihood", main = "PC1")
+lines(scales,ll)
+```
+these results indicate that 500m and 1km for PC1 is the best scale for *I.scapularis adults*
+
+
+## 5.3: Generalize linear models (GLMs)! 
+
+### let's run glms with a negative binomial distribution 
+```{r}
+nb.glm0 <- glm.nb(total ~ 1, data = is_combined)
+nb.glm1 <- glm.nb(total ~ Field_Type, data = is_combined)
+nb.glm8 <- glm.nb(total ~ PC1_500m, data = is_combined)
+nb.glm9 <- glm.nb(total ~ PC1_500m + Field_Type, data = is_combined)
+nb.glm10 <- glm.nb(total ~ PC1_500m * Field_Type, data = is_combined)
+
+### compare AICc of models
+MuMIn::AICc(nb.glm0, nb.glm1, nb.glm8, nb.glm9, nb.glm10)
+
+stargazer(nb.glm0, nb.glm1, nb.glm8, nb.glm9, nb.glm10, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+top model (using AIC) includes both **PC1** and **field type** variable but **no interaction term**  
+ 
+
+### plot model residuals for top model (full datset)
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm9) #PC1 @ 500m
+```
+site 2 could be probematic for PC1
+
+### test for spatial autocorrelation (Moran's I) (full datset)
+
+start by defining weights matrix using several graph types (this is a repeat of the same code used for *A.americanum*)
+```{r}
+coords <- cbind(aa_combined$Easting, aa_combined$Northing)
+colnames(coords) <- c("x", "y")
+distmat <- as.matrix(dist(coords))
+maxdist <- 2/3 * max(distmat) # this is the maximum distance to consider in correlogram/variogram
+
+nb.gab <- spdep::graph2nb(spdep::gabrielneigh(coords), sym = TRUE) 
+#plot(nb.gab, coords)
+listw.gab <- spdep::nb2listw(nb.gab)
+
+nb.rel <- spdep::graph2nb(spdep::relativeneigh(coords), sym = TRUE) 
+#plot(nb.rel, coords)
+listw.rel <- spdep::nb2listw(nb.rel)
+
+#distance-based neighbors - can change the distance at which to consider 
+neigh <- dnearneigh(x=coords, d1=0, d2=0.5*maxdist, longlat = F)
+#plot(neigh, coords)
+listw.neigh <- nb2listw(neigh, style = "W")
+```
+
+
+test for spatial autocorrelation in explainatory and predictor variables - gabrial
+```{r}
+spdep::moran.test(is_combined$total, listw.gab)
+spdep::moran.test(is_combined$PC1_500m, listw.gab)
+```
+yes there is autocorrelation in the response and predictor variables (using the gabriel weights)
+
+test for spatial autocorrelation in explainatory and predictor variables - relative
+```{r}
+spdep::moran.test(is_combined$total, listw.rel)
+spdep::moran.test(is_combined$PC1_500m, listw.rel)
+```
+yes there is autocorrelation in the response and predictor variables (using the relative weights)
+
+test for spatial autocorrelation in explainatory and predictor variables - neighbor
+```{r}
+spdep::moran.test(is_combined$total, listw.neigh)
+spdep::moran.test(is_combined$PC1_500m, listw.neigh)
+```
+there is autocorrelation in the predictor variables, but NOT response (using the neighborhood weights)
+
+
+now test model for autocorrelation in the residuals - PC1 at 500m
+```{r}
+spdep::lm.morantest(nb.glm9, listw.gab) 
+spdep::lm.morantest(nb.glm9, listw.rel) 
+spdep::lm.morantest(nb.glm9, listw.neigh) 
+```
+there is spatial autocorrelation in model residuals using the relative and neighbor weights
+
+
+check correlograms for where the spatial autocorrelation may be occuring in the model
+
+###  plot correlograms to check for spatial autocorrelation (full dataset)
+add a function to plot correlograms 
+```{r}
+icorrelogram <- function(locations,z, binsize, maxdist){
+  
+  distbin <- seq(0,maxdist,by=binsize)
+  Nbin <- length(distbin)-1
+  moran.results <- data.frame("dist"= rep(NA,Nbin), "Morans.i"=NA,"null.lcl"=NA, "null.ucl"=NA)
+  
+  for (i in 1:Nbin){
+    d.start<-distbin[i] 
+    d.end<-distbin[i+1]
+    neigh <- dnearneigh(x=locations, d1=d.start, d.end, longlat=F)
+    wts <- nb2listw(neighbours=neigh, style='B', zero.policy=T)
+    mor.i <- moran.mc(x=z, listw=wts, nsim=200, alternative="greater", zero.policy=T)  #note alternative is for P-value, so only 'significant if positive autocorrelation
+    
+    moran.results[i, "dist"]<-(d.end+d.start)/2 
+    moran.results[i, "Morans.i"]<-mor.i$statistic 								                #observed moran's i
+    moran.results[i, "null.lcl"]<-quantile(mor.i$res, probs = 0.025,na.rm = T)#95% null envelope	
+    moran.results[i, "null.ucl"]<-quantile(mor.i$res, probs = 0.975,na.rm = T)#95% null envelope
+  }
+  return(moran.results)
+}
+```
+
+plot a correlogram for the models using the indicator correlogram function 
+```{r}
+# save residuals for negative binomial models 
+nb.glm9.res <- residuals(nb.glm9, type = "deviance")
+
+#models 
+cor_plot <-icorrelogram(locations=coords, z=nb.glm9.res, binsize=1000,maxdist= 20000)
+
+round(head(cor_plot ,3),2)
+
+#plot correlogram
+plot(cor_plot$dist, cor_plot$Morans.i, ylim = c(-0.5, 0.5))
+abline(h=0, lty = "dashed")
+lines(cor_plot$dist, cor_plot$null.lcl)
+lines(cor_plot$dist, cor_plot$null.ucl)
+```
+
+there is only spatial autocorrelation at one point and it is at a fairly large lag distance  
+
+from what i can see from Fletcher's book, methods to account for spatial autocorrelation mostly address the issue at small lag distances, not intermediate to large. so i am going to move forward with the model as is. 
+
+### summary of top *I. scapularis* model (full dataset)
+```{r}
+summary(nb.glm9)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(36.215-18.487)/36.215 
+```
+
+
+plot the effects of PC1 and Enviro type 
+```{r, message=FALSE}
+df1 <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Natural","Manicured"), total = NA)
+
+df1$total <- predict(nb.glm9, newdata = data.frame(df1), type="response")
+
+#plot
+plot <-ggplot(data = is_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size = 2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("I. scapularis abundance") +
+                    xlab("PC1 at 500m")+
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural"))+
+                    scale_size(guide = 'none')
+  
+
+plot.log <- ggplot(data = is_combined, aes(x=PC1_500m, y=total, group=Field_Type))+
+                    geom_point(aes(color=Field_Type, size =2)) +
+                    geom_line(data=df1, size = 2, aes(color=Field_Type)) + 
+                    ylab("I. scapularis abundance") +
+                    xlab("PC1 at 500m")+
+                    scale_y_log10() +  ## may or may not want to use a log axis.... 
+                    #ggtitle("PC1 and Environment Type as Predictors of tick count")+
+                    theme_bw()+ 
+                    theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank(),
+                    legend.position = c(0.3,0.8)) +
+                    scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) +
+                    scale_size(guide = 'none')
+
+grid.arrange(plot, plot.log, ncol = 2)
+```
+
+### screen data by removing potentially problematic sites 
+how does removing the sites that were violating models influence things? 
+for now just remove site 2 for PC1 analyses 
+
+```{r, message=FALSE}
+is_screen <- is_combined[-c(2), ]
+
+plot1 <- ggplot(data = is_combined, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(col = Field_Type)) + 
+  xlim(-3,3) + 
+  ggtitle("Before")
+plot2 <- ggplot(data = is_screen, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(col = Field_Type)) + 
+  xlim(-3,3) + 
+  ggtitle("After")
+
+gridExtra::grid.arrange(plot1, plot2, ncol=2)
+```
+
+rerun models using the screened dataset 
+```{r}
+#### compare model results for full and screened glm 
+nb.glm0.reduced <- glm.nb(total ~ 1, data = is_screen)
+nb.glm1.reduced <- glm.nb(total ~ Field_Type, data = is_screen)
+nb.glm8.reduced <- glm.nb(total ~ PC1_500m , data = is_screen)
+nb.glm9.reduced <- glm.nb(total ~ PC1_500m + Field_Type, data = is_screen)
+nb.glm10.reduced <- glm.nb(total ~ PC1_500m * Field_Type, data = is_screen)
+
+AICc(nb.glm0.reduced, nb.glm1.reduced ,nb.glm8.reduced ,nb.glm9.reduced ,nb.glm10.reduced )
+
+
+stargazer(nb.glm8.reduced, nb.glm9.reduced, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+### plot model residuals for top model (screened datset)
+```{r}
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(nb.glm9.reduced)
+```
+the reduced model for PC1_500m is looking pretty good 
+
+
+### test for spatial autocorrelation (screened dataset)
+the PC1 at 500m is an improvement to the original model so i will move forwared using the screened dataset  
+```{r}
+#must redo weigh matrices to not include site 2
+coords.screen <- coords[-2, ]
+
+nb.gab.screen <- spdep::graph2nb(spdep::gabrielneigh(coords.screen), sym = TRUE) 
+#plot(nb.gab.screen, coords.screen)
+listw.gab.screen <- spdep::nb2listw(nb.gab.screen)
+
+nb.rel.screen <- spdep::graph2nb(spdep::relativeneigh(coords.screen), sym = TRUE) 
+#plot(nb.rel.screen, coords.screen)
+listw.rel.screen <- spdep::nb2listw(nb.rel.screen)
+
+#distance-based neighbors 
+neigh.screen <- dnearneigh(x=coords.screen, d1=0, d2=0.5*maxdist, longlat = F)
+#plot(neigh.screen, coords.screen)
+listw.neigh.screen <- nb2listw(neigh.screen, style = "W")
+
+
+spdep::lm.morantest(nb.glm9.reduced, listw.gab.screen) 
+spdep::lm.morantest(nb.glm9.reduced, listw.rel.screen) 
+spdep::lm.morantest(nb.glm9.reduced, listw.neigh.screen) 
+```
+now only the neighboorhood matrix has significant spatial autocorrelation 
+
+###  plot correlograms to check for spatial autocorrelation (screened dataset)
+```{r}
+# save residuals for negative binomial models 
+nb.glm9.reduced.res <- residuals(nb.glm9.reduced, type = "deviance")
+
+
+cor_plot <-icorrelogram(locations=coords.screen, z=nb.glm9.reduced.res, binsize=1000,maxdist= 20000)
+
+round(head(cor_plot ,3),2)
+
+#plot correlogram
+plot(cor_plot$dist, cor_plot$Morans.i, ylim = c(-0.5, 0.5))
+abline(h=0, lty = "dashed")
+lines(cor_plot$dist, cor_plot$null.lcl)
+lines(cor_plot$dist, cor_plot$null.ucl)
+```
+
+only one point barely falls outside the 95% CI so i believe we are good to go
+
+
+### summary of the top *I. scapularis* model (screened dataset)
+```{r}
+summary(nb.glm9.reduced)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(37.133-15.421)/37.133 
+```
+the reduced model has a much better R2 than the original 
+
+### create a final plot for *I. scapularis* (screened dataset)
+
+get model predictions and 95%CI - this is using the screened dataset 
+```{r, message=FALSE}
+## grad the inverse link function
+ilink <- family(nb.glm9.reduced)$linkinv
+## add predition, fit, and se.fit on the **link** scale
+ndata <- expand.grid(PC1_500m = c(-3,-2.5,-2,-1.5,-1,-0.5,0,0.5,1,1.5,2,2.5,3), Field_Type = c("Manicured", "Natural"))
+ndata$total <- predict(nb.glm9.reduced, newdata = data.frame(ndata), type = "response")
+ndata <- bind_cols(ndata, setNames(as_tibble(predict(nb.glm9.reduced, ndata, se.fit = TRUE)[1:2]),
+                                   c('fit_link','se_link')))
+## create the interval and backtransform
+ndata <- mutate(ndata,
+                fit_resp  = ilink(fit_link),
+                right_upr = ilink(fit_link + (2 * se_link)),
+                right_lwr = ilink(fit_link - (2 * se_link)))
+## show
+ndata
+```
+
+plot it
+```{r, message=FALSE}
+
+mycol <- viridisLite::viridis(3)
+
+is.plt <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(color=Field_Type), size = 4) +
+  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
+  geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
+  geom_ribbon(data = ndata,
+                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
+                  alpha = 0.1)+ 
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank()) +
+  scale_size(guide = 'none') +
+  ylab("I. scapularis abundance") +
+  xlab("Development Gradient")
+
+is_screen2 <- is_screen[-c(1,3,5,6,7,8,11),]
+
+is.plt.log <- ggplot(is_screen2, aes(x = PC1_500m, y = total)) +
+  geom_point(aes(color=Field_Type), size = 4) +
+  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
+  geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
+  geom_ribbon(data = ndata,
+                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
+                  alpha = 0.1)+ 
+  theme_bw() +
+  theme(legend.position = "none") +
+  theme(panel.grid.major=element_blank(),
+                    panel.grid.minor=element_blank()) +
+  scale_size(guide = 'none') +
+  scale_y_log10(labels = scales::number_format(accuracy = 1)) +
+  ylab("I. scapularis abundance") +
+  xlab("Development Gradient")
+
+grid.arrange(is.plt, is.plt.log, ncol = 2)
+```   
+
+put all the plots together... 
+
+```{r}
+grid.arrange(aa.plt, aa.plt.log, is.plt, is.plt.log, ncol = 2)
+```
+
+
+```{r}
+library(cowplot)
+
+final_plot <- ggdraw()+
+  draw_plot(aa.plt, x=0, y=0.5, width = 0.5, height =0.5)+
+  draw_plot(aa.plt.log, x=0.5, y=0.5, width = 0.5, height =0.5)+
+  draw_plot(is.plt,x=0, y=0, width = 0.5, height =0.5 )+
+  draw_plot(is.plt.log, x=0.5, y=0, width = 0.5, height =0.5)+
+  draw_plot_label(c("A","B","C","D"), c(0, 0.5, 0, 0.5), c(1,1,0.5,0.5), size=10)
+
+final_plot
+#ggsave("Figures/TickAbundanceModels.tiff", dpi = 300)
+```
+
+

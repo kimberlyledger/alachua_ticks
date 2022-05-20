@@ -1,12 +1,13 @@
 ---
-title: "landcover_PCA"
+title: "PCA of landcover composition in Alachua Co. Florida"
 author: "Kimberly Ledger"
 date: "3/3/2022"
-output: html_document
+output: github_document
 ---
 
-this code will plot PCA's using landcover proportion at multiple buffer scales around potential tick collection sites in Alachua County, Florida 
+this code runs a principal components analysis (PCA) using land cover composition proportions using a 1km buffer around potential tick collection sites in Alachua County, Florida 
 
+last update: 20 May 2022
 
 load libraries 
 ```{r, message=FALSE}
@@ -91,43 +92,9 @@ biplot(lc_pca$scores,lc_pca$loading,xlabs= rep("*",52), xlab="PC 1", ylab="PC 2"
 
 ```
 
-make a nicer plot using ggplot 
-
-start by reformating the pca dataframe to have information on site
-```{r}
-df_out <- as.data.frame(lc_pca$scores)
-df_out$group <- lc$Field_Type
-df_out$sampled <- lc$sampled
-
-df_out <- df_out %>%
-  mutate(sampled2 = recode(sampled, "N" = 0.5, "Y"=1))
-
-#df_out$sampled2 <- as.factor(df_out$sampled2)
-```
-
-```{r}
-# Extract loadings of the variables
-var <- rownames(lc_pca$loadings)
-load <- loadings(lc_pca)[]
-PCAloadings <- data.frame(Variables = var, c1 = load[,1], c2 = load[,2])
-
-
-ggplot(df_out, aes(x=Comp.1, y =Comp.2, color=group))+ 
-  geom_segment(data = PCAloadings, aes(x=0 , y =0, xend = c1*0.3, yend = c2*0.3),
-               arrow = arrow(length = unit(1/2, "picas")), color = "black") + 
-  geom_point(aes(alpha = sampled), position = position_jitter(h=0.01,w=0.01)) + 
-  scale_alpha_discrete(range = c(0.4,1)) +
-  annotate("text", x = (PCAloadings$c1*0.3), y = (PCAloadings$c2*0.3),
-     label = PCAloadings$Variables) +
-  theme_classic()
-```
-
 now try ggbiplot 
 
 ```{r}
-#lc.groups <- lc$Field_Type
-#lc.samp <- lc$sampled
-
 lc <- lc %>%
   unite("GS", Field_Type, sampled, sep = "/", remove = F)
 
@@ -137,42 +104,15 @@ lc.new <- factor(lc.newgroups, levels = c("Manicured/Yes", "Natural/Yes", "Manic
 
 
 biplot <- ggbiplot(lc_pca, groups = lc.new) +
-  scale_color_manual(name = "Habitat Type/Sampled?", values = c("#F8766D", "#00BFC4", "#F5C9C6", "#D5F0EE")) + 
+  scale_color_manual(name = "Habitat Type/Sampled?", values = c("#440154FF", "#21908CFF", "#efb3fe", "#acecea")) + 
   theme_classic() + 
   xlim(c(-2,2))
 
 biplot
 ```
 
-ggsave("Figures/biplot.tiff", dpi=300, height = 6, width = 8)
+ggsave("Figures/biplot.png", dpi=300, height = 6, width = 8)
 
+the issue here is that site points are overlapping... but i rearranged sites so that all sampled sites plot on top 
 
-the issue here is that site points are overlapping... but i rearrange sites so that all sampled sites plot on top 
-
-
-okay so the negative values of PC1 have high proportions of commercial and residential 
-and the positive values of PC1 have high proportions of forest (and to some extent wetland)
-
-
-extract/recontstruct original values from PC1 
-
-```{r}
-mu = colMeans(z_lc)
-nComp = 1
-
-Xhat = lc_pca$scores[,1:nComp] %*% t(lc_pca$loadings[,1:nComp])
-Xhat = scale(Xhat, center = -mu, scale = FALSE)
-
-Xhat[1,]
-```
-
-now undo the log1p transformation for forest cover 
-```{r}
-exp(0.4751)-1
-```
-
-
-
-
-
-
+negative values of PC1 are associated with have high proportions of commercial and residential and the positive values of PC1 are associated with high proportions of forest cover (and to some extent wetland)

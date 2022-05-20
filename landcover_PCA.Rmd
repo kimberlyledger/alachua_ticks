@@ -25,9 +25,9 @@ head(lc)
 this is the landcover classification
 
 *  1 = Agriculture 
-*  2 = Developed
+*  2 = Commercial
 *  3 = Forest
-*  4 = Manicured 
+*  4 = Lawn 
 *  5 = Residential
 *  6 = Water
 *  7 = Wetland
@@ -48,7 +48,7 @@ z_lc <- lc_1km_log
 
 update column names 
 ```{r}
-colnames(z_lc) <- c("agriculture", "developed", "forest", "manicured", "residential", "water", "wetland")
+colnames(z_lc) <- c("agriculture", "commercial", "forest", "lawn", "residential", "water", "wetland")
 ```
 
 run a PCA using the function princomp from the stats package
@@ -137,43 +137,42 @@ lc.new <- factor(lc.newgroups, levels = c("Manicured/Yes", "Natural/Yes", "Manic
 
 
 biplot <- ggbiplot(lc_pca, groups = lc.new) +
-  scale_color_manual(name = "Type/Sampled?", values = c("#F8766D", "#00BFC4", "#F5C9C6", "#D5F0EE")) + 
+  scale_color_manual(name = "Habitat Type/Sampled?", values = c("#F8766D", "#00BFC4", "#F5C9C6", "#D5F0EE")) + 
   theme_classic() + 
   xlim(c(-2,2))
 
 biplot
 ```
 
+ggsave("Figures/biplot.tiff", dpi=300, height = 6, width = 8)
+
 
 the issue here is that site points are overlapping... but i rearrange sites so that all sampled sites plot on top 
 
 
-okay so the negative values of PC1 have high proportions of developed and residential 
+okay so the negative values of PC1 have high proportions of commercial and residential 
 and the positive values of PC1 have high proportions of forest (and to some extent wetland)
 
-## to do 
-recreate for PC1 at 500m when i figure out the best way to plot...   
-make something like the last plot in section 5.4 of this website: https://bioconductor.org/packages/devel/bioc/vignettes/PCAtools/inst/doc/PCAtools.html#modify-bi-plots
 
-
-## now try PCAtools 
+extract/recontstruct original values from PC1 
 
 ```{r}
-#BiocManager::install('PCAtools')
+mu = colMeans(z_lc)
+nComp = 1
 
-library(PCAtools)
+Xhat = lc_pca$scores[,1:nComp] %*% t(lc_pca$loadings[,1:nComp])
+Xhat = scale(Xhat, center = -mu, scale = FALSE)
+
+Xhat[1,]
 ```
 
-must use pca() function
+now undo the log1p transformation for forest cover 
 ```{r}
-#rotate data 
-
-pca_t <- t(z_lc)
-
-pca2 <- pca(pca_t)
-
-biplot(pca2, showLoadings = T)
+exp(0.4751)-1
 ```
+
+
+
 
 
 

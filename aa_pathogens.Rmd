@@ -8,9 +8,9 @@ output:
     toc_depth: 3
 ---
 
-# *Amblyomma americanum* pathogen analyses
+#Pathogen analyses
 
-This code will explore the pathogens *Amblyomma americanum* collected in Alachua Co.
+This code will explore the pathogens in *Amblyomma americanum* collected in Alachua Co.
 
 Load libraries 
 ```{r, message=FALSE}
@@ -862,5 +862,93 @@ final_plot
 
 
 > ggsave("path_binomial.tiff", dpi=300, height = 6, width = 8)
+
+
+
+# Response variables = richness of pathogenic microorganisms detected per site and counts of infected ticks
+
+```{r}
+infected_abundance <- data %>%
+  filter(!is.na(gDNA_Sample)) %>%
+  group_by(Site_ID) %>%
+  summarise(Babesia_sp_Coco = sum(Babesia_sp_Coco),
+            Babesia_odocoieli = sum(Babesia_odocoieli),
+            Cytauxozoon_felis = sum(Cytauxozoon_felis),
+            Ehrlichia_chaffeensis = sum(Ehrlichia_chaffeensis),
+            Ehrlichia_ewingii = sum(Ehrlichia_ewingii),
+            Ehrlichia_sp_PanolaMountain = sum(Ehrlichia_sp_PanolaMountain),
+            Rickettsia_parkeri = sum(Rickettsia_parkeri), 
+            all_path = sum(Babesia_sp_Coco, Babesia_odocoieli, Cytauxozoon_felis,
+                           Ehrlichia_chaffeensis, Ehrlichia_ewingii, Ehrlichia_sp_PanolaMountain,
+                           Rickettsia_parkeri))
+
+infected_abundance[18,] <- list("GA", 0, 0, 0, 0, 0, 0, 0, 0)
+
+infected_richness <- infected_abundance
+
+infected_richness$Babesia_sp_Coco[infected_richness$Babesia_sp_Coco > 0] <- 1 
+infected_richness$Babesia_odocoieli[infected_richness$Babesia_odocoieli > 0] <- 1 
+infected_richness$Cytauxozoon_felis[infected_richness$Cytauxozoon_felis > 0] <- 1 
+infected_richness$Ehrlichia_chaffeensis[infected_richness$Ehrlichia_chaffeensis > 0] <- 1 
+infected_richness$Ehrlichia_ewingii[infected_richness$Ehrlichia_ewingii > 0] <- 1 
+infected_richness$Ehrlichia_sp_PanolaMountain[infected_richness$Ehrlichia_sp_PanolaMountain > 0] <- 1
+infected_richness$Rickettsia_parkeri[infected_richness$Rickettsia_parkeri > 0] <- 1 
+infected_richness$Babesia_sp_Coco[infected_richness$Babesia_sp_Coco > 0] <- 1 
+
+infected_richness <- infected_richness %>%
+  select(!all_path) %>%
+  mutate(all_rich = rowSums(across(where(is.numeric))))
+```
+
+
+put the explanitory and response variables into one data frame 
+
+```{r}
+covar1 <- covar %>%
+  select(Site_ID, Field_Type, PC1_500m)
+
+in_abun <- infected_abundance %>%
+  select(Site_ID, all_path)
+
+in_rich <- infected_richness %>%
+  select(Site_ID, all_rich)
+
+join_path <- covar1 %>%
+  left_join(in_abun) %>%
+  left_join(in_rich)
+```
+
+plot histograms 
+
+```{r}
+hist(join_path$all_path)
+hist(join_path$all_rich)
+
+join_path$log_all_path <- log1p(join_path$all_path)
+join_path$log_all_rich <- log1p(join_path$all_rich)
+
+hist(join_path$log_all_path)
+hist(join_path$log_all_rich)
+```
+
+plot the relationship 
+
+```{r}
+ggplot(data = join_path, aes(x = PC1_500m, y = log_all_path, col = Field_Type)) + 
+  geom_point()
+
+ggplot(data = join_path, aes(x = PC1_500m, y = log_all_rich, col = Field_Type)) + 
+  geom_point()
+```
+
+```{r}
+
+```
+
+
+
+
+
+
 
 

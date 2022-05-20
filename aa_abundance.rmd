@@ -119,8 +119,15 @@ site <- ticks %>%
   dplyr::summarise(total = n())
 site[38,] <- list("AA","GA","Manicured",0)
 
-site$Site_ID <- factor(site$Site_ID, levels = c("GA","HW","RP","UG","JM","PC","29RD","FC","LL","DF","HT","MSM","SW","HC","SF","PP","SR","MSN"
-))
+#site$Site_ID <- factor(site$Site_ID, levels = #c("GA","HW","RP","UG","JM","PC","29RD","FC","LL","DF","HT","MSM","SW","HC","SF","PP","SR","MSN"
+#))
+
+# sort manicured on left and natural on right
+site$Site_ID <- factor(site$Site_ID, levels = c("GA","RP","UG","PC","FC","LL","DF","HT","MSM",
+                                                "HW","JM","29RD","SW","HC","SF","PP","SR","MSN"))
+
+
+
 
 p1 <- ggplot(data = site, aes(x=Site_ID, y=total, fill =Species)) + 
   theme_classic() + 
@@ -140,6 +147,8 @@ p2 <- ggplot(data = site, aes(x=Site_ID, y=log1p(total), fill =Species)) +
 
 #gridExtra::grid.arrange(p1,p2, ncol=2)
 p2
+
+#ggsave("alco_abund_bysite.tiff", dpi = 300)
 ```
 
 # Part 2: Visualize *Amblyomma americanum* data 

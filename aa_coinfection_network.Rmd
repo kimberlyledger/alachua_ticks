@@ -1,5 +1,5 @@
 ---
-title: "aa_path_network"
+title: "Amblyomma americanum microorganism coinfeciton network"
 author: "Kimberly Ledger"
 date: "3/11/2022"
 output: github_document
@@ -56,20 +56,15 @@ plot(network, vertex.label.color="black",
      vertex.label.cex=.5,vertex.label.dist=0.2, 
      edge.curved=0.5, edge.width = E(network)$weight,
      layout=layout_in_circle(network))
-
-#plot(network, vertex.label.color="black", 
-#     vertex.label.cex=.5,vertex.label.dist=0.2, 
-#     edge.curved=0.5, edge.width = edge.betweenness(network), edge.color = edge.betweenness(network),
-#     layout=layout_in_circle(network))
 ```
 
-```{r}
+```{r coinfection, fig.height=7, fig.width=7}
 g2 = simplify(network)
 
 E(g2)$weight = sapply(E(g2), function(e) { 
     length(all_shortest_paths(network, from=ends(g2, e)[1], to=ends(g2, e)[2])$res) } )
 
-plot(g2, 
+coinfection_plot <- plot(g2, 
      vertex.size = 15, vertex.color = "#486090", vertex.frame.color = "black",
      vertex.label.cex=.8, vertex.label.dist= 2,
      vertex.label.color = "black",
@@ -78,7 +73,5 @@ plot(g2,
      edge.curved=0.5, edge.width = E(g2)$weight/2.5, edge.color = "#f0a860",
      layout=layout_in_circle(network))
 
+coinfection_plot
 ```
-
-saved using: 
-tiff(filename = "coinf_orange.tiff", height = 2000, width = 2000, res = 300)

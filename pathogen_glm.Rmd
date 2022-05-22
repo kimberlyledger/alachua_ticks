@@ -6,6 +6,7 @@ output: github_document
 ---
 
 Code for analyses of pathogens in Alachua County ticks.  
+Updated 20 May 2022
 
 load libraries
 ```{r, message=FALSE}
@@ -62,7 +63,7 @@ important: we are only considering microorganisms that are known to be human or 
 pathogen_df <- data %>%
   filter(!is.na(gDNA_Sample)) %>%
   group_by(Site_ID) %>%
-  summarise(Babesia_sp_Coco = sum(Babesia_sp_Coco),
+  dplyr::summarise(Babesia_sp_Coco = sum(Babesia_sp_Coco),
             Babesia_odocoieli = sum(Babesia_odocoieli),
             Cytauxozoon_felis = sum(Cytauxozoon_felis),
             Ehrlichia_chaffeensis = sum(Ehrlichia_chaffeensis),
@@ -72,7 +73,10 @@ pathogen_df <- data %>%
             sum_path = sum(Babesia_sp_Coco, Babesia_odocoieli, Cytauxozoon_felis,
                            Ehrlichia_chaffeensis, Ehrlichia_ewingii, Ehrlichia_sp_PanolaMountain,
                            Rickettsia_parkeri))
+```
 
+add in row for site with no ticks
+```{r}
 pathogen_df[18,] <- list("GA", 0, 0, 0, 0, 0, 0, 0, 0)
 ```
 
@@ -92,7 +96,7 @@ richness_df$Babesia_sp_Coco[richness_df$Babesia_sp_Coco > 0] <- 1
 
 richness_df <- richness_df %>%
   dplyr::select(!sum_path) %>%
-  mutate(all_rich = rowSums(across(where(is.numeric))))
+  dplyr::mutate(all_rich = rowSums(across(where(is.numeric))))
 ```
 
 put the explanitory (field_type and PC1 @ 500m) and response variables into one data frame 
@@ -129,7 +133,6 @@ P0 <- glm(pres ~ 1, family = binomial, data = join_path)
 P1 <- glm(pres ~ Field_Type, family = binomial, data = join_path)
 P2 <- glm(pres ~ PC1_500m, family = binomial, data = join_path)
 P3 <- glm(pres ~ PC1_500m + Field_Type, family = binomial, data = join_path)
-#P4 <- glm(pres ~ PC1_500m * Field_Type, family = binomial, data = join_path)
 
 AICc(P0, P1, P2, P3)
 ```
@@ -147,40 +150,94 @@ stargazer(P2, P3, type = "text",
 top model summary and model validation plots
 ```{r}
 summary(P3)
+
+par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(P3, which = 1)
 plot(P3, which = 2)
 plot(P3, which = 3)
-plot(P3, which = 4)
+#plot(P3, which = 4)
 plot(P3, which = 5)
 ```
 
-sites 5, 9, and 12 could be are problematic... consider removing 
+sites 5 and 12 could be are problematic... consider removing later
 
 
-pretty plot of the predictions 
+pretty plot of the predictions - start by making model predictions
 ```{r}
-mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
-mydata$pred <- predict(P3, newdata = mydata, type = "response")
+## grad the inverse link function
+ilink <- family(P3)$linkinv
 
-v1 <- ggplot(join_path, aes(x = PC1_500m, y = pres, group = Field_Type)) + 
-  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
-             color = "black", pch = 21, position = position_jitter(w = 0.05, h = 0)) + 
-  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
-  #theme_bw() + 
-  theme(axis.text.y= element_blank(),   
-        axis.ticks.y = element_blank(),
+ndata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
+ndata$pres <- predict(P3, newdata = ndata, type = "response")
+ndata <- bind_cols(ndata, setNames(as_tibble(predict(P3, ndata, se.fit = TRUE)[1:2]),
+                                   c('fit_link','se_link')))
+## create the interval and backtransform
+ndata <- mutate(ndata,
+                fit_resp  = ilink(fit_link),
+                right_upr = ilink(fit_link + (2 * se_link)),
+                right_lwr = ilink(fit_link - (2 * se_link)))
+## show
+ndata
+```
+
+plot
+```{r pres_infected}
+library(viridisLite)
+mycol <- viridisLite::viridis(3)
+
+v1 <- ggplot(data = join_path, aes(x = PC1_500m, y = pres, fill = Field_Type)) + 
+  geom_point(cex = 4, alpha = 0.7, color = "black", pch = 21, position = position_jitter(w = 0.05, h = 0)) +
+  scale_fill_manual(values = mycol) + 
+  geom_line(data = ndata, aes(color = Field_Type), size = 1.5) +
+  #geom_ribbon(data = ndata,
+  #                aes(ymin = right_lwr, ymax = right_upr, fill=Field_Type),
+  #                alpha = 0.1) + 
+  scale_color_manual(values = mycol) + 
+  theme(#axis.text.y= element_blank(),   
+        #axis.ticks.y = element_blank(),
         panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
         legend.position = "none") + 
   #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
-  ylab("Probability of Pathogen") +
+  ylab("Probability of Infected Tick") +
   xlab("Development Gradient")
 v1
 ```
 
-***UPDATE COLORS?*** 
+
+
+remove problematic sites 
+
+```{r}
+join_path_screen <- join_path[-c(5,12),]
+```
+
+
+binomial glm's 
+```{r}
+P0 <- glm(pres ~ 1, family = binomial, data = join_path_screen)
+P1 <- glm(pres ~ Field_Type, family = binomial, data = join_path_screen)
+P2 <- glm(pres ~ PC1_500m, family = binomial, data = join_path_screen)
+P3 <- glm(pres ~ PC1_500m + Field_Type, family = binomial, data = join_path_screen)
+
+AICc(P0, P1, P2, P3)
+```
+
+compare the top models  
+```{r}
+stargazer(P2, P3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+models do not produce warning of "Warning: glm.fit: fitted probabilities numerically 0 or 1 occurred"
+i use models that retain all sites to keep the sample size as large as possible... 
+
+
 
 
 ## abundance of infected ticks per site
@@ -203,10 +260,11 @@ AICc(A0, A1, A2, A3, A4)
 model summary and validation
 ```{r}
 summary(A3)
+par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(A3, which = 1)
 plot(A3, which = 2)
 plot(A3, which = 3)
-plot(A3, which = 4)
+#plot(A3, which = 4)
 plot(A3, which = 5)
 ```
 
@@ -214,24 +272,41 @@ site 11 could be problematic...
 
 pretty plot of the predictions 
 ```{r}
+## grad the inverse link function
+ilink <- family(A3)$linkinv
 mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
-mydata$pred <- predict(A3, newdata = mydata, type = "response")
+mydata$sum_path <- predict(A3, newdata = mydata, type = "response")
+mydata <- bind_cols(mydata, setNames(as_tibble(predict(A3, mydata, se.fit = TRUE)[1:2]),
+                                   c('fit_link','se_link')))
+## create the interval and backtransform
+mydata <- mutate(mydata,
+                fit_resp  = ilink(fit_link),
+                right_upr = ilink(fit_link + (2 * se_link)),
+                right_lwr = ilink(fit_link - (2 * se_link)))
+## show
+mydata
+```
 
+```{r abund_infected}
 v2 <- ggplot(join_path, aes(x = PC1_500m, y = sum_path, group = Field_Type)) + 
-  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
+  geom_point(aes(fill = Field_Type), cex = 4, alpha = 0.7, 
              color = "black", pch = 21) +
-  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
-  #theme_bw() + 
+  scale_fill_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) + 
+  geom_line(data = mydata, aes(color = Field_Type)) +
+  geom_ribbon(data = mydata,
+                  aes(ymin = right_lwr, ymax = right_upr, fill=Field_Type),
+                  alpha = 0.2) + 
+  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   theme(panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
-        legend.position = "none") + 
-  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
+        legend.position = c(0.2,0.6)) + 
   ylab("Abundance of Infected Ticks") +
   xlab("Development Gradient")
 v2
 ```
+
 
 
 An alternative would be to log-transform data and run linear model... 
@@ -256,10 +331,11 @@ AICc(L0, L1, L2, L3, L4)
 model summary and validation
 ```{r}
 summary(L3)
+par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(L3, which = 1)
 plot(L3, which = 2)
 plot(L3, which = 3)
-plot(L3, which = 4)
+#plot(L3, which = 4)
 plot(L3, which = 5)
 ```
 
@@ -271,8 +347,9 @@ mydata$pred <- predict(L3, newdata = mydata, type = "response")
 v3 <- ggplot(join_path, aes(x = PC1_500m, y = log_sum_path, group = Field_Type)) + 
   geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
              color = "black", pch = 21) +
+  scale_fill_manual(values = mycol) + 
   geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
-  #theme_bw() + 
+  scale_color_manual(values = mycol) + 
   theme(panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
@@ -283,6 +360,37 @@ v3 <- ggplot(join_path, aes(x = PC1_500m, y = log_sum_path, group = Field_Type))
   xlab("Development Gradient")
 v3
 ```
+
+screen data to remove site 11
+
+```{r}
+join_path_screen <- join_path[-11,]
+```
+
+
+try a negative binomial glm 
+```{r}
+A0 <- glm.nb(sum_path ~ 1, data = join_path_screen)
+A1 <- glm.nb(sum_path ~ Field_Type, data = join_path_screen)
+A2 <- glm.nb(sum_path ~ PC1_500m, data = join_path_screen)
+A3 <- glm.nb(sum_path ~ PC1_500m + Field_Type, data = join_path_screen)
+A4 <- glm.nb(sum_path ~ PC1_500m * Field_Type, data = join_path_screen)
+
+AICc(A0, A1, A2, A3, A4)
+```
+
+model summary and validation
+```{r}
+summary(A3)
+par(mfrow=c(2,2), mar=c(4,4,2,1))
+plot(A3, which = 1)
+plot(A3, which = 2)
+plot(A3, which = 3)
+#plot(A3, which = 4)
+plot(A3, which = 5)
+```
+
+removing site 11 seems to do more harm than good...
 
 
 
@@ -305,34 +413,54 @@ AICc(R0, R1, R2, R3, R4)
 model summary and validation
 ```{r}
 summary(R3)
+par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(R3, which = 1)
 plot(R3, which = 2)
 plot(R3, which = 3)
-plot(R3, which = 4)
+#plot(R3, which = 4)
 plot(R3, which = 5)
 ```
 
 
 pretty plot of the predictions 
 ```{r}
-mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
-mydata$pred <- predict(R3, newdata = mydata, type = "response")
+ilink <- family(R3)$linkinv
 
+mydata <- expand.grid(PC1_500m = seq(-3,3, length = 50), Field_Type = c("Manicured", "Natural"))
+mydata$all_rich <- predict(R3, newdata = mydata, type = "response")
+
+mydata <- bind_cols(mydata, setNames(as_tibble(predict(R3, ndata, se.fit = TRUE)[1:2]),
+                                   c('fit_link','se_link')))
+
+## create the interval and backtransform
+mydata <- mutate(mydata,
+                fit_resp  = ilink(fit_link),
+                right_upr = ilink(fit_link + (2 * se_link)),
+                right_lwr = ilink(fit_link - (2 * se_link)))
+## show
+mydata
+```
+
+```{r pathogen_richness}
 v4 <- ggplot(join_path, aes(x = PC1_500m, y = all_rich, group = Field_Type)) + 
-  geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5),  #jitter points? 
+  geom_point(aes(fill = Field_Type), cex = 4, alpha = 0.7, 
              color = "black", pch = 21) +
-  geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
-  #theme_bw() + 
+  scale_fill_manual(values = mycol) + 
+  geom_line(data = mydata, aes(color = Field_Type)) +
+  geom_ribbon(data = mydata,
+                  aes(ymin = right_lwr, ymax = right_upr, fill=Field_Type),
+                  alpha = 0.2) + 
+  scale_color_manual(values = mycol) +
   theme(panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
         legend.position = "none") + 
-  #scale_color_discrete(name = "Environment Type", labels = c("manicured", "natural")) + 
   ylab("Pathogen Richness") +
   xlab("Development Gradient")
 v4
 ```
+
 
 
 or does it makes sense to log-transform data and run linear models? 
@@ -351,10 +479,11 @@ AICc(RL0, RL1, RL2, RL3, RL4)
 model summary and validation
 ```{r}
 summary(RL3)
+par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(RL3, which = 1)
 plot(RL3, which = 2)
 plot(RL3, which = 3)
-plot(RL3, which = 4)
+#plot(RL3, which = 4)
 plot(RL3, which = 5)
 ```
 
@@ -366,8 +495,9 @@ mydata$pred <- predict(RL3, newdata = mydata, type = "response")
 v5 <- ggplot(join_path, aes(x = PC1_500m, y = log_all_rich, group = Field_Type)) + 
   geom_point(aes(fill = Field_Type, cex = 1.5, alpha = 0.5), 
              color = "black", pch = 21) +
+  scale_fill_manual(values = mycol) + 
   geom_line(data = mydata, aes(x = PC1_500m, y = pred, color = Field_Type)) +
-  #theme_bw() + 
+  scale_color_manual(values = mycol) + 
   theme(panel.grid.major = element_blank(), 
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
@@ -379,11 +509,13 @@ v5 <- ggplot(join_path, aes(x = PC1_500m, y = log_all_rich, group = Field_Type))
 v5
 ```
 
-To Do: 
-plot with 95% CI's 
-jitter points? 
-different colors? 
+make final composite figure for manuscript 
 
+```{r pathogen_fig, fig.width = 5, fig.height = 10}
+library(cowplot)
+
+plot_grid(v1, v2, v4, labels= "AUTO", ncol=1)
+```
 
 
 

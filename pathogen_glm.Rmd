@@ -139,7 +139,7 @@ AICc(P0, P1, P2, P3)
 
 compare the top models  
 ```{r}
-stargazer(P2, P3, type = "text",
+stargazer(P0, P1, P2, P3, type = "text",
           intercept.bottom = FALSE, 
           single.row=FALSE,     
           notes.append = FALSE, 
@@ -157,6 +157,11 @@ plot(P3, which = 2)
 plot(P3, which = 3)
 #plot(P3, which = 4)
 plot(P3, which = 5)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(24.731-11.146)/24.731 
 ```
 
 sites 5 and 12 could be are problematic... consider removing later
@@ -257,6 +262,15 @@ A4 <- glm.nb(sum_path ~ PC1_500m * Field_Type, data = join_path)
 AICc(A0, A1, A2, A3, A4)
 ```
 
+compare the top models  
+```{r}
+stargazer(A0, A1, A2, A3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
 model summary and validation
 ```{r}
 summary(A3)
@@ -266,6 +280,11 @@ plot(A3, which = 2)
 plot(A3, which = 3)
 #plot(A3, which = 4)
 plot(A3, which = 5)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(37.806-14.740)/37.806 
 ```
 
 site 11 could be problematic... 
@@ -410,6 +429,16 @@ R4 <- glm.nb(all_rich ~ PC1_500m * Field_Type, data = join_path)
 AICc(R0, R1, R2, R3, R4)
 ```
 
+compare the top models  
+```{r}
+stargazer(R0, R1, R2, R3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+
 model summary and validation
 ```{r}
 summary(R3)
@@ -419,6 +448,11 @@ plot(R3, which = 2)
 plot(R3, which = 3)
 #plot(R3, which = 4)
 plot(R3, which = 5)
+```
+
+pseudo r-squared of model 
+```{r}
+100*(34.062-15.528)/34.062 
 ```
 
 

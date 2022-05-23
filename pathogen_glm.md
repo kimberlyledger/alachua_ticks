@@ -286,7 +286,7 @@ AICc(P0, P1, P2, P3)
 compare the top models
 
 ``` r
-stargazer(P2, P3, type = "text",
+stargazer(P0, P1, P2, P3, type = "text",
           intercept.bottom = FALSE, 
           single.row=FALSE,     
           notes.append = FALSE, 
@@ -294,27 +294,27 @@ stargazer(P2, P3, type = "text",
 ```
 
     ## 
-    ## ==============================================
-    ##                       Dependent variable:     
-    ##                   ----------------------------
-    ##                               pres            
-    ##                        (1)            (2)     
-    ## ----------------------------------------------
-    ## Constant              -0.180        -1.591    
-    ##                      (0.668)        (1.198)   
-    ##                                               
-    ## PC1_500m             1.122**        1.690*    
-    ##                      (0.475)        (0.971)   
-    ##                                               
-    ## Field_TypeNatural                    3.835    
-    ##                                     (2.702)   
-    ##                                               
-    ## ----------------------------------------------
-    ## Observations            18            18      
-    ## Log Likelihood        -7.753        -5.573    
-    ## Akaike Inf. Crit.     19.506        17.146    
-    ## ==============================================
-    ## Note:              *p<0.1; **p<0.05; ***p<0.01
+    ## =================================================
+    ##                         Dependent variable:      
+    ##                   -------------------------------
+    ##                                pres              
+    ##                     (1)     (2)     (3)     (4)  
+    ## -------------------------------------------------
+    ## Constant           0.223  -0.693  -0.180  -1.591 
+    ##                   (0.474) (0.707) (0.668) (1.198)
+    ##                                                  
+    ## Field_TypeNatural         1.946*           3.835 
+    ##                           (1.069)         (2.702)
+    ##                                                  
+    ## PC1_500m                          1.122** 1.690* 
+    ##                                   (0.475) (0.971)
+    ##                                                  
+    ## -------------------------------------------------
+    ## Observations        18      18      18      18   
+    ## Log Likelihood    -12.365 -10.496 -7.753  -5.573 
+    ## Akaike Inf. Crit. 26.731  24.992  19.506  17.146 
+    ## =================================================
+    ## Note:                 *p<0.1; **p<0.05; ***p<0.01
 
 top model summary and model validation plots
 
@@ -357,6 +357,14 @@ plot(P3, which = 5)
 ```
 
 ![](pathogen_glm_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
+
+pseudo r-squared of model
+
+``` r
+100*(24.731-11.146)/24.731 
+```
+
+    ## [1] 54.93106
 
 sites 5 and 12 could be are problematic… consider removing later
 
@@ -690,7 +698,7 @@ the sample size as large as possible…
 hist(join_path$sum_path)
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-17-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-18-1.png)<!-- -->
 
 try a negative binomial glm
 
@@ -710,6 +718,40 @@ AICc(A0, A1, A2, A3, A4)
     ## A2  3 71.27106
     ## A3  4 67.53486
     ## A4  5 71.38769
+
+compare the top models
+
+``` r
+stargazer(A0, A1, A2, A3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+    ## 
+    ## ==============================================================================
+    ##                                       Dependent variable:                     
+    ##                   ------------------------------------------------------------
+    ##                                             sum_path                          
+    ##                         (1)            (2)            (3)            (4)      
+    ## ------------------------------------------------------------------------------
+    ## Constant              0.916**         -0.811         0.006         -1.187*    
+    ##                       (0.401)        (0.612)        (0.456)        (0.625)    
+    ##                                                                               
+    ## Field_TypeNatural                    2.327***                      1.945***   
+    ##                                      (0.723)                       (0.688)    
+    ##                                                                               
+    ## PC1_500m                                            0.823***       0.608***   
+    ##                                                     (0.263)        (0.210)    
+    ##                                                                               
+    ## ------------------------------------------------------------------------------
+    ## Observations            18              18             18             18      
+    ## Log Likelihood        -36.764        -32.575        -32.778        -29.229    
+    ## theta             0.401** (0.187) 0.895* (0.509) 0.751* (0.385) 1.519* (0.908)
+    ## Akaike Inf. Crit.     75.529          69.149         69.557         64.458    
+    ## ==============================================================================
+    ## Note:                                              *p<0.1; **p<0.05; ***p<0.01
 
 model summary and validation
 
@@ -757,7 +799,15 @@ plot(A3, which = 3)
 plot(A3, which = 5)
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-19-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-21-1.png)<!-- -->
+
+pseudo r-squared of model
+
+``` r
+100*(37.806-14.740)/37.806 
+```
+
+    ## [1] 61.01148
 
 site 11 could be problematic…
 
@@ -1065,7 +1115,7 @@ plot(L3, which = 3)
 plot(L3, which = 5)
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-23-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-26-1.png)<!-- -->
 
 pretty plot of the predictions
 
@@ -1090,7 +1140,7 @@ v3 <- ggplot(join_path, aes(x = PC1_500m, y = log_sum_path, group = Field_Type))
 v3
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-24-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
 
 screen data to remove site 11
 
@@ -1163,7 +1213,7 @@ plot(A3, which = 3)
 plot(A3, which = 5)
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-27-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
 
 removing site 11 seems to do more harm than good…
 
@@ -1173,7 +1223,7 @@ removing site 11 seems to do more harm than good…
 hist(join_path$all_rich)
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-28-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-31-1.png)<!-- -->
 
 try a negative binomial glm
 
@@ -1193,6 +1243,40 @@ AICc(R0, R1, R2, R3, R4)
     ## R2  3 56.02123
     ## R3  4 55.03053
     ## R4  5 58.78667
+
+compare the top models
+
+``` r
+stargazer(R0, R1, R2, R3, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+    ## 
+    ## ==========================================================================
+    ##                                     Dependent variable:                   
+    ##                   --------------------------------------------------------
+    ##                                           all_rich                        
+    ##                        (1)           (2)           (3)           (4)      
+    ## --------------------------------------------------------------------------
+    ## Constant              0.288        -0.811        -0.436        -1.082**   
+    ##                      (0.327)       (0.552)       (0.421)       (0.550)    
+    ##                                                                           
+    ## Field_TypeNatural                  1.609**                     1.238**    
+    ##                                    (0.639)                     (0.600)    
+    ##                                                                           
+    ## PC1_500m                                        0.660***       0.493**    
+    ##                                                  (0.230)       (0.197)    
+    ##                                                                           
+    ## --------------------------------------------------------------------------
+    ## Observations           18            18            18             18      
+    ## Log Likelihood       -29.653       -26.643       -25.153       -22.977    
+    ## theta             0.848 (0.564) 2.045 (1.997) 2.664 (2.829) 7.812 (15.881)
+    ## Akaike Inf. Crit.    61.305        57.286        54.307         51.954    
+    ## ==========================================================================
+    ## Note:                                          *p<0.1; **p<0.05; ***p<0.01
 
 model summary and validation
 
@@ -1240,7 +1324,15 @@ plot(R3, which = 3)
 plot(R3, which = 5)
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-30-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
+
+pseudo r-squared of model
+
+``` r
+100*(34.062-15.528)/34.062 
+```
+
+    ## [1] 54.41254
 
 pretty plot of the predictions
 
@@ -1543,7 +1635,7 @@ plot(RL3, which = 3)
 plot(RL3, which = 5)
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-33-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-38-1.png)<!-- -->
 
 pretty plot of the predictions
 
@@ -1568,7 +1660,7 @@ v5 <- ggplot(join_path, aes(x = PC1_500m, y = log_all_rich, group = Field_Type))
 v5
 ```
 
-![](pathogen_glm_files/figure-gfm/unnamed-chunk-34-1.png)<!-- -->
+![](pathogen_glm_files/figure-gfm/unnamed-chunk-39-1.png)<!-- -->
 
 make final composite figure for manuscript
 

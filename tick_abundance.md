@@ -1144,6 +1144,38 @@ stargazer(nb.glm12, nb.glm12.screen, type = "text",
     ## ==================================================
     ## Note:                  *p<0.1; **p<0.05; ***p<0.01
 
+``` r
+stargazer(nb.glm0.screen, nb.glm2.screen, nb.glm11.screen, nb.glm12.screen, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+    ## 
+    ## ===================================================================================
+    ##                                          Dependent variable:                       
+    ##                   -----------------------------------------------------------------
+    ##                                                 total                              
+    ##                         (1)              (2)              (3)             (4)      
+    ## -----------------------------------------------------------------------------------
+    ## Constant              4.355***         2.575***        2.598***        1.868***    
+    ##                       (0.439)          (0.524)          (0.278)         (0.315)    
+    ##                                                                                    
+    ## Field_TypeNatural                      2.386***                        1.240***    
+    ##                                        (0.735)                          (0.413)    
+    ##                                                                                    
+    ## PC1_500m                                               1.100***        1.003***    
+    ##                                                         (0.158)         (0.131)    
+    ##                                                                                    
+    ## -----------------------------------------------------------------------------------
+    ## Observations             16               16              16              16       
+    ## Log Likelihood        -78.218          -74.603          -67.348         -64.324    
+    ## theta             0.325*** (0.102) 0.472*** (0.157) 1.143** (0.447) 1.882** (0.828)
+    ## Akaike Inf. Crit.     158.437          153.206          138.696         134.648    
+    ## ===================================================================================
+    ## Note:                                                   *p<0.1; **p<0.05; ***p<0.01
+
 pseudo r-squared of screened model
 
 ``` r
@@ -1165,7 +1197,7 @@ par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(nb.glm12.screen)
 ```
 
-![](tick_abundance_files/figure-gfm/unnamed-chunk-34-1.png)<!-- --> the
+![](tick_abundance_files/figure-gfm/unnamed-chunk-35-1.png)<!-- --> the
 screened model looks good!
 
 ### plot the top model for *Amblyomma americanum* (screened dataset)
@@ -1208,7 +1240,7 @@ grid.arrange(plot, plot.log, ncol = 2)
 
     ## Warning: Transformation introduced infinite values in continuous y-axis
 
-![](tick_abundance_files/figure-gfm/unnamed-chunk-35-1.png)<!-- -->
+![](tick_abundance_files/figure-gfm/unnamed-chunk-36-1.png)<!-- -->
 
 ### create a final plot for *A.americanum* (screened data)
 
@@ -1291,13 +1323,15 @@ plot it - FIGURE FOR PUBLICATIONS
 ``` r
 mycol <- viridisLite::viridis(3)
 
-aa.plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
-  geom_point(aes(color=Field_Type), size = 4) + 
-  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
+aa.plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total, group = Field_Type)) +
+  geom_point(aes(fill=Field_Type), cex = 4, alpha = 0.7, 
+             color = "black", pch = 21) + 
+  scale_fill_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
-                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
-                  alpha = 0.1) + 
+                  aes(ymin = right_lwr, ymax = right_upr, fill=Field_Type),
+                  alpha = 0.2) +
+  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   theme_bw() +
   theme(panel.grid.major=element_blank(),
                     panel.grid.minor=element_blank(),
@@ -1306,16 +1340,20 @@ aa.plt <- ggplot(aa_screen, aes(x = PC1_500m, y = total)) +
   ylab("A. americanum abundance") +
   xlab("Development Gradient")
 
+#aa.plt
+
 #remove the two sites with zeros so that they do not make the plot look funny on the log axis 
 aa_screen2 <- aa_screen[-c(1,2),]
 
-aa.plt.log <- ggplot(aa_screen2, aes(x = PC1_500m, y = total)) +
-  geom_point(aes(color=Field_Type), size = 4) +
-  scale_color_manual(values = mycol) + 
+aa.plt.log <- ggplot(aa_screen2, aes(x = PC1_500m, y = total, group = Field_Type)) +
+  geom_point(aes(fill=Field_Type), cex = 4, alpha = 0.7, 
+             color = "black", pch = 21) +
+  scale_fill_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) + 
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
-                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
-                  alpha = 0.1)+ 
+                  aes(ymin = right_lwr, ymax = right_upr, fill=Field_Type),
+                  alpha = 0.2)+ 
+    scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   theme_bw() +
   theme(legend.position = "none") +
   theme(panel.grid.major=element_blank(),
@@ -1327,7 +1365,7 @@ aa.plt.log <- ggplot(aa_screen2, aes(x = PC1_500m, y = total)) +
 grid.arrange(aa.plt, aa.plt.log, ncol = 2)
 ```
 
-![](tick_abundance_files/figure-gfm/unnamed-chunk-37-1.png)<!-- -->
+![](tick_abundance_files/figure-gfm/A_americanum_fig-1.png)<!-- -->
 
 # Part 5: Landscape analyses of *Ixodes scapularis*
 
@@ -1745,9 +1783,9 @@ round(head(cor_plot ,3),2)
 ```
 
     ##   dist Morans.i null.lcl null.ucl
-    ## 1  500     0.17    -0.38     0.31
-    ## 2 1500    -0.12    -0.30     0.31
-    ## 3 2500    -0.19    -0.36     0.30
+    ## 1  500     0.17    -0.38     0.36
+    ## 2 1500    -0.12    -0.36     0.34
+    ## 3 2500    -0.19    -0.33     0.25
 
 ``` r
 #plot correlogram
@@ -1929,6 +1967,38 @@ stargazer(nb.glm8.reduced, nb.glm9.reduced, type = "text",
     ## =================================================
     ## Note:                 *p<0.1; **p<0.05; ***p<0.01
 
+``` r
+stargazer(nb.glm0.reduced, nb.glm1.reduced, nb.glm8.reduced, nb.glm9.reduced, type = "text",
+          intercept.bottom = FALSE, 
+          single.row=FALSE,     
+          notes.append = FALSE, 
+          header=FALSE)
+```
+
+    ## 
+    ## =================================================================================
+    ##                                         Dependent variable:                      
+    ##                   ---------------------------------------------------------------
+    ##                                                total                             
+    ##                         (1)             (2)             (3)             (4)      
+    ## ---------------------------------------------------------------------------------
+    ## Constant             1.633***          0.000           0.361          -0.765     
+    ##                       (0.469)         (0.646)         (0.483)         (0.628)    
+    ##                                                                                  
+    ## Field_TypeNatural                    2.172***                         1.721**    
+    ##                                       (0.831)                         (0.716)    
+    ##                                                                                  
+    ## PC1_500m                                             0.908***        0.825***    
+    ##                                                       (0.284)         (0.248)    
+    ##                                                                                  
+    ## ---------------------------------------------------------------------------------
+    ## Observations            17              17              17              17       
+    ## Log Likelihood        -41.750         -39.230         -37.565         -35.024    
+    ## theta             0.282** (0.115) 0.427** (0.192) 0.570** (0.272) 0.846** (0.429)
+    ## Akaike Inf. Crit.     85.500          82.459          79.131          76.048     
+    ## =================================================================================
+    ## Note:                                                 *p<0.1; **p<0.05; ***p<0.01
+
 ### plot model residuals for top model (screened datset)
 
 ``` r
@@ -1936,7 +2006,7 @@ par(mfrow=c(2,2), mar=c(4,4,2,1))
 plot(nb.glm9.reduced)
 ```
 
-![](tick_abundance_files/figure-gfm/unnamed-chunk-54-1.png)<!-- --> the
+![](tick_abundance_files/figure-gfm/unnamed-chunk-55-1.png)<!-- --> the
 reduced model for PC1_500m is looking pretty good
 
 ### test for spatial autocorrelation (screened dataset)
@@ -2031,9 +2101,9 @@ round(head(cor_plot ,3),2)
 ```
 
     ##   dist Morans.i null.lcl null.ucl
-    ## 1  500     0.07    -0.32     0.27
-    ## 2 1500    -0.14    -0.29     0.32
-    ## 3 2500    -0.06    -0.30     0.32
+    ## 1  500     0.07    -0.34     0.29
+    ## 2 1500    -0.14    -0.31     0.26
+    ## 3 2500    -0.06    -0.35     0.26
 
 ``` r
 #plot correlogram
@@ -2043,7 +2113,7 @@ lines(cor_plot$dist, cor_plot$null.lcl)
 lines(cor_plot$dist, cor_plot$null.ucl)
 ```
 
-![](tick_abundance_files/figure-gfm/unnamed-chunk-56-1.png)<!-- -->
+![](tick_abundance_files/figure-gfm/unnamed-chunk-57-1.png)<!-- -->
 
 only one point barely falls outside the 95% CI so i believe we are good
 to go
@@ -2176,13 +2246,15 @@ plot it
 ``` r
 mycol <- viridisLite::viridis(3)
 
-is.plt <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
-  geom_point(aes(color=Field_Type), size = 4) +
-  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
+is.plt <- ggplot(is_screen, aes(x = PC1_500m, y = total, group = Field_Type)) +
+  geom_point(aes(fill=Field_Type), cex = 4, alpha = 0.7, 
+             color = "black", pch = 21) +
+  scale_fill_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
-                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
-                  alpha = 0.1)+ 
+                  aes(ymin = right_lwr, ymax = right_upr, fill=Field_Type),
+                  alpha = 0.2)+ 
+  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   theme_bw() +
   theme(legend.position = "none") +
   theme(panel.grid.major=element_blank(),
@@ -2193,13 +2265,15 @@ is.plt <- ggplot(is_screen, aes(x = PC1_500m, y = total)) +
 
 is_screen2 <- is_screen[-c(1,3,5,6,7,8,11),]
 
-is.plt.log <- ggplot(is_screen2, aes(x = PC1_500m, y = total)) +
-  geom_point(aes(color=Field_Type), size = 4) +
-  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
+is.plt.log <- ggplot(is_screen2, aes(x = PC1_500m, y = total, group = Field_Type)) +
+  geom_point(aes(fill=Field_Type), cex = 4, alpha = 0.7, 
+             color = "black", pch = 21) +
+  scale_fill_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   geom_line(data = ndata, size =2, aes(color=Field_Type)) + 
   geom_ribbon(data = ndata,
-                  aes(ymin = right_lwr, ymax = right_upr, color=Field_Type),
+                  aes(ymin = right_lwr, ymax = right_upr, fill=Field_Type),
                   alpha = 0.1)+ 
+  scale_color_manual(values = mycol, name = "Habitat Type", labels = c("manicured", "natural")) +
   theme_bw() +
   theme(legend.position = "none") +
   theme(panel.grid.major=element_blank(),
@@ -2212,15 +2286,13 @@ is.plt.log <- ggplot(is_screen2, aes(x = PC1_500m, y = total)) +
 grid.arrange(is.plt, is.plt.log, ncol = 2)
 ```
 
-![](tick_abundance_files/figure-gfm/unnamed-chunk-60-1.png)<!-- -->
+![](tick_abundance_files/figure-gfm/Iscap_fig-1.png)<!-- -->
 
 put all the plots together…
 
 ``` r
-grid.arrange(aa.plt, aa.plt.log, is.plt, is.plt.log, ncol = 2)
+#grid.arrange(aa.plt, aa.plt.log, is.plt, is.plt.log, ncol = 2)
 ```
-
-![](tick_abundance_files/figure-gfm/unnamed-chunk-61-1.png)<!-- -->
 
 ``` r
 library(cowplot)
@@ -2235,10 +2307,8 @@ final_plot <- ggdraw()+
 final_plot
 ```
 
-![](tick_abundance_files/figure-gfm/unnamed-chunk-62-1.png)<!-- -->
+![](tick_abundance_files/figure-gfm/abund_fig-1.png)<!-- -->
 
 ``` r
-ggsave("Figures/TickAbundanceModels.png", dpi = 300)
+#ggsave("Figures/TickAbundanceModels.png", dpi = 300)
 ```
-
-    ## Saving 7 x 5 in image
